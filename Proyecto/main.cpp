@@ -48,7 +48,64 @@ void usuarioMenu(string usuario,string contra, string depa, string empre){
 
 //Ciclo para mostrar el menu del administrador :(
 void adminMenu(){
-    cout<<"Bienvenido Administrador"<<endl;
+    cout<<"---------------BIENVENIDO ADMINISTRADOR---------------"<<endl;
+
+    bool menu=true;
+    while(menu){
+        int opcion=0;
+        cout<<"Selecciona una opcion:"<<endl;
+        cout<<"1. Registrar Usuario"<<endl;
+        cout<<"2. Reporte Matriz Dispersa"<<endl;
+        cout<<"3. Reporte de Activos Disponibles en un Departamento"<<endl;
+        cout<<"4. Reporte de Activos Disponibles en una empresa"<<endl;
+        cout<<"5. Reporte de Transacciones"<<endl;
+        cout<<"6. Reporte de Activos de un Usuario"<<endl;
+        cout<<"7. Activos Rentados por un Usuario"<<endl;
+        cout<<"8. Ordenar Transacciones"<<endl;
+        cout<<"9. Cerrar Sesión"<<endl;
+        cin>>opcion;
+
+        switch(opcion){
+            case 1:
+                cout<<"---------------CREAR USUARIO---------------"<<endl;
+
+
+                break;
+            case 2:
+                cout<<"---------------REPORTE DE MATRIZ DISPERSA---------------"<<endl;
+
+                break;
+            case 3:
+                cout<<"---------------REPORTE DE ACTIVOS DISPONIBLES EN UN DEPARTAMENTO---------------"<<endl;
+
+                break;
+            case 4:
+                cout<<"---------------REPORTE DE ACTIVOS DISPONIBLES DE UNA EMPRESA---------------"<<endl;
+
+                break;
+            case 5:
+                cout<<"---------------REPORTE DE TRANSACCIONES---------------"<<endl;
+
+                break;
+            case 6:
+
+                break;
+            case 7:
+
+                break;
+            case 8:
+
+                break;
+            case 9:
+                break;
+            default:
+                cout<<"Opcion invalida"<<endl;
+                break;
+        }
+
+
+
+    }
 
 }
 
@@ -58,7 +115,6 @@ void ingreso(){ //void para el ingreso de los datos
     //Declaración de algunas variables que usaré
     string usuario,contra,depa,empre; //variables para solicitar datos
     string adminU="admin";
-
     cout<<"---------------INICIO DE SESION---------------"<<endl;
 
     //Ingreso de todos los datos
