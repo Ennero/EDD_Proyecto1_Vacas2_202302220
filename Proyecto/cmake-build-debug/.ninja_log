@@ -2,3 +2,13 @@
 20	121	7551321192036587	CMakeFiles/Proyecto.dir/EjercicioClase.cpp.obj	69a9191e88d5da35
 5	568	7551357338249420	CMakeFiles/Proyecto.dir/main.cpp.obj	ab834fac37045626
 569	668	7551357343893360	Proyecto.exe	3f204fea3986818e
+30	317	7552954748537663	CMakeFiles/Proyecto.dir/src/MatrizDispersa/Matriz.cpp.obj	c089e99cd7155fd7
+37	320	7552954748621260	CMakeFiles/Proyecto.dir/src/MatrizDispersa/Nodo.cpp.obj	5007ac5bcceda949
+16	782	7552954748422077	CMakeFiles/Proyecto.dir/main.cpp.obj	ab834fac37045626
+5	610	7552955478213416	CMakeFiles/Proyecto.dir/src/Transaccion.cpp.obj	8d2eadd9d585ef74
+612	990	7552955484279944	Proyecto.exe	483f289cbd09bb12
+7	96	7552965897190294	CMakeFiles/Proyecto.dir/src/MatrizDispersa/Matriz.cpp.obj	c089e99cd7155fd7
+97	215	7552965898096265	Proyecto.exe	483f289cbd09bb12
+15	1362	7553020257131021	CMakeFiles/Proyecto.dir/main.cpp.obj	ab834fac37045626
+9	173	7553024607677811	CMakeFiles/Proyecto.dir/src/MatrizDispersa/Matriz.cpp.obj	c089e99cd7155fd7
+174	436	7553024609319697	Proyecto.exe	483f289cbd09bb12

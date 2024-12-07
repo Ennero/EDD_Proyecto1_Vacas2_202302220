@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "includes/Transaccion.h"
+#include "includes/MatrizDispersa/Matriz.h"
 using namespace std;
 
 
@@ -144,6 +145,13 @@ void ingreso(){ //void para el ingreso de los datos
 //Aquí se va a encontrar el ciclo principal desde se comenzará a corre el programa
 int main(){ //El ciclo principal en donde voy a colocar todo
 
+    Matriz *matriz=new Matriz();
+
+    matriz->insertarValor(5,0,0);
+    matriz->insertarValor(8,1,0);
+
+
+    /*
     bool inicio=true;
     cout<<"---------------RENTA DE ACTIVOS---------------"<<endl;
     while (inicio){ //Ciclo principal en donde se inicia
@@ -166,6 +174,8 @@ int main(){ //El ciclo principal en donde voy a colocar todo
             break;
         }
     }
+    */
+
     return 0;
 }
 

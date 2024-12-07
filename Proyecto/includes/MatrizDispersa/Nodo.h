@@ -8,40 +8,18 @@
 
 
 class Nodo {
-int elian;
 
-private:
+public:
+    int elian;
+
     Nodo *siguiente;
     Nodo *anterior;
     Nodo *arriba;
     Nodo *abajo;
     Nodo *adelante;
     Nodo *atras;
-public:
     //Constructor
     Nodo(int elian);
-
-    //Destructor
-    ~Nodo();
-
-    //getters
-    int getElian() const;
-
-    Nodo* getSiguiente() const;
-    Nodo* getAnterior() const;
-    Nodo* getArriba() const;
-    Nodo* getAbajo() const;
-    Nodo* getAdelante() const;
-    Nodo* getAtras() const;
-
-    // Setters
-    void setSiguiente(Nodo* nodo);
-    void setAnterior(Nodo* nodo);
-    void setArriba(Nodo* nodo);
-    void setAbajo(Nodo* nodo);
-    void setAdelante(Nodo* nodo);
-    void setAtras(Nodo* nodo);
-
 
 };
 

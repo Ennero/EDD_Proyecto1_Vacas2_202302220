@@ -43,7 +43,7 @@ std::string Transaccion::getIdTransaccion(){
     return idTransaccion;
 }
 std::string Transaccion::getUsarioRentador(){
-    return usarioRentador;
+    return usuarioRentador;
 }
 
 //setters
@@ -66,7 +66,7 @@ void Transaccion::setIdTransaccion(std::string idTransaccion){
     this->idTransaccion = idTransaccion;
 }
 void Transaccion::setUsarioRentador(std::string usarioRentador){
-    this->usarioRentador = usarioRentador;
+    this->usuarioRentador = usarioRentador;
 }
 
 
