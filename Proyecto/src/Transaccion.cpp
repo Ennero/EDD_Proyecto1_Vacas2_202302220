@@ -7,7 +7,7 @@
 //<tipo> <nombre_clase>::<metodo>
 
 //Constructor :)
-Transaccion::Transaccion(std::string IdTransaccion,std::string idActivo,std::string usuarioRentador,std::string departamento, std::string departamentoRentador,std::string empresa,std::string fecha, std::string tiempo){
+Transaccion::Transaccion(std::string IdTransaccion,std::string idActivo,std::string usuarioRentador,std::string departamento,std::string empresa,std::string fecha, std::string tiempo){
     this->idTransaccion = IdTransaccion;
     this->idActivo = idActivo;
     this->usuarioRentador = usuarioRentador;
@@ -68,7 +68,3 @@ void Transaccion::setIdTransaccion(std::string idTransaccion){
 void Transaccion::setUsarioRentador(std::string usarioRentador){
     this->usuarioRentador = usarioRentador;
 }
-
-
-
-

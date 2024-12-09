@@ -1,4 +1,13 @@
 "C:\Program Files\JetBrains\CLion 2024.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2024.3/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\Enner\Desktop\Clases\Segundo_a\EDD\lab\EDD_Proyecto1_Vacas2_202302220\Proyecto -B C:\Users\Enner\Desktop\Clases\Segundo_a\EDD\lab\EDD_Proyecto1_Vacas2_202302220\Proyecto\cmake-build-debug
 -- Configuring done (0.3s)
--- Generating done (0.1s)
--- Build files have been written to: C:/Users/Enner/Desktop/Clases/Segundo_a/EDD/lab/EDD_Proyecto1_Vacas2_202302220/Proyecto/cmake-build-debug
+CMake Error at CMakeLists.txt:6 (add_executable):
+  Cannot find source file:
+
+    includes/ListaCircularDoble/NodoMatriz.h
+
+
+CMake Error at CMakeLists.txt:6 (add_executable):
+  No SOURCES given to target: Proyecto
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

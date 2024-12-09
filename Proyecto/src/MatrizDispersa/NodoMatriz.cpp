@@ -1,10 +1,10 @@
 //
 // Created by Enner on 6/12/2024.
 //
-#include "../../includes/MatrizDispersa/Nodo.h"
+#include "../../includes/MatrizDispersa/NodoMatriz.h"
 
 
-Nodo::Nodo(int elian){
+NodoMatriz::NodoMatriz(int elian){
     this->elian = elian;
     this->siguiente=nullptr;
     this->anterior=nullptr;

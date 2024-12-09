@@ -18,12 +18,10 @@ private:
     std::string fecha;
     std::string tiempo;
 
-
-
 public:
     //constructor
     Transaccion(std::string transaccion, std::string activo, std::string usuarioRentador, std::string departamento,
-                std::string departamentoRentador, std::string empresa, std::string fecha, std::string tiempo);
+                std::string empresa, std::string fecha, std::string tiempo);
     ~Transaccion(); //destructor
 
     //Getters y Setters
@@ -42,10 +40,6 @@ public:
     void setEmpresa(std::string empresa);
     void setFecha(std::string fecha);
     void setTiempo(std::string tiempo);
-
-
 };
-
-
 
 #endif //TRANSACCION_H

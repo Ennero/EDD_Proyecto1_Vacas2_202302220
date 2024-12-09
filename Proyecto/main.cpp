@@ -2,7 +2,32 @@
 
 #include "includes/Transaccion.h"
 #include "includes/MatrizDispersa/Matriz.h"
+#include "includes/ListaCircularDoble/Lista.h"
+#include <cstdlib>
+#include <ctime>
+
+#include "includes/Activo.h"
 using namespace std;
+
+
+//Función para crear un id alfanumerico aleatorio a partir de la hora :)
+string asignarIdAlfanumerico(){
+    std::srand(time(0));
+    string idAlfanumerico = "";
+    for (int i=0; i<15;i++){ //Lo itero 16 veces para que sea de longitud de 16
+        int opcion = std::rand() % 2 + 1;
+            if (opcion==1){ //Si es 1, será alfabetico
+                int letra=char(std::rand()%26+97);
+                idAlfanumerico+=char(letra);
+            }else{
+                int valor=char(std::rand()%10+48);
+                idAlfanumerico+=char(valor);
+            }
+    }
+    //Retorno el id alfanumérico
+    return idAlfanumerico;
+}
+
 
 
 
@@ -145,10 +170,20 @@ void ingreso(){ //void para el ingreso de los datos
 //Aquí se va a encontrar el ciclo principal desde se comenzará a corre el programa
 int main(){ //El ciclo principal en donde voy a colocar todo
 
-    Matriz *matriz=new Matriz();
+    /*Matriz *matriz=new Matriz();
 
     matriz->insertarValor(5,0,0);
     matriz->insertarValor(8,1,0);
+
+    Transaccion *admin=new Transaccion("admin","admin","admin","admin","PoloCampero","admin","admin");
+    cout<<admin->getEmpresa()<<endl;
+    admin->setEmpresa("MC Donalds");
+    admin->setUsarioRentador("Goofy");
+    cout<<admin->getEmpresa()<<admin->getUsarioRentador()<<endl; */
+
+    Lista *lista=new Lista();
+    Transaccion *tra=new Transaccion("hola","limones","Pañales","rentador","empresa","fecha","tiempo");
+    lista->agregarNodo(tra);
 
 
     /*
@@ -173,8 +208,8 @@ int main(){ //El ciclo principal en donde voy a colocar todo
             cout<<"Opcion incorrecta"<<endl;
             break;
         }
-    }
-    */
+    }*/
+
 
     return 0;
 }

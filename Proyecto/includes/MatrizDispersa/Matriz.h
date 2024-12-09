@@ -5,17 +5,15 @@
 #ifndef MATRIZDISPERSA_H
 #define MATRIZDISPERSA_H
 
-#include "Nodo.h"
+#include "NodoMatriz.h"
 
 class Matriz {
 public:
 
     //Cabecera horizontal (el noditos)
-    Nodo *cabeceraHorizontal;
-
-
+    NodoMatriz *cabeceraHorizontal;
     //Cabecera vertical (el noditos)
-    Nodo *cabeceraVertical;
+    NodoMatriz *cabeceraVertical;
 
     //Constructor
     Matriz();
@@ -24,24 +22,24 @@ public:
     bool isVacia();
 
     //Las funciones para insertar los nodos
-    Nodo *cabeceraH(int elian);
-    Nodo *cabeceraV(int elian);
+    NodoMatriz *cabeceraH(int elian);
+    NodoMatriz *cabeceraV(int elian);
 
     //Función para insertar un Valor
     void insertarValor(int elian, int cabeH, int cabeV);
 
     //Funciones para insertar nodos en las cabeceras
-    Nodo *insertarCabeceraHorizontal(int elian);
-    Nodo *insertarCabeceraVertical(int elian);
+    NodoMatriz *insertarCabeceraHorizontal(int elian);
+    NodoMatriz *insertarCabeceraVertical(int elian);
 
     //Función para insertar un nodo al final
-    void insertarAlFinal(int elian, Nodo *cabeH, Nodo *cabeV);
+    void insertarAlFinal(int elian, NodoMatriz *cabeH, NodoMatriz *cabeV);
 
-    void insertarAlFinalHorizontal( int elian, Nodo *cabeH);
-    void insertarAlMediaVertical(int elian, Nodo *cabeV);
+    void insertarAlFinalHorizontal( int elian, NodoMatriz *cabeH);
+    void insertarAlMediaVertical(int elian, NodoMatriz *cabeV);
 
-    Nodo *presenteEnCabeceraHorizontal(Nodo *nodo);
-    Nodo *presenteEnCabeceraVertical(Nodo *nodo);
+    NodoMatriz *presenteEnCabeceraHorizontal(NodoMatriz *nodo);
+    NodoMatriz *presenteEnCabeceraVertical(NodoMatriz *nodo);
 
 };
 
