@@ -1,10 +1,10 @@
 #include <iostream>
 
 #include "includes/Transaccion.h"
-/*
+
 #include "includes/MatrizDispersa/Matriz.h"
 #include "includes/ListaCircularDoble/Lista.h"
-*/
+
 #include <cstdlib>
 #include <ctime>
 
@@ -175,19 +175,29 @@ int main(){ //El ciclo principal en donde voy a colocar todo
     /*Matriz *matriz=new Matriz();
 
     matriz->insertarValor(5,0,0);
-    matriz->insertarValor(8,1,0);*/
+    matriz->insertarValor(8,1,0);
 
     Transaccion *admin=new Transaccion("admin","admin","admin","admin","PoloCampero","admin","admin");
     cout<<admin->getEmpresa()<<endl;
     admin->setEmpresa("MC Donalds");
     admin->setUsarioRentador("Goofy");
     cout<<admin->getEmpresa()<<admin->getUsarioRentador()<<endl;
+    */
 
-
-    /*
     Lista *lista=new Lista();
     Transaccion *tra=new Transaccion("hola","limones","Pañales","rentador","empresa","fecha","tiempo");
-    lista->agregarNodo(tra);*/
+    lista->agregarNodo(tra);
+    lista->obtenerNodoEnPosicion(0).mostrarTransaccion();
+
+    cout<<"---------------------"<<endl;
+    Transaccion *trra=new Transaccion("Palola","limones","Limznero","rentador","empresa","fecha","tiempo");
+    lista->agregarNodo(trra);
+    cout<<"Adios Mundo"<<endl;
+
+
+    lista->obtenerNodoEnPosicion(1).mostrarTransaccion();
+    lista->obtenerNodoEnPosicion(0).mostrarTransaccion();
+
 
 
     /*

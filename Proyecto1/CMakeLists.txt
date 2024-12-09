@@ -7,4 +7,12 @@ add_executable(Proyecto1 main.cpp
         includes/Activo.h
         src/Activo.cpp
         includes/Transaccion.h
-        src/Transaccion.cpp)
+        src/Transaccion.cpp
+        includes/MatrizDispersa/Matriz.h
+        src/MatrizDispersa/Matriz.cpp
+        includes/MatrizDispersa/NodoMatriz.h
+        src/MatrizDispersa/NodoMatriz.cpp
+        includes/ListaCircularDoble/Lista.h
+        src/ListaCircularDoble/Lista.cpp
+        src/ListaCircularDoble/NodoTransaccion.cpp
+        includes/ListaCircularDoble/NodoTransaccion.h)
