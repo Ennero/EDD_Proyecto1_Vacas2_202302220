@@ -3,11 +3,102 @@
 //
 #include "../../includes/MatrizDispersa/Matriz.h"
 
+#include "../../includes/ListaCircularDoble/NodoTransaccion.h"
+
 //Es solo el constructor de la matriz
 Matriz::Matriz(){
     //Inicializando el contructor
     this->cabeceraHorizontal=nullptr;
     this->cabeceraVertical=nullptr;
+}
+
+//Función para insertar un nuevo valor
+void Matriz::insertarValor(int elian, int cabeH, int cabeV){
+
+    NodoMatriz *cabH=nullptr;//Cabecera Horizontal
+    NodoMatriz *cabV=nullptr;//Cabecera Vertical
+    NodoMatriz *usuarioNuevo= new NodoMatriz(elian); //Creo el nuevo Nodo
+
+
+    if (isVacia()){ //Si no hay nada en la matriz
+        cabH=insertarCabeceraHorizontal(cabeH);//Se inserta una cabecera horizontal
+        cabV=insertarCabeceraVertical(cabeV);//Se inserta una cabecera vertical
+
+        insertarAlFinal(usuarioNuevo,cabH,cabV); //Se coloca todo al final
+        return;
+    }
+
+    //Aquí solicito las cabeceras
+    cabH=cabeceraH(cabeH);
+    cabV=cabeceraV(cabeV);
+
+    //Si no existe ninguna de las dos cabeceras nueva a agregar
+    if (cabH==nullptr && cabV==nullptr){
+        cabH=insertarCabeceraHorizontal(cabeH);
+        cabV=insertarCabeceraVertical(cabeV);
+        //Aquí inserto el usuarioNuevo(nodo) al final
+        insertarAlFinal(usuarioNuevo,cabH,cabV);
+        return;
+    }
+
+    //Si no hay cabecera horizontal
+    if (cabH==nullptr){
+        //La inserto
+        cabH=insertarCabeceraHorizontal(cabeH);
+        insertarAlFinal(usuarioNuevo,cabH,cabV);
+        return;
+    }
+    //Si no hay cabecera vertical
+    if (cabV==nullptr){
+        //La inserto
+        cabV=insertarCabeceraVertical(cabeV);
+        insertarAlFinal(usuarioNuevo,cabH,cabV);
+        return;
+    }
+    //Creo nodos auxiliares para la cabecera vertical
+    NodoMatriz *auxH=cabH->abajo;
+    NodoMatriz *usuarioCabeceraVertical;//Creo otro nodo auxiliar que no sería tan auxiliar
+    bool abajo=false; //Bandera para saber si es hay más abajo
+
+    while (auxH!=nullptr){//Mientras el auxiliar de horizontal no sea nulo
+        usuarioCabeceraVertical=presenteEnCabeceraVertical(auxH);//El otro auxiliar será el usuario presente bajo esa cabecera (o nodo)
+        abajo=masAbajo(usuarioCabeceraVertical,cabeH); //Si hay más abajo entonces abajo se vuelve verdadero
+
+        if (!abajo) break; //Si ya no hay más abajo, lo detengo todo
+
+        auxH=auxH->abajo; //Y se corre el auxiliar de verdad (no el falso que sería de la cabecera vertical
+    }
+    if (abajo){//Si está debajo de la cabecera
+        insertarAlFinalHorizontal(usuarioNuevo,cabH); //inserto en la cabecera cabh
+    }else{
+        insertarAlMediaHorizontal(usuarioNuevo,auxH); //Si esetá debajo de un nodo abajo de la cabecera, auxH
+    }
+    //Creo un auxiliar para recorrer verticalemente
+    NodoMatriz *auxV=cabV->siguiente;
+    NodoMatriz *usuarioCabeceraHorizontal; //Creo otro auxiliar para colocar el usuario
+    bool siguiente=false; //
+
+    while (auxV!=nullptr){
+        usuarioCabeceraHorizontal=presenteEnCabeceraHorizontal(auxV);
+        siguiente=masDerecha(usuarioCabeceraHorizontal,cabeH);
+
+        if (!siguiente) break;
+
+        auxV=auxV->siguiente;
+    }
+
+    if (siguiente){
+        insertarAlFinalVertical(usuarioNuevo,cabV);
+    }else{
+        insertarAlMediaVertical(usuarioNuevo,auxV);
+    }
+
+
+}
+
+void Matriz::insertarAlFinal(NodoMatriz *elian, NodoMatriz* cabeH, NodoMatriz* cabeV){
+    insertarAlFinalHorizontal(elian,cabeH);//Inserto la cabecera al final de la horizontal
+    insertarAlFinalVertical(elian,cabeV);//Inserto la cabecer al final de la vertical
 }
 
 //Función para moverme entre la cabecera horizontal
@@ -89,77 +180,47 @@ NodoMatriz *Matriz::insertarCabeceraVertical(int elian){
     aux->abajo=cabeceraNueva; //Coloco la cabecera al final
     cabeceraNueva->arriba=aux; //Conecto la nueva cabecera
     return cabeceraNueva; //Retorno el nuevo nodo de la cabecera
-
 }
 
-void Matriz::insertarAlFinalHorizontal(int elian, NodoMatriz *cabeH){
+void Matriz::insertarAlFinalHorizontal(NodoMatriz *elian, NodoMatriz *cabeH) {
+    NodoMatriz *aux = cabeH;  // Uso del parámetro local
 
-
-
+    while (aux->abajo != nullptr) {
+        aux = aux->abajo;
+    }
+    aux->abajo = elian;
+    elian->arriba = aux;
 }
 
-void Matriz::insertarAlMediaVertical(int elian, NodoMatriz *cabeV){
+void Matriz::insertarAlFinalVertical(NodoMatriz *elian, NodoMatriz *cabeV) {
+    NodoMatriz *aux = cabeV;  // Uso del parámetro local
 
-
+    while (aux->siguiente != nullptr) {
+        aux = aux->siguiente;
+    }
+    aux->siguiente = elian;
+    elian->anterior = aux;
 }
 
+//contecta el nodo en medio de la matriz dispersa
+void Matriz::insertarAlMediaHorizontal(NodoMatriz* valor, NodoMatriz* horizontal){
 
-//Función para insertar un nuevo valor
-void Matriz::insertarValor(int elian, int cabeH, int cabeV){
-
-    NodoMatriz *cabH=nullptr;
-    NodoMatriz *cabV=nullptr;
-
-    if (isVacia()){ //Si no hay nada en la matriz
-        cabH=insertarCabeceraHorizontal(cabeH);//Se inserta una cabecera horizontal
-        cabV=insertarCabeceraVertical(cabeV);//Se inserta una cabecera vertical
-
-        insertarAlFinal(elian,cabH,cabV); //Se coloca todo al final
-    }
-    //Aquí solicito las cabeceras
-    cabH=cabeceraH(cabeH);
-    cabV=cabeceraV(cabeV);
-
-    //Si no hay cabecera horizontal
-    if (cabH==nullptr){
-        //La inserto
-        cabH=insertarCabeceraHorizontal(cabeH);
-        insertarAlFinal(elian,cabH,cabV);
-    }
-    //Si no hay cabecera vertical
-    if (cabV==nullptr){
-        //La inserto
-        cabV=insertarCabeceraVertical(cabeV);
-        insertarAlFinal(elian,cabH,cabV);
-
-    }
-
+    horizontal->arriba->abajo = valor;
+    valor->abajo = horizontal;
+    valor->arriba = horizontal->arriba;
+    horizontal->arriba=valor;
+    return;
 }
 
-void Matriz::insertarAlFinal(int elian, NodoMatriz* cabeH, NodoMatriz* cabeV){
+//conecta el nuevo nodo en medio de la matriz dispersa
+void Matriz::insertarAlMediaVertical(NodoMatriz* valor, NodoMatriz* vertical){
 
-    NodoMatriz *usuarioNuevo= new NodoMatriz(elian); //Creo el nuevo Nodo
+    vertical->anterior->siguiente=valor;
+    valor->siguiente=vertical;
 
-    //Creo los dos auxiliares de las cabeceras
-    NodoMatriz *auxH= cabeH;
-    NodoMatriz *auxV= cabeV;
-
-    //Llego hasta el último nodo de la cabecera horizontal
-    while (auxH->abajo != nullptr){
-        auxH=auxH->abajo;
-    }
-    //Contecto la cabecera con el nuevo usuario
-    auxH->abajo=usuarioNuevo;
-    usuarioNuevo->arriba=auxH;
-
-    //Lo muevo al final
-    while (auxV->siguiente!=nullptr){
-        auxV=auxV->siguiente;
-    }
-
-    //Conecto :)
-    auxV->siguiente=usuarioNuevo;
-    usuarioNuevo->anterior=auxV;
+    valor->anterior=vertical->anterior;
+    vertical->anterior=valor;
+    return;
 }
 
 //Funciones para saber si están presentes en sus respectivas cabeceras
@@ -183,6 +244,33 @@ NodoMatriz *Matriz::presenteEnCabeceraVertical(NodoMatriz *nodo){
     }
     //Y retorno la cabecera
     return aux;
+}
+
+
+//Devuelve true si hay más abajo, sino false
+bool Matriz::masAbajo(NodoMatriz* cabeV, int cabV){
+    NodoMatriz *aux=cabeV;
+    while (aux!=nullptr){//Si no es nulo
+        if (aux->elian==cabV){//Y es igual a la cabecera actual
+            return true;//true
+        }
+        aux=aux->abajo;//sino siguiente
+    }
+    return false;//sino no
+}
+
+//Devuelve true si hay más a la derecha, sino false
+bool Matriz::masDerecha(NodoMatriz* cabeH, int cabH){
+
+    NodoMatriz *aux=cabeH;
+
+    while (aux!=nullptr){//Si no es nulo
+        if (aux->elian==cabH){//Y es igual a la cabecera presente
+            return true; //true
+        }
+        aux=aux->siguiente;//sino siguiente
+    }
+    return false;//Sino pos no xd
 }
 
 

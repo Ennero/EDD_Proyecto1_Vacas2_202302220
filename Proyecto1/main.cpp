@@ -172,11 +172,15 @@ void ingreso(){ //void para el ingreso de los datos
 //Aquí se va a encontrar el ciclo principal desde se comenzará a corre el programa
 int main(){ //El ciclo principal en donde voy a colocar todo
 
-    /*Matriz *matriz=new Matriz();
+    Matriz *matriz=new Matriz();
 
     matriz->insertarValor(5,0,0);
     matriz->insertarValor(8,1,0);
+    matriz->insertarValor(10,2,1);
+    matriz->insertarValor(15,1,1);
 
+
+    /*
     Transaccion *admin=new Transaccion("admin","admin","admin","admin","PoloCampero","admin","admin");
     cout<<admin->getEmpresa()<<endl;
     admin->setEmpresa("MC Donalds");
@@ -184,6 +188,7 @@ int main(){ //El ciclo principal en donde voy a colocar todo
     cout<<admin->getEmpresa()<<admin->getUsarioRentador()<<endl;
     */
 
+/*
     Lista *lista=new Lista();
     Transaccion *tra=new Transaccion("hola","limones","Pañales","rentador","empresa","fecha","tiempo");
     lista->agregarNodo(tra);
@@ -197,7 +202,7 @@ int main(){ //El ciclo principal en donde voy a colocar todo
 
     lista->obtenerNodoEnPosicion(1).mostrarTransaccion();
     lista->obtenerNodoEnPosicion(0).mostrarTransaccion();
-
+*/
 
 
     /*
