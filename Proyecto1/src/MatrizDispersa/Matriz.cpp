@@ -62,7 +62,7 @@ void Matriz::insertarValor(int elian, int cabeH, int cabeV){
 
     while (auxH!=nullptr){//Mientras el auxiliar de horizontal no sea nulo
         usuarioCabeceraVertical=presenteEnCabeceraVertical(auxH);//El otro auxiliar será el usuario presente bajo esa cabecera (o nodo)
-        abajo=masAbajo(usuarioCabeceraVertical,cabeH); //Si hay más abajo entonces abajo se vuelve verdadero
+        abajo=masAbajo(usuarioCabeceraVertical,cabeV); //Si hay más abajo entonces abajo se vuelve verdadero
 
         if (!abajo) break; //Si ya no hay más abajo, lo detengo todo
 
