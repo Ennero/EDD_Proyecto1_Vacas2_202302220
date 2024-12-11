@@ -4,8 +4,6 @@ project(Proyecto1)
 set(CMAKE_CXX_STANDARD 23)
 
 add_executable(Proyecto1 main.cpp
-        includes/Activo.h
-        src/Activo.cpp
         includes/Transaccion.h
         src/Transaccion.cpp
         includes/MatrizDispersa/Matriz.h
@@ -15,4 +13,8 @@ add_executable(Proyecto1 main.cpp
         includes/ListaCircularDoble/Lista.h
         src/ListaCircularDoble/Lista.cpp
         src/ListaCircularDoble/NodoTransaccion.cpp
-        includes/ListaCircularDoble/NodoTransaccion.h)
+        includes/ListaCircularDoble/NodoTransaccion.h
+        includes/MatrizDispersa/Usuario.h
+        src/MatrizDispersa/Usuario.cpp
+        includes/MatrizDispersa/Activo.h
+        src/MatrizDispersa/Activo.cpp)

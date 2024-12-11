@@ -57,8 +57,9 @@
 				4,
 				6,
 				8,
-				10,
-				11
+				9,
+				12,
+				14
 			]
 		}
 	],
@@ -100,8 +101,9 @@
 				4,
 				6,
 				8,
-				10,
-				11
+				9,
+				12,
+				14
 			]
 		},
 		{
@@ -112,8 +114,9 @@
 				3,
 				5,
 				7,
-				9,
-				12
+				10,
+				11,
+				13
 			]
 		}
 	],
@@ -123,17 +126,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "main.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "includes/Activo.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/Activo.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -190,6 +182,28 @@
 			"backtrace" : 1,
 			"path" : "includes/ListaCircularDoble/NodoTransaccion.h",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "includes/MatrizDispersa/Usuario.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/MatrizDispersa/Usuario.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "includes/MatrizDispersa/Activo.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/MatrizDispersa/Activo.cpp",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

@@ -6,31 +6,32 @@
 #define MATRIZDISPERSA_H
 
 #include "NodoMatriz.h"
+#include <iostream>
 
 class Matriz {
-public:
-
+private:
     //Cabecera horizontal (el noditos)
     NodoMatriz *cabeceraHorizontal;
     //Cabecera vertical (el noditos)
     NodoMatriz *cabeceraVertical;
 
+public:
     //Constructor
     Matriz();
 
-    //Método de la matriz
+    //Procedimiento para saber si la matriz está vacia
     bool isVacia();
 
     //Las funciones para insertar los nodos
-    NodoMatriz *cabeceraH(int elian);
-    NodoMatriz *cabeceraV(int elian);
+    NodoMatriz *cabeceraH(std::string elian);
+    NodoMatriz *cabeceraV(std::string elian);
 
     //Funciones para insertar nodos en las cabeceras
-    NodoMatriz *insertarCabeceraHorizontal(int elian);
-    NodoMatriz *insertarCabeceraVertical(int elian);
+    NodoMatriz *insertarCabeceraHorizontal(std::string elian);
+    NodoMatriz *insertarCabeceraVertical(std::string elian);
 
     //Función para insertar un Valor
-    void insertarValor(int elian, int cabeH, int cabeV);
+    void insertarValor(std::string elian, std::string cabeH, std::string cabeV);
     //Función para insertar un nodo al final
     void insertarAlFinal(NodoMatriz *valor, NodoMatriz *cabeH, NodoMatriz *cabeV);
     void insertarAlFinalHorizontal(NodoMatriz *valor, NodoMatriz *cabeH);
@@ -39,15 +40,23 @@ public:
 
     void insertarAlFinalVertical(NodoMatriz *valor, NodoMatriz *cabeH);
 
+    //Funciones para saber si está presentes en las
     NodoMatriz *presenteEnCabeceraHorizontal(NodoMatriz *nodo);
     NodoMatriz *presenteEnCabeceraVertical(NodoMatriz *nodo);
 
     //Funciones para saber si está más abajo o más a la derecha
-    bool masAbajo(NodoMatriz *cabeV, int cabH);
-    bool masDerecha(NodoMatriz *cabeH, int cabV);
+    bool masAbajo(NodoMatriz *cabeV, std::string cabH);
+    bool masDerecha(NodoMatriz *cabeH, std::string cabV);
+
+
+    //getters
+    NodoMatriz* getCabeceraHorizontal();
+    NodoMatriz* getCabeceraVertical();
+
+    //setters
+    void setCabeceraHorizontal(NodoMatriz *nodo);
+    void setCabeceraVertical(NodoMatriz *nodo);
 
 };
-
-
 
 #endif //MATRIZDISPERSA_H

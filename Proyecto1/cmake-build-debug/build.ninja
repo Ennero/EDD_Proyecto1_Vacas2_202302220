@@ -55,12 +55,6 @@ build CMakeFiles/Proyecto1.dir/main.cpp.obj: CXX_COMPILER__Proyecto1_unscanned_D
   OBJECT_DIR = CMakeFiles\Proyecto1.dir
   OBJECT_FILE_DIR = CMakeFiles\Proyecto1.dir
 
-build CMakeFiles/Proyecto1.dir/src/Activo.cpp.obj: CXX_COMPILER__Proyecto1_unscanned_Debug C$:/Users/Enner/Desktop/Clases/Segundo_a/EDD/lab/EDD_Proyecto1_Vacas2_202302220/Proyecto1/src/Activo.cpp || cmake_object_order_depends_target_Proyecto1
-  DEP_FILE = CMakeFiles\Proyecto1.dir\src\Activo.cpp.obj.d
-  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\Proyecto1.dir
-  OBJECT_FILE_DIR = CMakeFiles\Proyecto1.dir\src
-
 build CMakeFiles/Proyecto1.dir/src/Transaccion.cpp.obj: CXX_COMPILER__Proyecto1_unscanned_Debug C$:/Users/Enner/Desktop/Clases/Segundo_a/EDD/lab/EDD_Proyecto1_Vacas2_202302220/Proyecto1/src/Transaccion.cpp || cmake_object_order_depends_target_Proyecto1
   DEP_FILE = CMakeFiles\Proyecto1.dir\src\Transaccion.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
@@ -91,6 +85,18 @@ build CMakeFiles/Proyecto1.dir/src/ListaCircularDoble/NodoTransaccion.cpp.obj: C
   OBJECT_DIR = CMakeFiles\Proyecto1.dir
   OBJECT_FILE_DIR = CMakeFiles\Proyecto1.dir\src\ListaCircularDoble
 
+build CMakeFiles/Proyecto1.dir/src/MatrizDispersa/Usuario.cpp.obj: CXX_COMPILER__Proyecto1_unscanned_Debug C$:/Users/Enner/Desktop/Clases/Segundo_a/EDD/lab/EDD_Proyecto1_Vacas2_202302220/Proyecto1/src/MatrizDispersa/Usuario.cpp || cmake_object_order_depends_target_Proyecto1
+  DEP_FILE = CMakeFiles\Proyecto1.dir\src\MatrizDispersa\Usuario.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Proyecto1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Proyecto1.dir\src\MatrizDispersa
+
+build CMakeFiles/Proyecto1.dir/src/MatrizDispersa/Activo.cpp.obj: CXX_COMPILER__Proyecto1_unscanned_Debug C$:/Users/Enner/Desktop/Clases/Segundo_a/EDD/lab/EDD_Proyecto1_Vacas2_202302220/Proyecto1/src/MatrizDispersa/Activo.cpp || cmake_object_order_depends_target_Proyecto1
+  DEP_FILE = CMakeFiles\Proyecto1.dir\src\MatrizDispersa\Activo.cpp.obj.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Proyecto1.dir
+  OBJECT_FILE_DIR = CMakeFiles\Proyecto1.dir\src\MatrizDispersa
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Proyecto1
@@ -99,7 +105,7 @@ build CMakeFiles/Proyecto1.dir/src/ListaCircularDoble/NodoTransaccion.cpp.obj: C
 #############################################
 # Link the executable Proyecto1.exe
 
-build Proyecto1.exe: CXX_EXECUTABLE_LINKER__Proyecto1_Debug CMakeFiles/Proyecto1.dir/main.cpp.obj CMakeFiles/Proyecto1.dir/src/Activo.cpp.obj CMakeFiles/Proyecto1.dir/src/Transaccion.cpp.obj CMakeFiles/Proyecto1.dir/src/MatrizDispersa/Matriz.cpp.obj CMakeFiles/Proyecto1.dir/src/MatrizDispersa/NodoMatriz.cpp.obj CMakeFiles/Proyecto1.dir/src/ListaCircularDoble/Lista.cpp.obj CMakeFiles/Proyecto1.dir/src/ListaCircularDoble/NodoTransaccion.cpp.obj
+build Proyecto1.exe: CXX_EXECUTABLE_LINKER__Proyecto1_Debug CMakeFiles/Proyecto1.dir/main.cpp.obj CMakeFiles/Proyecto1.dir/src/Transaccion.cpp.obj CMakeFiles/Proyecto1.dir/src/MatrizDispersa/Matriz.cpp.obj CMakeFiles/Proyecto1.dir/src/MatrizDispersa/NodoMatriz.cpp.obj CMakeFiles/Proyecto1.dir/src/ListaCircularDoble/Lista.cpp.obj CMakeFiles/Proyecto1.dir/src/ListaCircularDoble/NodoTransaccion.cpp.obj CMakeFiles/Proyecto1.dir/src/MatrizDispersa/Usuario.cpp.obj CMakeFiles/Proyecto1.dir/src/MatrizDispersa/Activo.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Proyecto1.dir

@@ -2,11 +2,14 @@
 #ifndef NODO_MATRIZ_H
 #define NODO_MATRIZ_H
 
+#include<iostream>
+#include "../../includes/MatrizDispersa/Usuario.h"
+
 class NodoMatriz {
 
-public:
-    int elian;
-
+private:
+    std::string nombre;
+    Usuario *usuario;
     NodoMatriz *siguiente;
     NodoMatriz *anterior;
     NodoMatriz *arriba;
@@ -14,8 +17,32 @@ public:
     NodoMatriz *adelante;
     NodoMatriz *atras;
 
-    // Constructor
-    NodoMatriz(int elian);
+public:
+    // Constructor para las cabeceras
+    NodoMatriz(std::string nombre);
+    // Constructor para los usuarios
+    NodoMatriz(Usuario *usuario,std::string nombre);
+
+    //getters
+    Usuario* getUsuario();
+    NodoMatriz* getSiguiente();
+    NodoMatriz* getAnterior();
+    NodoMatriz* getArriba();
+    NodoMatriz* getAbajo();
+    NodoMatriz* getAdelante();
+    NodoMatriz* getAtras();
+    std::string getNombre();
+    //setters
+    void setNombre(std::string nombre);
+    void setUsuario(Usuario* usuario);
+    void setSiguiente(NodoMatriz* siguiente);
+    void setAnterior(NodoMatriz* anterior);
+    void setArriba(NodoMatriz* arriba);
+    void setAbajo(NodoMatriz* abajo);
+    void setAdelante(NodoMatriz* adelante);
+    void setAtras(NodoMatriz* atras);
+
+
 };
 
 #endif // NODO_MATRIZ_H

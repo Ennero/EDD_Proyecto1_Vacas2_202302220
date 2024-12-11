@@ -4,6 +4,8 @@
 
 #include "includes/MatrizDispersa/Matriz.h"
 #include "includes/ListaCircularDoble/Lista.h"
+#include "includes/MatrizDispersa/Usuario.h"
+
 
 #include <cstdlib>
 #include <ctime>
@@ -11,7 +13,7 @@
 #include "includes/Activo.h"
 using namespace std;
 
-
+//-------------------------------------------------------------------------------------------------------------------------------------------
 //Función para crear un id alfanumerico aleatorio a partir de la hora :)
 string asignarIdAlfanumerico(){
     std::srand(time(0));
@@ -33,14 +35,14 @@ string asignarIdAlfanumerico(){
 
 
 
-
+//-------------------------------------------------------------------------------------------------------------------------------------------
 //Ciclo para mostrar el menu del usuario :)
 void usuarioMenu(string usuario,string contra, string depa, string empre){
     cout<<"Bienvenido"<<usuario<<endl;
 
     bool menu = true;
     while(menu){
-        int opcion=0;
+        int opcion;
         cout<<"Selecciona una opcion:"<<endl;
         cout<<"1. Agregar Activo"<<endl;
         cout<<"2. Eliminar Activo"<<endl;
@@ -74,14 +76,24 @@ void usuarioMenu(string usuario,string contra, string depa, string empre){
         }
     }
 }
-
+//------------------------------------------------------------------------------------------------------------------------------------------
 //Ciclo para mostrar el menu del administrador :(
 void adminMenu(){
     cout<<"---------------BIENVENIDO ADMINISTRADOR---------------"<<endl;
-
+    Matriz *matri=new Matriz();
     bool menu=true;
+
+/*
+    matri->insertarValor(Usuario("elian", "1234", "guate", "igss"), Usuario("guate"), Usuario("igss"));
+    matri->insertarValor(Usuario("elian", "1234", "juatiapa", "max"), Usuario("juatiapa"), Usuario("max"));
+    matri->insertarValor(Usuario("elian", "1234", "jalapa", "cinepolis"), Usuario("jalapa"), Usuario("cinepolis"));
+    matri->insertarValor(Usuario("elian", "1234", "zacapa", "pollo"), Usuario("zacapa"), Usuario("pollo"));
+    matri->insertarValor(Usuario("elian", "1234", "peten", "pinulito"), Usuario("peten"), Usuario("pinulito"));
+    matri->insertarValor(Usuario("elian", "1234", "izabal", "zara"), Usuario("izabal"), Usuario("zara"));
+*/
+    int opt;
     while(menu){
-        int opcion=0;
+
         cout<<"Selecciona una opcion:"<<endl;
         cout<<"1. Registrar Usuario"<<endl;
         cout<<"2. Reporte Matriz Dispersa"<<endl;
@@ -92,44 +104,65 @@ void adminMenu(){
         cout<<"7. Activos Rentados por un Usuario"<<endl;
         cout<<"8. Ordenar Transacciones"<<endl;
         cout<<"9. Cerrar Sesión"<<endl;
-        cin>>opcion;
+        cin>>opt;
 
-        switch(opcion){
-            case 1:
-                cout<<"---------------CREAR USUARIO---------------"<<endl;
+        switch(opt){
+        case 1:{
+            //Declaro unas variables
+            string nombreUsuario,depa,empre;
+            cout<<"---------------CREAR USUARIO---------------"<<endl;
+            //Creo el usuario
+            cout<<"Ingrese nombre de usuario:"<<endl;
+            cin>>nombreUsuario;
+            cout<<"Ingrese el departamento:"<<endl;
+            cin>>depa;
+            cout<<"Ingrese la empresa:"<<endl;
+            cin>>empre;
+            //Inserto los valores solicitados
+            matri->insertarValor(nombreUsuario,depa,empre);
+            cout<<"Usuario ingresado exitosamente"<<endl;
+            break;
+        }
+        case 2:{
+            cout<<"---------------REPORTE DE MATRIZ DISPERSA---------------"<<endl;
 
+            break;
+        }
+        case 3:{
+            cout<<"---------------REPORTE DE ACTIVOS DISPONIBLES EN UN DEPARTAMENTO---------------"<<endl;
 
-                break;
-            case 2:
-                cout<<"---------------REPORTE DE MATRIZ DISPERSA---------------"<<endl;
+            break;
+        }
+        case 4:{
+            cout<<"---------------REPORTE DE ACTIVOS DISPONIBLES DE UNA EMPRESA---------------"<<endl;
 
-                break;
-            case 3:
-                cout<<"---------------REPORTE DE ACTIVOS DISPONIBLES EN UN DEPARTAMENTO---------------"<<endl;
+            break;
+        }
+        case 5:{
+            cout<<"---------------REPORTE DE TRANSACCIONES---------------"<<endl;
 
-                break;
-            case 4:
-                cout<<"---------------REPORTE DE ACTIVOS DISPONIBLES DE UNA EMPRESA---------------"<<endl;
+            break;
+        }
+        case 6:{
 
-                break;
-            case 5:
-                cout<<"---------------REPORTE DE TRANSACCIONES---------------"<<endl;
+            break;
+        }
+        case 7:{
 
-                break;
-            case 6:
+            break;
+        }
+        case 8:{
 
-                break;
-            case 7:
-
-                break;
-            case 8:
-
-                break;
-            case 9:
-                break;
-            default:
-                cout<<"Opcion invalida"<<endl;
-                break;
+            break;
+        }
+        case 9:{
+            menu=false;
+            break;
+        }
+        default:{
+            cout<<"Opcion invalida"<<endl;
+            break;
+        }
         }
 
 
@@ -137,7 +170,7 @@ void adminMenu(){
     }
 
 }
-
+//----------------------------------------------------------------------------------------------------------------------------------------
 //Ciclo para el ingreso de datos cuando se seleccionó la opción para esto
 void ingreso(){ //void para el ingreso de los datos
 
@@ -150,8 +183,7 @@ void ingreso(){ //void para el ingreso de los datos
     cout<<"Ingrese Usuario:"<<endl;
     cin>>usuario;
     if (usuario==adminU){
-        //adminMenu();
-        cout<<"Hola senor admin :)"<<endl;
+        adminMenu();
 
     }else{ //Si no es el administrador, será un usuario (supongo)
         cout<<"Ingrese Contrasena:"<<endl;
@@ -160,7 +192,6 @@ void ingreso(){ //void para el ingreso de los datos
         cin>>depa;
         cout<<"Ingrese Empresa:"<<endl;
         cin>>empre;
-
         //Aquí tendría que colocar una validación para que si sea el usuario
         usuarioMenu(usuario, contra, depa, empre);
 
@@ -168,17 +199,17 @@ void ingreso(){ //void para el ingreso de los datos
         //cout<<"Datos no encontrados"<<endl;
     }
 }
-
-//Aquí se va a encontrar el ciclo principal desde se comenzará a corre el programa
+//----------------------------------------------------------------------------------------------------------------------------------------
+//Aquí se va a encontrar el ciclo principal desde se comenzará a correr el programa
 int main(){ //El ciclo principal en donde voy a colocar todo
-
+/*
     Matriz *matriz=new Matriz();
 
     matriz->insertarValor(5,0,0);
     matriz->insertarValor(8,1,0);
     matriz->insertarValor(10,2,1);
     matriz->insertarValor(15,1,1);
-
+*/
 
     /*
     Transaccion *admin=new Transaccion("admin","admin","admin","admin","PoloCampero","admin","admin");
@@ -202,14 +233,23 @@ int main(){ //El ciclo principal en donde voy a colocar todo
 
     lista->obtenerNodoEnPosicion(1).mostrarTransaccion();
     lista->obtenerNodoEnPosicion(0).mostrarTransaccion();
-*/
 
-
-    /*
+    Matriz *matri=new Matriz();
+    matri->insertarValor("5","0","0");
+    matri->insertarValor("8","1","0");
+    matri->insertarValor("10","2","1");
+    matri->insertarValor("15","1","1");*/
+    //Ciclo para iniciar el programa
+    Matriz *matri=new Matriz();
+    matri->insertarValor("juanito","Guateamal","pollo");
+    matri->insertarValor("pedro","quiche","mac");
+    matri->insertarValor("luis","xela","mac");
+    matri->insertarValor("jacob","quiche","pollo");
+    matri->insertarValor("enner","Guateamal","mac");
     bool inicio=true;
     cout<<"---------------RENTA DE ACTIVOS---------------"<<endl;
+    int opcionInicio=0;
     while (inicio){ //Ciclo principal en donde se inicia
-        int opcionInicio=0; //Declaro la variable antes :)
         cout<<"Ingrese un numero "<<endl; //Mensajitos
         cout<<"1. Iniciar Sesion"<<endl;
         cout<<"2. Salir"<<endl;
@@ -227,8 +267,7 @@ int main(){ //El ciclo principal en donde voy a colocar todo
             cout<<"Opcion incorrecta"<<endl;
             break;
         }
-    }*/
-
+    }
 
     return 0;
 }
