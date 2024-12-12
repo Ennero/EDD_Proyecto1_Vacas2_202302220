@@ -43,6 +43,9 @@ public:
     NodoMatriz *presenteEnCabeceraHorizontal(NodoMatriz *nodo);
     NodoMatriz *presenteEnCabeceraVertical(NodoMatriz *nodo);
 
+    //Funciones para graficar la matriz
+    std::string generarDotGrafica();
+    void generarReporteMatriz();
 
     //Funciones para saber si está más abajo o más a la derecha
     bool masAbajo(NodoMatriz *cabeV, std::string cabH);

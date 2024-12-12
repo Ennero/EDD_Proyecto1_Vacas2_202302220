@@ -4,6 +4,8 @@
 #include "../../includes/MatrizDispersa/Matriz.h"
 
 #include "../../includes/ListaCircularDoble/NodoTransaccion.h"
+#include <fstream>
+#include <sstream>
 
 //Constructor de la matriz
 Matriz::Matriz(){
@@ -146,6 +148,24 @@ NodoMatriz* Matriz::encontrarUsuario(std::string contrasena, std::string user){
             if (usuarioActual->getUsuario() == user && usuarioActual->getContrasena() == contrasena) {
                 return actual; // Retorna el nodo si coincide el usuario
             }
+            //Verifico si existe algo hacia adelante
+            NodoMatriz* auxAdelante = actual->getSiguiente(); //Creo aux de adelante
+            while (auxAdelante != nullptr) {
+                Usuario* usuarioAdelante = auxAdelante->getUsuario(); //Obtengo ese usuario
+                if (usuarioAdelante->getUsuario() == user && usuarioAdelante->getContrasena() == contrasena) {
+                    return auxAdelante; // Retorna si encuentra el usuario
+                }
+                auxAdelante = auxAdelante->getAdelante(); //Si no pa' delante
+            }
+            // Verificar si existe algo hacia atras
+            NodoMatriz* nodoAtras = actual->getAtras(); //Lo mismo que el de adelante xd
+            while (nodoAtras != nullptr) {
+                Usuario* usuarioAtras = nodoAtras->getUsuario();
+                if (usuarioAtras->getUsuario() == user && usuarioAtras->getContrasena() == contrasena) {
+                    return nodoAtras; // Retorna si encuentra el usuario atrás
+                }
+                nodoAtras = nodoAtras->getAtras();
+            }
             actual = actual->getAbajo(); // Baja al siguiente nodo
         }
         auxH = auxH->getSiguiente(); // Pasa a la siguiente cabecera horizontal (a la derecha)
@@ -168,7 +188,7 @@ NodoMatriz* Matriz::obtenerNodo(std::string cabeH, std::string cabeV) {
     return nullptr; // No se encontró el nodo
 }
 //--------------------------------------------------------------------------------------------------------------------------------------
-//Funciones para moverme por la matriz vertical y horizontal
+//Funciones para encontrar las cabeceras
 NodoMatriz *Matriz::cabeceraV(std::string elian){
 
     //Si es que está vacía
@@ -346,7 +366,109 @@ bool Matriz::isVacia(){
 }
 //****************************************************************************************************************************************
 
+/*
+//Función para encontrar un usuario haciendo login
+NodoMatriz* Matriz::encontrarUsuarioPorEmpresaDepartamento(std::string empresa, std::string departamento,std::string user,std::string contrasena) {
+    // Encuentra la cabecera vertical correspondiente a la empresa
+    NodoMatriz* cabeceraVertical = this->cabeceraVertical;
+    while (cabeceraVertical != nullptr && cabeceraVertical->getNombre() != empresa) {
+        cabeceraVertical = cabeceraVertical->getSiguiente();
+    }
 
-//Función para genera el reporte de la matriz
+    if (cabeceraVertical == nullptr) {
+        // No se encontró la empresa
+        return nullptr;
+    }
 
+    // Encuentra la cabecera horizontal correspondiente al departamento
+    NodoMatriz* cabeceraHorizontal = cabeceraVertical->getDerecha();
+    while (cabeceraHorizontal != nullptr && cabeceraHorizontal->getNombre() != departamento) {
+        cabeceraHorizontal = cabeceraHorizontal->getSiguiente();
+    }
 
+    if (cabeceraHorizontal == nullptr) {
+        // No se encontró el departamento
+        return nullptr;
+    }
+
+    // Recorre los nodos de la intersección entre la empresa y el departamento
+    NodoMatriz* actual = cabeceraHorizontal->getAbajo();
+    while (actual != nullptr) {
+        Usuario* usuarioActual = actual->getUsuario();
+
+        if (usuarioActual != nullptr &&
+            usuarioActual->getUsuario() == user &&
+            usuarioActual->getContrasena() == contrasena) {
+            return actual; // Retorna el nodo encontrado
+            }
+
+        actual = actual->getAbajo(); // Sigue recorriendo hacia abajo en la columna
+    }
+
+    return nullptr; // No se encontró el usuario
+}
+*/
+
+//Funciones para generar el reporte de la matriz
+void Matriz::generarReporteMatriz(){
+    //Genero el archivo
+    std::string matriz=generarDotGrafica();
+    std::ofstream archivo("reporteMatriz.dot");
+    archivo<<matriz;
+    archivo.close();
+    //Creo un comando para ejecutar el graphviz y crear el pdf
+    system("dot -Tpdf reporteMatriz.dot -o reporteMatriz.pdf && start reporteMatriz.pdf");
+}
+
+std::string Matriz::generarDotGrafica() {
+    std::string grafico;
+    //Inicio el grafico
+    grafico += "digraph G {\n rankdir=TB;\n node [shape=box, style=filled, fillcolor=lightblue, margin=0.2];\n";
+    grafico += "edge [style=solid, color=blue];\n graph [ranksep=1.5, nodesep=1];\n";
+    grafico += "graph [label=\"Reporte de Matriz\", fontsize=20, fontcolor=black];\n";
+    if (isVacia()){ //Si no tiene nada entonces no haré nada :)
+        grafico += "}";
+        return grafico;
+    }
+
+    //Tomo la cabecera
+    NodoMatriz *cabH = cabeceraHorizontal;
+//**********************************************************************************
+        NodoMatriz *aux=cabeceraVertical;
+    grafico += "    invisible_[label=\"invisible\"style=invis];\n";
+    grafico += "    invisible_-> nodo_" + std::to_string(reinterpret_cast<uintptr_t>(aux)) + " [style=invis];\n";
+        while (aux!=nullptr){
+            std::string nodo = "nodo_" + std::to_string(reinterpret_cast<uintptr_t>(aux));
+            grafico += "    " + nodo + " [label=\"" + aux->getNombre()+ "\"style=filled, fillcolor=lightblue];\n";
+            if (aux->getAbajo() != nullptr) {//Si hay algo a la izquierda
+                std::string nodoAbajo = "nodo_" + std::to_string(reinterpret_cast<uintptr_t>(aux->getAbajo()));
+                grafico += "    " + nodo + " -> " + nodoAbajo + " [dir=both];\n"; //Conecto
+            }
+            if (aux->getSiguiente() != nullptr) { //Si hay algo a la derecha
+                std::string nodoDerecha = "nodo_" + std::to_string(reinterpret_cast<uintptr_t>(aux->getSiguiente()));
+                grafico += "    " + nodo + " -> " + nodoDerecha + " [dir=both,constraint=false];\n";//Conecto
+            }
+            aux=aux->getAbajo();
+        }
+    //**********************************************************************************
+    while (cabH != nullptr) { // Recorro de derecha->izquierda
+        NodoMatriz *nodoActual = cabH;//Nodito que irá bajando
+        while (nodoActual != nullptr) { // Recorro de arriba->abajo
+            std::string nodo = "nodo_" + std::to_string(reinterpret_cast<uintptr_t>(nodoActual));
+            grafico += "    " + nodo + " [label=\"" + nodoActual->getNombre()+ "\"style=filled, fillcolor=lightblue];\n";
+
+            if (nodoActual->getAbajo() != nullptr) {//Si hay algo a la izquierda
+                std::string nodoAbajo = "nodo_" + std::to_string(reinterpret_cast<uintptr_t>(nodoActual->getAbajo()));
+                grafico += "    " + nodo + " -> " + nodoAbajo + " [dir=both];\n"; //Conecto
+            }
+            if (nodoActual->getSiguiente() != nullptr) { //Si hay algo a la derecha
+                std::string nodoDerecha = "nodo_" + std::to_string(reinterpret_cast<uintptr_t>(nodoActual->getSiguiente()));
+                grafico += "    " + nodo + " -> " + nodoDerecha + " [dir=both,constraint=false];\n";//Conecto
+            }
+            nodoActual = nodoActual->getAbajo(); //Bajo
+        }
+        cabH = cabH->getSiguiente(); //me voy al lado derecho
+    }
+    grafico += "}"; //Termino el string
+    return grafico;//lo retorno
+}

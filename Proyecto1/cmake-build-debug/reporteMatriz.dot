@@ -1,0 +1,35 @@
+digraph G {
+ rankdir=TB;
+ node [shape=box, style=filled, fillcolor=lightblue, margin=0.2];
+edge [style=solid, color=blue];
+ graph [ranksep=1.5, nodesep=1];
+graph [label="Reporte de Matriz", fontsize=20, fontcolor=black];
+    invisible_[label="invisible"style=invis];
+    invisible_-> nodo_2800607846320 [style=invis];
+    nodo_2800607846320 [label="pollo"style=filled, fillcolor=lightblue];
+    nodo_2800607846320 -> nodo_2800607847136 [dir=both];
+    nodo_2800607846320 -> nodo_2800607828816 [dir=both,constraint=false];
+    nodo_2800607847136 [label="mac"style=filled, fillcolor=lightblue];
+    nodo_2800607847136 -> nodo_2800607848224 [dir=both,constraint=false];
+    nodo_2800607828912 [label="Guateamal"style=filled, fillcolor=lightblue];
+    nodo_2800607828912 -> nodo_2800607828816 [dir=both];
+    nodo_2800607828912 -> nodo_2800607846864 [dir=both,constraint=false];
+    nodo_2800607828816 [label="juanito"style=filled, fillcolor=lightblue];
+    nodo_2800607828816 -> nodo_2800607848224 [dir=both];
+    nodo_2800607828816 -> nodo_2800607847952 [dir=both,constraint=false];
+    nodo_2800607848224 [label="enner"style=filled, fillcolor=lightblue];
+    nodo_2800607848224 -> nodo_2800607846592 [dir=both,constraint=false];
+    nodo_2800607846864 [label="quiche"style=filled, fillcolor=lightblue];
+    nodo_2800607846864 -> nodo_2800607847952 [dir=both];
+    nodo_2800607846864 -> nodo_2800607847680 [dir=both,constraint=false];
+    nodo_2800607847952 [label="jacob"style=filled, fillcolor=lightblue];
+    nodo_2800607847952 -> nodo_2800607846592 [dir=both];
+    nodo_2800607847952 -> nodo_2800607848496 [dir=both,constraint=false];
+    nodo_2800607846592 [label="pedro"style=filled, fillcolor=lightblue];
+    nodo_2800607846592 -> nodo_2800607847408 [dir=both,constraint=false];
+    nodo_2800607847680 [label="xela"style=filled, fillcolor=lightblue];
+    nodo_2800607847680 -> nodo_2800607848496 [dir=both];
+    nodo_2800607848496 [label="antonieta"style=filled, fillcolor=lightblue];
+    nodo_2800607848496 -> nodo_2800607847408 [dir=both];
+    nodo_2800607847408 [label="luis"style=filled, fillcolor=lightblue];
+}

@@ -249,6 +249,8 @@ int main(){ //El ciclo principal en donde voy a colocar todo
     matri->insertarValor("antonieta","xela","pollo");
     matri->insertarValor("alberto","Guateamal","mac");
     matri->insertarValor("matasano","quiche","pollo");
+    matri->insertarValor("kevin","quiche","pollo");
+    matri->generarReporteMatriz();
 
     //Aquí voy a meter más valores para ir probando
 
