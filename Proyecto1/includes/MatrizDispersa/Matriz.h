@@ -37,17 +37,21 @@ public:
     void insertarAlFinalHorizontal(NodoMatriz *valor, NodoMatriz *cabeH);
     void insertarAlMediaVertical(NodoMatriz *valor, NodoMatriz *vertical);
     void insertarAlMediaHorizontal(NodoMatriz *valor, NodoMatriz *horizontal);
-
     void insertarAlFinalVertical(NodoMatriz *valor, NodoMatriz *cabeH);
 
     //Funciones para saber si está presentes en las
     NodoMatriz *presenteEnCabeceraHorizontal(NodoMatriz *nodo);
     NodoMatriz *presenteEnCabeceraVertical(NodoMatriz *nodo);
 
+
     //Funciones para saber si está más abajo o más a la derecha
     bool masAbajo(NodoMatriz *cabeV, std::string cabH);
     bool masDerecha(NodoMatriz *cabeH, std::string cabV);
 
+    //Funcion para buscar un nodo
+    NodoMatriz* encontrarUsuario(std::string constrasena,std::string user);
+    NodoMatriz* buscarNodoEnPosicion(NodoMatriz* cabeH,NodoMatriz* cabeV);
+    NodoMatriz* obtenerNodo(std::string cabeH,std::string cabeV);
 
     //getters
     NodoMatriz* getCabeceraHorizontal();
@@ -56,6 +60,7 @@ public:
     //setters
     void setCabeceraHorizontal(NodoMatriz *nodo);
     void setCabeceraVertical(NodoMatriz *nodo);
+
 
 };
 

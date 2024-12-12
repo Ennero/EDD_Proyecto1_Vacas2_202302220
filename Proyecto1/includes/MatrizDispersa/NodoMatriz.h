@@ -23,6 +23,9 @@ public:
     // Constructor para los usuarios
     NodoMatriz(Usuario *usuario,std::string nombre);
 
+    //funciones para colocar adelante o atras
+    void insertarAdelante(NodoMatriz* nodo);
+    void insertarAtras(NodoMatriz* nuevo);
     //getters
     Usuario* getUsuario();
     NodoMatriz* getSiguiente();

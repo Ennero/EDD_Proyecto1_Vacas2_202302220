@@ -8,14 +8,14 @@
 Usuario::Usuario(std::string usuario, std::string contrasena){
     this->usuario = usuario;
     this->contrasena = contrasena;
+    this->empresa = "";
+    this->departamento = "";
 }
 //Constructor para los encabezados
 Usuario::Usuario(std::string usuario){
     this->usuario = usuario;
     this->contrasena = "";
 }
-
-
 
 //getters
 std::string Usuario::getUsuario(){
@@ -24,10 +24,29 @@ std::string Usuario::getUsuario(){
 std::string Usuario::getContrasena(){
     return this->contrasena;
 }
+std::string Usuario::getEmpresa(){
+    return this->empresa;
+}
+std::string Usuario::getDepartamento(){
+    return this->departamento;
+}
+std::string Usuario::getNombre(){
+    return this->nombre;
+}
+
 //setters
 void Usuario::setUsuario(std::string usuario){
     this->usuario = usuario;
 }
 void Usuario::setContrasena(std::string contrasena){
     this->contrasena = contrasena;
+}
+void Usuario::setEmpresa(std::string empresa){
+    this->empresa = empresa;
+}
+void Usuario::setDepartamento(std::string departamento){
+    this->departamento = departamento;
+}
+void Usuario::setNombre(std::string nombre){
+    this->nombre = nombre;
 }

@@ -246,6 +246,12 @@ int main(){ //El ciclo principal en donde voy a colocar todo
     matri->insertarValor("luis","xela","mac");
     matri->insertarValor("jacob","quiche","pollo");
     matri->insertarValor("enner","Guateamal","mac");
+    matri->insertarValor("antonieta","xela","pollo");
+    matri->insertarValor("alberto","Guateamal","mac");
+    matri->insertarValor("matasano","quiche","pollo");
+
+    //Aquí voy a meter más valores para ir probando
+
     bool inicio=true;
     cout<<"---------------RENTA DE ACTIVOS---------------"<<endl;
     int opcionInicio=0;

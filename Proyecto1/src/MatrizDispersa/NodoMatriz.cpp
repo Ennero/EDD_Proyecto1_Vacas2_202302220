@@ -30,6 +30,33 @@ NodoMatriz::NodoMatriz(Usuario* usuario, std::string nombre){
 
 }
 
+//--------------------------------------------------------------------------------
+// Función para insertar un nodo al frente del actual
+void NodoMatriz::insertarAdelante(NodoMatriz* nuevo) {
+    if (nuevo == nullptr) {
+        return;
+    }
+    if (this->adelante != nullptr) {//Si no tiene nada adelante
+        nuevo->adelante = this->adelante; //El nuevo nodo será el nuevo adelante
+        this->adelante->atras = nuevo;   //Conecto el nuevo frente a atras
+    }
+    this->adelante = nuevo; //conecto el nodo actual al nuevo nodo
+    nuevo->atras = this;    //conecto el nuevo nodo al actual
+}
+// Función para insertar un nodo atrás del actual
+void NodoMatriz::insertarAtras(NodoMatriz* nuevo) {
+    if (nuevo == nullptr) {
+        return;
+    }
+    if (this->atras != nullptr) {
+        nuevo->atras = this->atras; // Conectar el nuevo nodo al fondo actual
+        this->atras->adelante = nuevo; // Conectar el fondo actual al nuevo nodo
+    }
+    this->atras = nuevo; // Conectar el actual nodo al nuevo nodo
+    nuevo->adelante = this; // Conectar el nuevo nodo al actual
+}
+//--------------------------------------------------------------------------------
+
 //getters
 NodoMatriz* NodoMatriz::getAbajo(){
     return this->abajo;

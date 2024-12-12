@@ -1,3 +1,0 @@
-C:/Users/Enner/Desktop/Clases/Segundo_a/EDD/lab/EDD_Proyecto1_Vacas2_202302220/Proyecto/cmake-build-debug/CMakeFiles/Proyecto.dir
-C:/Users/Enner/Desktop/Clases/Segundo_a/EDD/lab/EDD_Proyecto1_Vacas2_202302220/Proyecto/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Enner/Desktop/Clases/Segundo_a/EDD/lab/EDD_Proyecto1_Vacas2_202302220/Proyecto/cmake-build-debug/CMakeFiles/rebuild_cache.dir
