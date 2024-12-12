@@ -47,6 +47,9 @@ public:
     std::string generarDotGrafica();
     void generarReporteMatriz();
 
+    //Función para encontrar un usurio
+    NodoMatriz *encontrarUsuarioPorEmpresaDepartamento(std::string empresa, std::string departamento, std::string user, std::string contrasena);
+
     //Funciones para saber si está más abajo o más a la derecha
     bool masAbajo(NodoMatriz *cabeV, std::string cabH);
     bool masDerecha(NodoMatriz *cabeH, std::string cabV);

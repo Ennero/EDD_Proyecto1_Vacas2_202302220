@@ -234,12 +234,8 @@ int main(){ //El ciclo principal en donde voy a colocar todo
     lista->obtenerNodoEnPosicion(1).mostrarTransaccion();
     lista->obtenerNodoEnPosicion(0).mostrarTransaccion();
 
-    Matriz *matri=new Matriz();
-    matri->insertarValor("5","0","0");
-    matri->insertarValor("8","1","0");
-    matri->insertarValor("10","2","1");
-    matri->insertarValor("15","1","1");*/
     //Ciclo para iniciar el programa
+    /*
     Matriz *matri=new Matriz();
     matri->insertarValor("juanito","Guateamal","pollo");
     matri->insertarValor("pedro","quiche","mac");
@@ -251,10 +247,14 @@ int main(){ //El ciclo principal en donde voy a colocar todo
     matri->insertarValor("matasano","quiche","pollo");
     matri->insertarValor("kevin","quiche","pollo");
     matri->generarReporteMatriz();
+    cout<<"**********************************************"<<endl;
+    cout<<matri->encontrarUsuario("10","enner")->getUsuario()->getUsuario()<<endl;
 
+    */
     //Aquí voy a meter más valores para ir probando
-
+    cout<<"**********************************************"<<endl;
     bool inicio=true;
+
     cout<<"---------------RENTA DE ACTIVOS---------------"<<endl;
     int opcionInicio=0;
     while (inicio){ //Ciclo principal en donde se inicia

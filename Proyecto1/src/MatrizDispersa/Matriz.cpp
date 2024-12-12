@@ -149,7 +149,7 @@ NodoMatriz* Matriz::encontrarUsuario(std::string contrasena, std::string user){
                 return actual; // Retorna el nodo si coincide el usuario
             }
             //Verifico si existe algo hacia adelante
-            NodoMatriz* auxAdelante = actual->getSiguiente(); //Creo aux de adelante
+            NodoMatriz* auxAdelante = actual->getAdelante(); //Creo aux de adelante
             while (auxAdelante != nullptr) {
                 Usuario* usuarioAdelante = auxAdelante->getUsuario(); //Obtengo ese usuario
                 if (usuarioAdelante->getUsuario() == user && usuarioAdelante->getContrasena() == contrasena) {
@@ -365,50 +365,6 @@ bool Matriz::isVacia(){
     return this->cabeceraHorizontal==nullptr && this->cabeceraVertical==nullptr;
 }
 //****************************************************************************************************************************************
-
-/*
-//Función para encontrar un usuario haciendo login
-NodoMatriz* Matriz::encontrarUsuarioPorEmpresaDepartamento(std::string empresa, std::string departamento,std::string user,std::string contrasena) {
-    // Encuentra la cabecera vertical correspondiente a la empresa
-    NodoMatriz* cabeceraVertical = this->cabeceraVertical;
-    while (cabeceraVertical != nullptr && cabeceraVertical->getNombre() != empresa) {
-        cabeceraVertical = cabeceraVertical->getSiguiente();
-    }
-
-    if (cabeceraVertical == nullptr) {
-        // No se encontró la empresa
-        return nullptr;
-    }
-
-    // Encuentra la cabecera horizontal correspondiente al departamento
-    NodoMatriz* cabeceraHorizontal = cabeceraVertical->getDerecha();
-    while (cabeceraHorizontal != nullptr && cabeceraHorizontal->getNombre() != departamento) {
-        cabeceraHorizontal = cabeceraHorizontal->getSiguiente();
-    }
-
-    if (cabeceraHorizontal == nullptr) {
-        // No se encontró el departamento
-        return nullptr;
-    }
-
-    // Recorre los nodos de la intersección entre la empresa y el departamento
-    NodoMatriz* actual = cabeceraHorizontal->getAbajo();
-    while (actual != nullptr) {
-        Usuario* usuarioActual = actual->getUsuario();
-
-        if (usuarioActual != nullptr &&
-            usuarioActual->getUsuario() == user &&
-            usuarioActual->getContrasena() == contrasena) {
-            return actual; // Retorna el nodo encontrado
-            }
-
-        actual = actual->getAbajo(); // Sigue recorriendo hacia abajo en la columna
-    }
-
-    return nullptr; // No se encontró el usuario
-}
-*/
-
 //Funciones para generar el reporte de la matriz
 void Matriz::generarReporteMatriz(){
     //Genero el archivo
