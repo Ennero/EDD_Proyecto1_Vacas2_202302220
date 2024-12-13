@@ -204,6 +204,7 @@ void ingreso(){ //void para el ingreso de los datos
 int main(){ //El ciclo principal en donde voy a colocar todo
 
     //probando el arbolito
+    /*
     ArbolAVL *arbol=new ArbolAVL();
     arbol->insertar("111");
     arbol->insertar("222");
@@ -217,7 +218,7 @@ int main(){ //El ciclo principal en donde voy a colocar todo
     arbol->insertar("1010");
     arbol->insertar("1111");
     arbol->generarDotGrafica();
-
+*/
 
 /*
     Matriz *matriz=new Matriz();
@@ -228,28 +229,17 @@ int main(){ //El ciclo principal en donde voy a colocar todo
     matriz->insertarValor(15,1,1);
 */
 
-    /*
-    Transaccion *admin=new Transaccion("admin","admin","admin","admin","PoloCampero","admin","admin");
-    cout<<admin->getEmpresa()<<endl;
-    admin->setEmpresa("MC Donalds");
-    admin->setUsarioRentador("Goofy");
-    cout<<admin->getEmpresa()<<admin->getUsarioRentador()<<endl;
-    */
-
-/*
     Lista *lista=new Lista();
-    Transaccion *tra=new Transaccion("hola","limones","Pañales","rentador","empresa","fecha","tiempo");
-    lista->agregarNodo(tra);
-    lista->obtenerNodoEnPosicion(0).mostrarTransaccion();
-
-    cout<<"---------------------"<<endl;
-    Transaccion *trra=new Transaccion("Palola","limones","Limznero","rentador","empresa","fecha","tiempo");
-    lista->agregarNodo(trra);
-    cout<<"Adios Mundo"<<endl;
-
-
-    lista->obtenerNodoEnPosicion(1).mostrarTransaccion();
-    lista->obtenerNodoEnPosicion(0).mostrarTransaccion();
+    lista->agregarNodo(new Transaccion("hola","limones","Pañales","rentador","empresa","fecha","tiempo"));
+    lista->agregarNodo(new Transaccion("Palola","limones","Limznero","rentador","empresa","fecha","tiempo"));
+    lista->agregarNodo(new Transaccion("mocosa","limones","Limznero","rentador","empresa","fecha","tiempo"));
+    lista->agregarNodo(new Transaccion("llorona","limones","Limznero","rentador","empresa","fecha","tiempo"));
+    lista->agregarNodo(new Transaccion("pastel de salsa","limones","Limznero","rentador","empresa","fecha","tiempo"));
+    lista->generarReporte();
+    lista->ordenarDescendente();
+    lista->generarReporte();
+    lista->ordenarAscendente();
+    lista->generarReporte();
 
     //Ciclo para iniciar el programa
     /*

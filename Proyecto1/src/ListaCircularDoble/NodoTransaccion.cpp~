@@ -17,6 +17,13 @@ NodoTransaccion::~NodoTransaccion(){
     anterior = nullptr;
 }
 
+void NodoTransaccion::mostrarTransaccion(){
+    std::cout << "ID Transaccion: " << this->transaccion->getIdTransaccion() << std::endl;
+    std::cout << "ID Usuario:" << this->transaccion->getUsarioRentador() << std::endl;
+
+}
+
+
 
 //Getteres y Setters
 Transaccion* NodoTransaccion::getTransaccion(){

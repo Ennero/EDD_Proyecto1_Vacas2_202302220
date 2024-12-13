@@ -229,28 +229,17 @@ int main(){ //El ciclo principal en donde voy a colocar todo
     matriz->insertarValor(15,1,1);
 */
 
-    /*
-    Transaccion *admin=new Transaccion("admin","admin","admin","admin","PoloCampero","admin","admin");
-    cout<<admin->getEmpresa()<<endl;
-    admin->setEmpresa("MC Donalds");
-    admin->setUsarioRentador("Goofy");
-    cout<<admin->getEmpresa()<<admin->getUsarioRentador()<<endl;
-    */
-
-/*
     Lista *lista=new Lista();
-    Transaccion *tra=new Transaccion("hola","limones","Pañales","rentador","empresa","fecha","tiempo");
-    lista->agregarNodo(tra);
-    lista->obtenerNodoEnPosicion(0).mostrarTransaccion();
-
-    cout<<"---------------------"<<endl;
-    Transaccion *trra=new Transaccion("Palola","limones","Limznero","rentador","empresa","fecha","tiempo");
-    lista->agregarNodo(trra);
-    cout<<"Adios Mundo"<<endl;
-
-
-    lista->obtenerNodoEnPosicion(1).mostrarTransaccion();
-    lista->obtenerNodoEnPosicion(0).mostrarTransaccion();
+    lista->agregarNodo(new Transaccion("1","limones","Pañales","rentador","empresa","fecha","tiempo"));
+    lista->agregarNodo(new Transaccion("2","limones","Limznero","rentador","empresa","fecha","tiempo"));
+    lista->agregarNodo(new Transaccion("3","limones","Limznero","rentador","empresa","fecha","tiempo"));
+    lista->agregarNodo(new Transaccion("4","limones","Limznero","rentador","empresa","fecha","tiempo"));
+    lista->agregarNodo(new Transaccion("5","limones","Limznero","rentador","empresa","fecha","tiempo"));
+    lista->generarReporte();
+    lista->ordenarDescendente();
+    lista->generarReporte();
+    lista->ordenarAscendente();
+    lista->generarReporte();
 
     //Ciclo para iniciar el programa
     /*

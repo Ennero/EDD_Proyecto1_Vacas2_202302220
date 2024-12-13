@@ -65,7 +65,7 @@ void Lista::ordenarAscendente() {
         NodoTransaccion* comparar = actual->getSiguiente(); //Y creo un nodo para comparar el siguiente
         // Encontrar el mínimo desde el nodo actual hasta el final
         while (comparar != inicio) {
-            if (comparar->getTransaccion()->getIdTransaccion() < min->getTransaccion()->getIdTransaccion()) {
+            if (comparar->getTransaccion()->getIdActivo() < min->getTransaccion()->getIdActivo()) {
                 min = comparar; //Si el que comparar es menor al minimo, entonces el minimo es el comparar
             }//Y se coloca en su posición
             comparar = comparar->getSiguiente(); //Ahora me posicion adelante
@@ -88,7 +88,7 @@ void Lista::ordenarDescendente() {
         NodoTransaccion* comparar = actual->getSiguiente(); //Y creo un nodo para comparar el siguiente
         // Encontrar el maximo desde el nodo actual hasta el final
         while (comparar != inicio) {
-            if (comparar->getTransaccion()->getIdTransaccion() > max->getTransaccion()->getIdTransaccion()) {
+            if (comparar->getTransaccion()->getIdActivo() > max->getTransaccion()->getIdActivo()) {
                 max = comparar; //Si el que comparar es menor al maximo, entonces el minimo es el comparar
             }//Y se coloca en su posición
             comparar = comparar->getSiguiente(); //Ahora me posicion adelante
