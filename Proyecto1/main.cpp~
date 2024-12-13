@@ -204,7 +204,6 @@ void ingreso(){ //void para el ingreso de los datos
 int main(){ //El ciclo principal en donde voy a colocar todo
 
     //probando el arbolito
-    /*
     ArbolAVL *arbol=new ArbolAVL();
     arbol->insertar("111");
     arbol->insertar("222");
@@ -218,7 +217,7 @@ int main(){ //El ciclo principal en donde voy a colocar todo
     arbol->insertar("1010");
     arbol->insertar("1111");
     arbol->generarDotGrafica();
-*/
+
 
 /*
     Matriz *matriz=new Matriz();

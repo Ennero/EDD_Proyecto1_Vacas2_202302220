@@ -13,12 +13,10 @@ private:
     std::string id;
     std::string descripcion;
     std::string nombre;
-    int tiempoRenta;
 public:
     Activo(std::string id);
 
     //Getters
-    int getTiempoRenta();
     std::string getId();
     std::string getDescripcion();
     std::string getNombre();
@@ -26,7 +24,7 @@ public:
     void setDescripcion(std::string descripcion);
     void setNombre(std::string nombre);
     void setId(std::string id);
-    void setTiempoRenta(int tiempoRenta);
+
 
 };
 

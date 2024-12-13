@@ -17,4 +17,8 @@ add_executable(Proyecto1 main.cpp
         includes/MatrizDispersa/Usuario.h
         src/MatrizDispersa/Usuario.cpp
         includes/MatrizDispersa/Activo.h
-        src/MatrizDispersa/Activo.cpp)
+        src/MatrizDispersa/Activo.cpp
+        includes/MatrizDispersa/avl.h
+        src/MatrizDispersa/avl.cpp
+        includes/MatrizDispersa/ArbolAVL.h
+        src/MatrizDispersa/ArbolAVL.cpp)
