@@ -185,8 +185,16 @@ void ArbolAVL::eliminar(std::string valor, AVL *&nodo) {
     if (nodo == nullptr) return; // Caso en el que el nodo no tiene nada
 
     if (valor < nodo->getActivo()->getId()) {//Si el valor es menor, va al lado izquierdo
+        if (nodo->getActivo()->getTiempoRenta() >0){
+            std::cout<<"El activo no puede ser eliminado, ya que se encuentra en renta"<<std::endl;
+            return;
+        }
         eliminar(valor, nodo->getIzquierda());//Busco en el lado izquierdo el eliminarlo
     } else if (valor > nodo->getActivo()->getId()) {//Si el valor es mayor, va al lado derecho
+        if (nodo->getActivo()->getTiempoRenta() >0){
+            std::cout<<"El activo no puede ser eliminado, ya que se encuentra en renta"<<std::endl;
+            return;
+        }
         eliminar(valor, nodo->getDerecha());//Busco en el lado derecho el eliminarlo
     } else {
         // Con el nodo ya encontrado, comienzo con el proceso de eliminación.
@@ -208,6 +216,12 @@ void ArbolAVL::eliminar(std::string valor, AVL *&nodo) {
             // Caso 4: Tiene dos hijos nodos
             AVL* nodoMasDerecho = masALaDerecha(nodo->getIzquierda());//Busco el nodo más a la dercha
             nodo->setActivo(nodoMasDerecho->getActivo()); //El nodo que se queire eliminar se reemplaza con el nodo mas a la derecha
+
+            if (nodo->getActivo()->getTiempoRenta() >0){
+                std::cout<<"El activo no puede ser eliminado, ya que se encuentra en renta"<<std::endl;
+                return;
+            }
+
             eliminar(nodoMasDerecho->getActivo()->getId(), nodo->getIzquierda()); //Elimino el nodo más a la derecha
         }
     }
@@ -275,11 +289,23 @@ void ArbolAVL::imprimirRevursivo(AVL* nodo) {
 
     // Imprimo la información del nodo
     std::cout << "ID: " << nodo->getActivo()->getId()<< ", Nombre: " << nodo->getActivo()->getNombre()
-              << ", Descripcion: " << nodo->getActivo()->getDescripcion() << std::endl;
-
+              << ", Descripcion: " << nodo->getActivo()->getDescripcion();
+    if (nodo->getActivo()->getTiempoRenta() >0){
+        std::cout << " (en renta)"<< std::endl;
+    }
     // Por último me voy al lado derecho
     imprimirRevursivo(nodo->getDerecha());
 }
+
+
+
+
+
+
+
+
+
+
 //*************************************************************************************************************
 //Función para modificar nodo
 void ArbolAVL::modificar(std::string id, std::string nuevoNombre,std::string nuevaDescripcion){
@@ -338,6 +364,7 @@ bool ArbolAVL::hayActivosRentados(){
     return hayActivosRentadosRecursivo(this->raiz);
 }
 bool ArbolAVL::hayActivosRentadosRecursivo(AVL* nodo){
+    if (nodo==nullptr) return false;//Si no tiene nada no hago nada xd
     if (nodo->getActivo()->getTiempoRenta() >0) return true;//Si no tiene nada no imprimo nada xd
     //Primero me voy por el lado izquierdo
     hayActivosRentadosRecursivo(nodo->getIzquierda());

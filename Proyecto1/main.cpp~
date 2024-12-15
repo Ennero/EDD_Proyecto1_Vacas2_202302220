@@ -161,7 +161,7 @@ void usuarioMenu(Usuario *usuario){
         }
         case 6:{
             if (usuario->getActivos()->hayActivosRentados()==false){
-                cout<<"No hay activos agregados en renta"<<endl;
+                cout<<"No hay activos rentados"<<endl;
             }else{
                 cout<<"---------------MIS ACTIVOS RENTADOS---------------"<<endl;
                 usuario->getActivos()->mostrarActivosRentados();

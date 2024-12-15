@@ -86,8 +86,6 @@
         bool hayActivosRentadosRecursivo(AVL *nodo);
         //Función para saber si hay activos rentados
 
-        //Funciones para poder imprimir las
-
     };
 
     #endif //ARBOLAVL_H
