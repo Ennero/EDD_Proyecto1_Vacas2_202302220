@@ -20,9 +20,7 @@ private:
 public:
     //Constructor
     Lista();
-    //Destructor
-    ~Lista();
-
+    //Función para agregar una transaccion
     void agregarNodo(Transaccion *transaccion);
     //Función para agregar un activo
     void agregarNodoActivo(std::string id, std::string descripcion, std::string nombre);

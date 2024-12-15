@@ -3,7 +3,7 @@
 //
 
 #include "../../includes/MatrizDispersa/Usuario.h"
-
+/*
 //Constructor para los usuarios
 Usuario::Usuario(std::string usuario, std::string contrasena){
     this->usuario = usuario;
@@ -13,12 +13,14 @@ Usuario::Usuario(std::string usuario, std::string contrasena){
     this->activos=new ArbolAVL();
     this->activosRentados=new Lista();
 }
+*/
+
 //Constructor para los encabezados
 Usuario::Usuario(std::string usuario){
     this->usuario = usuario;
     this->contrasena = "";
-    this->activos=nullptr;
-    this->activosRentados=nullptr;
+    this->activos=new ArbolAVL();
+    this->activosRentados=new Lista();
     this->departamento="";
     this->empresa = "";
 }

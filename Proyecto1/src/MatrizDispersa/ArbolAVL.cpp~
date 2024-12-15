@@ -303,7 +303,7 @@ void ArbolAVL::imprimirActivosDisponiblesRecursivo(AVL* nodo){
     // Imprimo la información del nodo
     if (nodo->getActivo()->getTiempoRenta() <=0){
         std::cout << "ID: " << nodo->getActivo()->getId()<< ", Nombre: " << nodo->getActivo()->getNombre()
-              << ", Descripcion: " << nodo->getActivo()->getDescripcion() << std::endl;
+              << ", Descripción: " << nodo->getActivo()->getDescripcion() << std::endl;
 
     // Por último me voy al lado derecho
     }

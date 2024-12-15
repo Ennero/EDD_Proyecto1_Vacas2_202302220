@@ -125,7 +125,7 @@ void NodoMatriz::setSiguiente(NodoMatriz* siguiente){
 
 
 std::string NodoMatriz::generarArchivoDot(){
-    std::string graficaAVL="subgraph cluster_"+usuario->getUsuario()+" {\n";
+    std::string graficaAVL="subgraph "+usuario->getUsuario()+" {\n";
     graficaAVL += "        label=\""+usuario->getUsuario()+"\";\n";
     graficaAVL += usuario->getActivos()->generarDotContenidoActivos();//mando la raiz
     graficaAVL += "}\n";

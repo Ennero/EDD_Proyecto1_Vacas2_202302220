@@ -439,7 +439,7 @@ std::string Matriz::concatenarStringPorFila(NodoMatriz* cabV) {//(empresas)
     graficaAVL += "    node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];\n";
     graficaAVL += "    edge [style=solid, color=blue];\n";
     graficaAVL += "    graph [ranksep=1.5, nodesep=1];\n";
-    graficaAVL += "    graph [label=\"Reporte de Activos de empresa " + cabV->getNombre() + " \", fontsize=20, fontcolor=black];\n";
+    graficaAVL += "    graph [label=\"Reporte de Activos de Departamento " + cabV->getNombre() + " \", fontsize=20, fontcolor=black];\n";
 
     NodoMatriz* nodoActual = cabV->getSiguiente();  // Comienza con la cabecera horizontal.
     while (nodoActual != nullptr) { //Recorro las cabeceras horizontales
@@ -510,7 +510,7 @@ void Matriz::generarReporteActivosDepartamento(std::string departamento){
     NodoMatriz *cabeH=cabeceraH(departamento);
     //Aquí se supone que debería de llamar la función
     std::string matriz=concatenarStringPorColumna(cabeH);
-    std::ofstream archivo("reporteActivosEmpresa.dot");
+    std::ofstream archivo("reporteActivosDepartamento.dot");
     archivo<<matriz;
     archivo.close();
     //Creo un comando para ejecutar el graphviz y crear el pdf
@@ -520,7 +520,7 @@ void Matriz::generarReporteActivosDepartamento(std::string departamento){
 //*********************************************************************************************
 //Función para mostrar los activos del usuario
 void Matriz::mostrarActivosUsuario(std::string user,std::string contrasena){
-    NodoMatriz* nodoUsuario=obtenerNodo(user,contrasena);
+    NodoMatriz* nodoUsuario=encontrarUsuario(contrasena,user);
     if(nodoUsuario==nullptr){
         std::cout<<"No se encuentra el usuario con la informacion proporcionada"<<std::endl;
     }else{//Genera la función de la gráfica :)
@@ -532,11 +532,12 @@ void Matriz::mostrarActivosUsuario(std::string user,std::string contrasena){
 //*********************************************************************************************************
 //Función para mostrar los activos rentados por un usuario
 void Matriz::mostrarActivosRentados(std::string user,std::string contrasena){
-    NodoMatriz* nodoUsuario=obtenerNodo(user,contrasena);
+    NodoMatriz* nodoUsuario=encontrarUsuario(user,contrasena);
     if(nodoUsuario==nullptr){
         std::cout<<"No se encuentra el usuario"<<std::endl;
     }else{
-        nodoUsuario->getUsuario()->getActivosRentados().imprimirNodos();
+
+        nodoUsuario->getUsuario()->getActivosRentados()->imprimirNodos();
         std::cout<<"Activo de usuario "+user+" creado con exito"<<std::endl;
     }
 }
@@ -618,7 +619,7 @@ void Matriz::rentarActivo(std::string id,int dias,std::string usuarioRentador,st
 
     //Aquí ahora voy a pasar el activo a la lista de activos rentados por el usuario
     NodoMatriz* usuarioRentadorEncontrado=encontrarUsuario(contrasenaRentador,usuarioRentador);
-    usuarioRentadorEncontrado->getUsuario()->getActivosRentados().agregarNodoActivo(activoParaRentar->getId(),activoParaRentar->getDescripcion(),activoParaRentar->getNombre());
+    usuarioRentadorEncontrado->getUsuario()->getActivosRentados()->agregarNodoActivo(activoParaRentar->getId(),activoParaRentar->getDescripcion(),activoParaRentar->getNombre());
 }
 //*********************************************************************************************************************************
 //Función para imprimir los activos en renta de un usuario

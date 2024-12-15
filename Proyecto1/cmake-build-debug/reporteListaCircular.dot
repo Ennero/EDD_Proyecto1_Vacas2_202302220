@@ -3,14 +3,8 @@ rankdir=LR;node [shape=record, style=filled, fillcolor=lightblue, margin=0.2];
 edge [style=solid, color=blue];
 graph [ranksep=1.5, nodesep=1];
 graph [label="Reporte de Transacciones", fontsize=20, fontcolor=black];
-"1" [label="{ID Transacción: 1\lID Activo: limones\lUsuario: Pañales\lDepartamento: rentador\lEmpresa: empresa\lFecha: fecha\lTiempo: tiempo\l}"];
-"1" -> "2"[dir=both];
-"2" [label="{ID Transacción: 2\lID Activo: limones\lUsuario: Limznero\lDepartamento: rentador\lEmpresa: empresa\lFecha: fecha\lTiempo: tiempo\l}"];
-"2" -> "3"[dir=both];
-"3" [label="{ID Transacción: 3\lID Activo: limones\lUsuario: Limznero\lDepartamento: rentador\lEmpresa: empresa\lFecha: fecha\lTiempo: tiempo\l}"];
-"3" -> "4"[dir=both];
-"4" [label="{ID Transacción: 4\lID Activo: limones\lUsuario: Limznero\lDepartamento: rentador\lEmpresa: empresa\lFecha: fecha\lTiempo: tiempo\l}"];
-"4" -> "5"[dir=both];
-"5" [label="{ID Transacción: 5\lID Activo: limones\lUsuario: Limznero\lDepartamento: rentador\lEmpresa: empresa\lFecha: fecha\lTiempo: tiempo\l}"];
-"5" -> "1"[dir=both];
+"9w9ybq35x07z043" [label="{ID Transacción: 9w9ybq35x07z043\lID Activo: p2j72b473hc3879\lUsuario: kevin\lDepartamento: quiche\lEmpresa: pollo\lFecha: 4\lTiempo: 11:42 15-12-2024\l}"];
+"9w9ybq35x07z043" -> "3l2353eo4uk3ilv"[dir=both];
+"3l2353eo4uk3ilv" [label="{ID Transacción: 3l2353eo4uk3ilv\lID Activo: n8lce35j0btgkqg\lUsuario: antonieta\lDepartamento: xela\lEmpresa: pollo\lFecha: 5\lTiempo: 11:55 15-12-2024\l}"];
+"3l2353eo4uk3ilv" -> "9w9ybq35x07z043"[dir=both];
 }

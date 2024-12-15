@@ -11,6 +11,7 @@
 #include <limits>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 
 //Declaraciones globales para que esté en todos lados
 Matriz *matriz=new Matriz();//inicializo la matriz
@@ -53,7 +54,8 @@ void usuarioMenu(Usuario *usuario){
         cout<<"4. Rentar Activo"<<endl;
         cout<<"5. Activos Rentados"<<endl;
         cout<<"6. Mis activos Rentados"<<endl;
-        cout<<"7. Cerrar Sesion"<<endl;
+        cout<<"7. Mis activos"<<endl;
+        cout<<"8. Cerrar Sesion"<<endl;
         cin>>opcion;
         cin.ignore();
 
@@ -112,7 +114,7 @@ void usuarioMenu(Usuario *usuario){
             break;
         }
         case 4:{
-            if (matriz->hayActivosEnRenta()){
+            if (matriz->hayActivosEnRenta()==false){
                 cout<<"No hay activos disponibles para rentar"<<endl;
             }else{
                 cout<<"---------------RENTAR ACTIVO---------------"<<endl;
@@ -122,33 +124,61 @@ void usuarioMenu(Usuario *usuario){
                 string idActivo;
                 cin>>idActivo;
                 cin.ignore();
+                cin.clear();
                 cout<<"Ingrese el numero de dias por lo que quiere rentar el activo"<<endl;
                 int dias;
                 cin>>dias;
                 cin.ignore();
+                cin.clear();
                 matriz->rentarActivo(idActivo,dias,usuario->getUsuario(),usuario->getContrasena());
                 cout<<"Activo rentado con exito"<<endl;
+
+                //Aquí voy a generar la transaccion
+                //Se supone que aquí ando creando una transaccion
+                //Esta es una parte para genera la hora y la fecha
+                time_t tiempo = time(0);
+                tm* now=localtime(&tiempo);
+                ostringstream oss;
+                oss<<put_time(now, "%H:%M %d-%m-%Y");
+
+                lista->agregarNodo(new Transaccion(asignarIdAlfanumerico(), idActivo, usuario->getUsuario(),
+                                                   usuario->getDepartamento(), usuario->getEmpresa(), oss.str(),
+                                                   to_string(dias)));
+                cout<<"Transaccion finalizada"<<endl;
             }
             break;
         }
         case 5:{
-            if (usuario->getActivosRentados().getTamano()==0){
+            if (usuario->getActivosRentados()->getTamano()==0){
                 cout<<"No hay activos rentados"<<endl;
             }else{
+                //Aquí colocar la devolver
+                //************************************************************************************************************
                 cout<<"---------------ACTIVOS RENTADOS---------------"<<endl;
-                usuario->getActivosRentados().imprimirNodos();
+                usuario->getActivosRentados()->imprimirNodos();
             }
             break;
         }
         case 6:{
-            if (!usuario->getActivos()->hayActivosRentados()){
+            if (usuario->getActivos()->hayActivosRentados()==false){
                 cout<<"No hay activos rentados"<<endl;
+            }else{
+                cout<<"---------------MIS ACTIVOS RENTADOS---------------"<<endl;
+                usuario->getActivos()->mostrarActivosRentados();
+                break;
             }
-            cout<<"---------------MIS ACTIVOS RENTADOS---------------"<<endl;
-            usuario->getActivos()->mostrarActivosRentados();
-            break;
+
         }
         case 7:{
+            if (usuario->getActivos()->getRaiz()==nullptr){
+                cout<<"No hay activos agregados"<<endl;
+            }else{
+                cout<<"---------------MIS ACTIVOS---------------"<<endl;
+                usuario->getActivos()->imprimirActivos();
+            }
+            break;
+        }
+        case 8:{
             cout<<"Cerrando sesion..."<<endl;
             menu=false;
             break;
@@ -325,7 +355,7 @@ void adminMenu(){
             break;
         }
         case 9:{
-            cout<<"Cerrando sesión..."<<endl;
+            cout<<"Cerrando sesion..."<<endl;
             menu=false;
             break;
         }
@@ -447,8 +477,10 @@ int main(){ //El ciclo principal en donde voy a colocar todo
         cout<<"Ingrese un numero "<<endl; //Mensajitos
         cout<<"1. Iniciar Sesion"<<endl;
         cout<<"2. Salir"<<endl;
-        std::cin.clear(); // Limpia el estado de cin porque me anda dando probelmas
+        cin.clear(); // Limpia el estado de cin porque me anda dando probelmas
         cin >> opcionInicio;//Ingreso de la variables solicitada
+        cin.ignore();
+        cin.clear();
         switch (opcionInicio){ //El switchcase
         case 1: //Caso para inicializar el
             ingreso();

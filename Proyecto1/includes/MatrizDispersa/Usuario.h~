@@ -26,7 +26,7 @@ public:
     Usuario(std::string usuario);
 
     //getters
-    Lista* getActivosRentados();
+    Lista getActivosRentados();
     std::string getUsuario();
     std::string getContrasena();
     std::string getNombre();

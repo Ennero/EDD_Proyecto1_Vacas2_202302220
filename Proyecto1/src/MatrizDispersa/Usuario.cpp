@@ -3,18 +3,6 @@
 //
 
 #include "../../includes/MatrizDispersa/Usuario.h"
-/*
-//Constructor para los usuarios
-Usuario::Usuario(std::string usuario, std::string contrasena){
-    this->usuario = usuario;
-    this->contrasena = contrasena;
-    this->empresa = "";
-    this->departamento = "";
-    this->activos=new ArbolAVL();
-    this->activosRentados=new Lista();
-}
-*/
-
 //Constructor para los encabezados
 Usuario::Usuario(std::string usuario){
     this->usuario = usuario;
@@ -23,11 +11,12 @@ Usuario::Usuario(std::string usuario){
     this->activosRentados=new Lista();
     this->departamento="";
     this->empresa = "";
+    this->nombre = "";
 }
 
 //getters
-Lista Usuario::getActivosRentados(){
-    return *this->activosRentados;
+Lista* Usuario::getActivosRentados(){
+    return this->activosRentados;
 }
 std::string Usuario::getUsuario(){
     return this->usuario;

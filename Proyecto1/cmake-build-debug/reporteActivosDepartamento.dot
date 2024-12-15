@@ -1,0 +1,21 @@
+digraph G {
+    node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];
+    edge [style=solid, color=blue];
+    graph [ranksep=1.5, nodesep=1];
+    graph [label="Reporte de Activos de empresa Guateamal ", fontsize=20, fontcolor=black];
+subgraph cluster_juanito {
+        label="juanito";
+    "4r1zxkf20x9j862" [label="moto"];
+    "4r1zxkf20x9j862" -> "luis";
+    "3ykmwz7v4u8gj61" [label="luis"];
+}
+subgraph cluster_enner {
+        label="enner";
+    "8fqxll53yh1he5g" [label="casa"];
+    "8fqxll53yh1he5g" -> "mocos";
+    "10nnmftylc3ocww" [label="mocos"];
+}
+subgraph cluster_alberto {
+        label="alberto";
+}
+}

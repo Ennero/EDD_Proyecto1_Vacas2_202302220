@@ -14,10 +14,7 @@ Lista::Lista(){
     this->fin = nullptr;
 }
 
-//Destructor
-Lista::~Lista(){
-    delete this;
-}
+
 //getters y setter
 int Lista::getTamano(){
     return this->tamano;
