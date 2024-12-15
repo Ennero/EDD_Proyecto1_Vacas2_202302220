@@ -25,6 +25,16 @@
         void rotacionIzquierdaDerecha(AVL *&nodo);
         void rotacionDerechaIzquierda(AVL *&nodo);
 
+        void eliminar(std::string valor, AVL *&nodo);
+        AVL* masALaDerecha(AVL* nodo);
+
+        //Funciónk para imprimir los activos en recursivo
+        void imprimirRevursivo(AVL* nodo);
+        //Función para imprimir los activos disponibles en recursivo
+        void imprimirActivosDisponiblesRecursivo(AVL* nodo);
+
+        //Función para imprimir los activos rentados en recursivo
+        void imprimirActivosRentadosRecursivo(AVL* nodo);
 
     public:
         //Constructor
@@ -34,16 +44,47 @@
         std::string generarStringDot(AVL *raiz);
         void generarDotGrafica();
 
-        void insertar(std::string valor);//Función para insertar nada más
+        //Función para balancear
+        void balancear(AVL *nodo);
+
+        //Funciones para eliminar para eliminar
+        void eliminar(std::string valor);
+
+        //Función para saber si es hoja
+        bool esHoja(AVL *nodo);
+
+        void insertar(std::string id,std::string nombre,std::string descripcion);//Función para insertar nada más
         //Función para obtener la altura máxima
         int alturaMaxima();
         //getter
         AVL *getRaiz();
         std::string getValor();
-
         //Setter
         void setRaiz(AVL *avl);
 
+        //Funciones para encontrar los nodos de los arboles
+        AVL *buscar(std::string valor);
+        AVL *buscar(std::string valor, AVL *nodo);
+
+        //Funcion para los reporte de las transacciones sin correrlos
+        std::string generarDotContenidoActivos();
+
+        //Función para imprimir los activos que están disponibles
+        void imprimirActivosDisponibles();
+
+        //Función para imprimir los activos
+        void imprimirActivos();
+
+        //Función para modificar un activo
+        void modificar(std::string id,std::string nuevoNombre,std::string Nuevadescripcion);
+
+        //Función par mostrar unicamente los activos rentados
+        void mostrarActivosRentados();
+
+        //Función para imprimir los activos rentados
+        bool hayActivosRentados();
+        bool hayActivosRentadosRecursivo(AVL *nodo);
+        //Función para saber si hay activos rentados
 
     };
 

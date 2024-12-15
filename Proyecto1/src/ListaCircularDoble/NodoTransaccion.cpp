@@ -17,6 +17,13 @@ NodoTransaccion::~NodoTransaccion(){
     anterior = nullptr;
 }
 
+//Constructor para los activos
+NodoTransaccion::NodoTransaccion(std::string descripcion, std::string id,std::string nombre){
+    this->descripcion=descripcion;
+    this->id=id;
+    this->nombre=nombre;
+}
+
 
 //Getteres y Setters
 Transaccion* NodoTransaccion::getTransaccion(){
@@ -36,6 +43,30 @@ void NodoTransaccion::setAnterior(NodoTransaccion* anterior){
 }
 NodoTransaccion* NodoTransaccion::getAnterior(){
     return this->anterior;
+}
+
+//Aquí irán las funciones destinadas a almacenar los activos*********************************************************************************************
+
+std::string NodoTransaccion::getDescripcion(){
+    return this->getDescripcion();
+}
+
+std::string NodoTransaccion::getId(){
+    return this->getId();
+}
+
+std::string NodoTransaccion::getNombre(){
+    return this->getNombre();
+}
+
+void NodoTransaccion::setDescripcion(std::string descripcion){
+    this->descripcion = descripcion;
+}
+void NodoTransaccion::setId(std::string id){
+    this->id = id;
+}
+void NodoTransaccion::setNombre(std::string nombre){
+    this->nombre = nombre;
 }
 
 

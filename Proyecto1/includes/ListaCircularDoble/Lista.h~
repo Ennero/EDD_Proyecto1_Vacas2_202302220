@@ -16,6 +16,7 @@ private:
     int tamano;
     bool ascendente=true;
 
+
 public:
     //Constructor
     Lista();
@@ -29,12 +30,18 @@ public:
     void incrementarTamano();
     //Función para generar el reporte de la lista circular doblemente enlazada
     void generarReporte();
-
+    //Función para ordenar de forma ascendente la lista circular doblemente enlazada
+    void ordenarAscendente();
+    //Función para ordenar de forma descendente la lista circular doblemente enlazada
+    void ordenarDescendente();
     //getters y setters
     NodoTransaccion* getInicio();
     void setInicio(NodoTransaccion*);
     NodoTransaccion* getFin();
     void setFin(NodoTransaccion*);
+
+    //Función para imprimir los activos de alguien
+    void imprimirNodos();
 };
 
 

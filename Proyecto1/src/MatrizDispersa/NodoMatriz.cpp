@@ -7,8 +7,7 @@
 #include <iostream>
 //Constructor para el encabezado
 NodoMatriz::NodoMatriz(std::string user){
-    Usuario *cabecera=new Usuario(user);
-    this->usuario=cabecera;
+    this->usuario=new Usuario(user);
     this->siguiente=nullptr;
     this->anterior=nullptr;
     this->adelante=nullptr;
@@ -17,6 +16,21 @@ NodoMatriz::NodoMatriz(std::string user){
     this->abajo=nullptr;
     this->nombre=user;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Constructor para el usuario
 NodoMatriz::NodoMatriz(Usuario* usuario, std::string nombre){
     this->siguiente=nullptr;
@@ -107,5 +121,14 @@ void NodoMatriz::setAtras(NodoMatriz* atras){
 void NodoMatriz::setSiguiente(NodoMatriz* siguiente){
     this->siguiente=siguiente;
 }
+//**************************************************************
 
+
+std::string NodoMatriz::generarArchivoDot(){
+    std::string graficaAVL="subgraph "+usuario->getUsuario()+" {\n";
+    graficaAVL += "        label=\""+usuario->getUsuario()+"\";\n";
+    graficaAVL += usuario->getActivos()->generarDotContenidoActivos();//mando la raiz
+    graficaAVL += "}\n";
+    return graficaAVL;
+}
 

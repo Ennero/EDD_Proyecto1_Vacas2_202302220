@@ -1,9 +1,10 @@
 digraph listita {
-rankdir=RL;node [shape=record, style=filled, fillcolor=lightblue, margin=0.2];
+rankdir=LR;node [shape=record, style=filled, fillcolor=lightblue, margin=0.2];
 edge [style=solid, color=blue];
 graph [ranksep=1.5, nodesep=1];
 graph [label="Reporte de Transacciones", fontsize=20, fontcolor=black];
 "1" [label="{ID Transacción: 1\lID Activo: limones\lUsuario: Pañales\lDepartamento: rentador\lEmpresa: empresa\lFecha: fecha\lTiempo: tiempo\l}"];
+"1" -> "2"[dir=both];
 "2" [label="{ID Transacción: 2\lID Activo: limones\lUsuario: Limznero\lDepartamento: rentador\lEmpresa: empresa\lFecha: fecha\lTiempo: tiempo\l}"];
 "2" -> "3"[dir=both];
 "3" [label="{ID Transacción: 3\lID Activo: limones\lUsuario: Limznero\lDepartamento: rentador\lEmpresa: empresa\lFecha: fecha\lTiempo: tiempo\l}"];
@@ -12,5 +13,4 @@ graph [label="Reporte de Transacciones", fontsize=20, fontcolor=black];
 "4" -> "5"[dir=both];
 "5" [label="{ID Transacción: 5\lID Activo: limones\lUsuario: Limznero\lDepartamento: rentador\lEmpresa: empresa\lFecha: fecha\lTiempo: tiempo\l}"];
 "5" -> "1"[dir=both];
-"1" -> "2"[dir=both];
 }

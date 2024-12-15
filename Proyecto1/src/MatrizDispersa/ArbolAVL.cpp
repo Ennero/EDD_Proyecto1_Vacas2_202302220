@@ -11,9 +11,10 @@ ArbolAVL::ArbolAVL(){
     this->raiz=nullptr;
 }
 //Funcion para insertar nodos
-void ArbolAVL::insertar(std::string valor){
-    AVL *nodo=new AVL(valor);
-    insertar(&*nodo,this->raiz);
+void ArbolAVL::insertar(std::string id,std::string nombre,std::string descripcion){
+    AVL *nodo=new AVL(id,nombre,descripcion);
+
+    insertar(nodo,this->raiz);
 }
 void ArbolAVL::insertar(AVL *valor,AVL *&raiz){
     //Cuando inserto cuando no hay nada
@@ -22,7 +23,7 @@ void ArbolAVL::insertar(AVL *valor,AVL *&raiz){
         raiz->setFactorEquilibrio(0);//Le asigno el factor de equilibrio
         return;
     }
-    if (valor->getId() < raiz->getId()){//Inserto el valor en la izquierda
+    if (valor->getActivo()->getId() < raiz->getActivo()->getId()){//Inserto el valor en la izquierda
         insertar(valor,raiz->getIzquierda());
     }else{
         insertar(valor,raiz->getDerecha()); //Inserto el valor en la derecha
@@ -127,8 +128,8 @@ void ArbolAVL::setRaiz(AVL* avl){
 }
 
 //*************************************************************************************************************************************
-//Funciones para generar la gráfica
-    void ArbolAVL::generarDotGrafica() {
+//Funciones para generar la gráfica de un solo usuario
+void ArbolAVL::generarDotGrafica() {
         std::string graficaAVL="digraph AVLTree {\n";
         graficaAVL+= "    node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];\nedge [style=solid, color=blue];\n graph [ranksep=1.5, nodesep=1];graph [label=\"Reporte de Activos\", fontsize=20, fontcolor=black];\n"; // Los nodos serán circulitos
         graficaAVL += generarContenidoDot(this->raiz);//mando la raiz
@@ -140,8 +141,7 @@ void ArbolAVL::setRaiz(AVL* avl){
         archivo.close();
         //Creo un comando para ejecutar el graphviz y crear el pdf
         system("dot -Tpdf reporteArbolAVL.dot -o reporteArbolAVL.pdf && start reporteArbolAVL.pdf");
-    }
-    //Función para generar el string .dot
+    }//Función para generar el string .dot
 // Nueva función para generar el contenido del dot
 std::string ArbolAVL::generarContenidoDot(AVL* nodo) {
     if (nodo == nullptr) return "";
@@ -149,22 +149,199 @@ std::string ArbolAVL::generarContenidoDot(AVL* nodo) {
     std::string contenido;//Contenido del dot
 
     // Agrego el nodo actual
-    contenido += "    \"" + nodo->getActivo().getId() + "\" [label=\"" + nodo->getActivo().getId() + "\"];\n";
+    contenido += "    \"" + nodo->getActivo()->getId() + "\" [label=\"" + nodo->getActivo()->getId() + "\"];\n";
 
     // Verifico el hijo izquierdo
     if (nodo->getIzquierda() != nullptr) {
         // Creo la conexión del anterior con el actual
-        contenido += "    \"" + nodo->getActivo().getId() + "\" -> \"" + nodo->getIzquierda()->getActivo().getId() + "\";\n";
+        contenido += "    \"" + nodo->getActivo()->getId() + "\" -> \"" + nodo->getIzquierda()->getActivo()->getId() + "\";\n";
         contenido += generarContenidoDot(nodo->getIzquierda());// Proceso el subárbol izquierdo con recursividad
     }
 
     // Verifico el hijo izquierdo
     if (nodo->getDerecha() != nullptr) {
         // Creo la conexión del anterior con el actual
-        contenido += "    \"" + nodo->getActivo().getId() + "\" -> \"" + nodo->getDerecha()->getActivo().getId() + "\";\n";
+        contenido += "    \"" + nodo->getActivo()->getId() + "\" -> \"" + nodo->getDerecha()->getActivo()->getId() + "\";\n";
         contenido += generarContenidoDot(nodo->getDerecha());//Proceso el subárbol izquierdo con recursividad
     }
     return contenido;//retorno el contenido
 }
 
+//*************************************************************************************************************************************
+//Función para generar el string .dot para la grafica de todos
+std::string ArbolAVL::generarDotContenidoActivos(){
+    std::string graficaAVL="";
+    graficaAVL += generarContenidoDot(this->raiz);//mando la raiz
+    return graficaAVL;
+}
 
+//*********************************************************************************************************************************************
+//Función para eliminar pública
+void ArbolAVL::eliminar(std::string valor){
+    eliminar(valor,this->raiz);
+}
+//Función que se iría llamando a sí misma
+void ArbolAVL::eliminar(std::string valor, AVL *&nodo) {
+    if (nodo == nullptr) return; // Caso en el que el nodo no tiene nada
+
+    if (valor < nodo->getActivo()->getId()) {//Si el valor es menor, va al lado izquierdo
+        eliminar(valor, nodo->getIzquierda());//Busco en el lado izquierdo el eliminarlo
+    } else if (valor > nodo->getActivo()->getId()) {//Si el valor es mayor, va al lado derecho
+        eliminar(valor, nodo->getDerecha());//Busco en el lado derecho el eliminarlo
+    } else {
+        // Con el nodo ya encontrado, comienzo con el proceso de eliminación.
+        if (esHoja(nodo)) {
+            // Caso 1: si es hoja
+            delete nodo;//Solo por liberar memoria la verdad xd
+            nodo = nullptr;
+        } else if (nodo->getIzquierda() == nullptr) {
+            // Caso 2: Solo tiene un hijo derecho
+            AVL *temp = nodo;
+            nodo = nodo->getDerecha();
+            delete temp; //leí que es bueno eliminar para liberar espacio xd
+        } else if (nodo->getDerecha() == nullptr) {
+            // Caso 3: Solo tiene un hijo izquierdo
+            AVL *temp = nodo;
+            nodo = nodo->getIzquierda();
+            delete temp;
+        } else {
+            // Caso 4: Tiene dos hijos nodos
+            AVL* nodoMasDerecho = masALaDerecha(nodo->getIzquierda());//Busco el nodo más a la dercha
+            nodo->setActivo(nodoMasDerecho->getActivo()); //El nodo que se queire eliminar se reemplaza con el nodo mas a la derecha
+            eliminar(nodoMasDerecho->getActivo()->getId(), nodo->getIzquierda()); //Elimino el nodo más a la derecha
+        }
+    }
+    //mejor creé una función para balancear
+    if (nodo != nullptr) {
+        balancear(nodo);
+    }
+}
+//Función para balancear
+void ArbolAVL::balancear(AVL *nodo) {
+    nodo->setFactorEquilibrio(factorEquilibrio(nodo));//Calculo el factor de equilibrio
+    // Verifico si el nodo está desbalanceado.
+    if (nodo->getFactorEquilibrio() < -1) {//Si el factor de equilibrio es mayor a 1
+        if (nodo->getIzquierda()->getFactorEquilibrio() > 0) {//Si el subárbol izquierdo es más pesado
+            rotacionDerechaIzquierda(nodo);//Roto la izquierda y luego la derecha
+        } else {//Sino
+            rotacionIzquierda(nodo);//Solo roto la derecha
+        }
+    } else if (nodo->getFactorEquilibrio() > 1) {//Si el factor de equilibrio es mayor a 1
+        // Subárbol derecho es más pesado.
+        if (nodo->getDerecha()->getFactorEquilibrio() < 0) {//Si el subárbol izquierdo es más pesado
+            rotacionIzquierdaDerecha(nodo);//Roto la izquierda y luego la derecha
+        } else {//Sino
+            rotacionDerecha(nodo);//Solo roto la derecha
+        }
+    }
+}
+
+AVL* ArbolAVL::masALaDerecha(AVL* nodo) {
+    // Encuentra el nodo más a la derecha.
+    if (nodo->getDerecha() == nullptr) return nodo;
+    return masALaDerecha(nodo->getDerecha());
+}
+//Función para saber si el último nodo
+bool ArbolAVL::esHoja(AVL* nodo) {
+    return nodo->getIzquierda() == nullptr && nodo->getDerecha() == nullptr;
+}
+//Función para buscar pública
+AVL* ArbolAVL::buscar(std::string id) {
+    return buscar(id, this->raiz); // Llama a la función principal
+}
+//Función para buscar un nodo
+AVL* ArbolAVL::buscar(std::string id, AVL* nodo) {
+    if (nodo == nullptr) return nullptr;//Si no hay nada no hago nada xd
+
+    if (id == nodo->getActivo()->getId()) {// Si el nodo actual coincide con el id buscado
+        return nodo;
+    } else if (id < nodo->getActivo()->getId()) {// Ahora paso al lado izquierdo y lo vuelvo a llamar
+        return buscar(id, nodo->getIzquierda());
+    } else {
+        return buscar(id, nodo->getDerecha());// Sino me paso al lado derecho y lo vuelvo a llamar
+    }
+}
+
+//***************************************************************************************************
+//Funciones para imprimir activos
+void ArbolAVL::imprimirActivos() {
+    imprimirRevursivo(this->raiz);
+}
+//La función recursiva
+void ArbolAVL::imprimirRevursivo(AVL* nodo) {
+    if (nodo == nullptr) return;//Si no tiene nada no imprimo nada xd
+    //Primero me voy por le lado izquierdo
+    imprimirRevursivo(nodo->getIzquierda());
+
+    // Imprimo la información del nodo
+    std::cout << "ID: " << nodo->getActivo()->getId()<< ", Nombre: " << nodo->getActivo()->getNombre()
+              << ", Descripción: " << nodo->getActivo()->getDescripcion() << std::endl;
+
+    // Por último me voy al lado derecho
+    imprimirRevursivo(nodo->getDerecha());
+}
+//*************************************************************************************************************
+//Función para modificar nodo
+void ArbolAVL::modificar(std::string id, std::string nuevoNombre,std::string nuevaDescripcion){
+    AVL* nodoModificado = buscar(id);
+    if (nodoModificado != nullptr) {
+        nodoModificado->getActivo()->setNombre(nuevoNombre);
+        nodoModificado->getActivo()->setDescripcion(nuevaDescripcion);
+    } else {
+        std::cout << "Nodo con ID " << id << " no encontrado\n";
+    }
+}
+//**************************************************************************************************************
+void ArbolAVL::imprimirActivosDisponibles(){
+    imprimirActivosDisponiblesRecursivo(this->raiz);
+}
+void ArbolAVL::imprimirActivosDisponiblesRecursivo(AVL* nodo){
+    if (nodo == nullptr) return;//Si no tiene nada no imprimo nada xd
+    //Primero me voy por le lado izquierdo
+    imprimirActivosDisponiblesRecursivo(nodo->getIzquierda());
+
+    // Imprimo la información del nodo
+    if (nodo->getActivo()->getTiempoRenta() >0){
+        std::cout << "ID: " << nodo->getActivo()->getId()<< ", Nombre: " << nodo->getActivo()->getNombre()
+              << ", Descripción: " << nodo->getActivo()->getDescripcion() << std::endl;
+
+    // Por último me voy al lado derecho
+    }
+    imprimirActivosDisponiblesRecursivo(nodo->getDerecha());
+}
+//**************************************************************************************************
+
+
+//***************************************************************************************************
+
+void ArbolAVL::mostrarActivosRentados(){
+    imprimirActivosDisponiblesRecursivo(this->raiz);
+}
+void ArbolAVL::imprimirActivosRentadosRecursivo(AVL* nodo){
+    if (nodo == nullptr) return;//Si no tiene nada no imprimo nada xd
+    //Primero me voy por el lado izquierdo
+    imprimirActivosDisponiblesRecursivo(nodo->getIzquierda());
+
+    // Imprimo la información del nodo
+    if (nodo->getActivo()->getTiempoRenta() >=0){
+        std::cout << "ID: " << nodo->getActivo()->getId()<< ", Nombre: " << nodo->getActivo()->getNombre()
+              << ", Descripción: " << nodo->getActivo()->getDescripcion() << std::endl;
+
+        // Por último me voy al lado derecho
+    }
+    imprimirActivosDisponiblesRecursivo(nodo->getDerecha());
+}
+
+//*******************************************************************************
+//Funciones para saber si hay activos que están siendo rentados
+bool ArbolAVL::hayActivosRentados(){
+    return hayActivosRentadosRecursivo(this->raiz);
+}
+bool ArbolAVL::hayActivosRentadosRecursivo(AVL* nodo){
+    if (nodo->getActivo()->getTiempoRenta() >0) return true;//Si no tiene nada no imprimo nada xd
+    //Primero me voy por el lado izquierdo
+    hayActivosRentadosRecursivo(nodo->getIzquierda());
+    // Por último me voy al lado derecho
+    hayActivosRentadosRecursivo(nodo->getDerecha());
+    return false;
+}

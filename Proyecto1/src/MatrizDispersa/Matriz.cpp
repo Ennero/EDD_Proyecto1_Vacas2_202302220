@@ -14,32 +14,32 @@ Matriz::Matriz(){
 }
 //--------------------------------------------------------------------------------------------------------------------------------------
 //Función para insertar un nuevo valor (sería como la principal)
-void Matriz::insertarValor(std::string elian, std::string cabeH, std::string cabeV){
+void Matriz::insertarValor(std::string elian, std::string cabeH, std::string cabeV,std::string contra,std::string nombreCompleto){
 
     NodoMatriz *cabH=nullptr;//Cabecera Horizontal
     NodoMatriz *cabV=nullptr;//Cabecera Vertical
     NodoMatriz *usuarioNuevo= new NodoMatriz(elian); //Creo el nuevo Nodo
 
-    //Aquí voy a agregar la contraseña y demás datos iniciales
-    std::string contra;
-    std::cout<<"Ingrese la contrasena: "<<std::endl;
-    std::cin>>contra;
+    //Aquí aplico toda la información del usuario------------------------------------------------------------------------
     usuarioNuevo->getUsuario()->setContrasena(contra);
     usuarioNuevo->getUsuario()->setDepartamento(cabeH);
     usuarioNuevo->getUsuario()->setEmpresa(cabeV);
-    std::string nombrecito;
-    std::cout<<"Ingrese el nombre: "<<std::endl;
-    std::cin>>nombrecito;
-    usuarioNuevo->getUsuario()->setNombre(nombrecito);
+    usuarioNuevo->getUsuario()->setNombre(nombreCompleto);
+
+
+
     //Aquí sigo finalizo la inicialización del usuario
 
     //Verifico si el usuario ya existe en la matriz------------------------------------------------------------------------
     NodoMatriz* usuarioExistente = encontrarUsuario(contra, elian);
     if (usuarioExistente != nullptr) {
-        std::cout << "El usuario ya existe en la matriz." << std::endl;
+        std::cout << "El usuario ya existe." << std::endl;
         return; // No continuar con la inserción
     }
     //Verifico si el usuario ya existe en la matriz------------------------------------------------------------------------
+
+    //Si no existe, entonces si existe xd
+    std::cout<<"Usuario ingresado exitosamente"<<std::endl;
 
     if (isVacia()){ //Si no hay nada en la matriz
         cabH=insertarCabeceraHorizontal(cabeH);//Se inserta una cabecera horizontal
@@ -81,7 +81,7 @@ void Matriz::insertarValor(std::string elian, std::string cabeH, std::string cab
     //Manejo de la colocación de los usuarios ---------------------------------------------------------------------------------------
     NodoMatriz *nodoExistente = obtenerNodo(cabeH, cabeV); // Implementa esta función para buscar un nodo existente
     if (nodoExistente != nullptr){
-        std::cout << "Escoja una opción: " << std::endl;
+        std::cout << "Escoja una opcion: " << std::endl;
         std::cout<<"1. Insertar Adelante"<<std::endl;
         std::cout<<"2. Insertar Atras"<<std::endl;
         int opcion;
@@ -374,6 +374,8 @@ void Matriz::generarReporteMatriz(){
     archivo.close();
     //Creo un comando para ejecutar el graphviz y crear el pdf
     system("dot -Tpdf reporteMatriz.dot -o reporteMatriz.pdf && start reporteMatriz.pdf");
+    std::cout<<"Reporte generado exitosamente"<<std::endl;
+
 }
 
 std::string Matriz::generarDotGrafica() {
@@ -427,4 +429,247 @@ std::string Matriz::generarDotGrafica() {
     }
     grafico += "}"; //Termino el string
     return grafico;//lo retorno
+}
+
+//********************************************************************************************************
+//Función para obtener el cuerpo de la cosa esa para la graficación
+std::string Matriz::concatenarStringPorFila(NodoMatriz* cabV) {//(empresas)
+
+    std::string graficaAVL = "digraph G {\n";
+    graficaAVL += "    node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];\n";
+    graficaAVL += "    edge [style=solid, color=blue];\n";
+    graficaAVL += "    graph [ranksep=1.5, nodesep=1];\n";
+    graficaAVL += "    graph [label=\"Reporte de Activos de empresa " + cabV->getNombre() + " \", fontsize=20, fontcolor=black];\n";
+
+    NodoMatriz* nodoActual = cabV->getSiguiente();  // Comienza con la cabecera horizontal.
+    while (nodoActual != nullptr) { //Recorro las cabeceras horizontales
+        //Si el nombre del usuario actual
+        graficaAVL+=nodoActual->generarArchivoDot();//Genero esta sección de la parte del código para las graficas
+        //Verifico si existe o hacia adelante
+        NodoMatriz* auxAdelante = nodoActual->getAdelante(); //Creo aux de adelante
+        while (auxAdelante != nullptr) {
+            graficaAVL+=auxAdelante->generarArchivoDot(); // Retorna si encuentra el usuario
+            auxAdelante = auxAdelante->getAdelante(); //Si no pa' delante
+            }
+        NodoMatriz* nodoAtras = nodoActual->getAtras(); //Lo mismo que el de adelante xd
+        while (nodoAtras != nullptr) {
+             graficaAVL+=nodoAtras->generarArchivoDot();
+             nodoAtras = nodoAtras->getAtras();
+        }
+        nodoActual = nodoActual->getSiguiente(); // Pasa a la siguiente cabecera horizontal (a la derecha)
+    }
+    graficaAVL += "}\n";
+    return graficaAVL;
+}
+//Función para generar el reporte de todos los activos de una empresa
+void Matriz::generarReporteActivosEmpresa(std::string empresa){
+    //Genero el archivo
+    NodoMatriz *cabeV=cabeceraV(empresa);
+    //Aquí se supone que debería de llamar la función
+    std::string matriz=concatenarStringPorFila(cabeV);
+    std::ofstream archivo("reporteActivosEmpresa.dot");
+    archivo<<matriz;
+    archivo.close();
+    //Creo un comando para ejecutar el graphviz y crear el pdf
+    system("dot -Tpdf reporteActivosEmpresa.dot -o reporteActivosEmpresa.pdf && start reporteActivosEmpresa.pdf");
+    std::cout<<"Reporte de Activos disponibles en la empresa "<<empresa<<" creado con exito"<<std::endl;
+}
+//*********************************************************************************************
+//Lo mismo de arriba pero para la columna :)
+std::string Matriz::concatenarStringPorColumna(NodoMatriz* cabH) {//(empresas)
+
+    std::string graficaAVL = "digraph G {\n";
+    graficaAVL += "    node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];\n";
+    graficaAVL += "    edge [style=solid, color=blue];\n";
+    graficaAVL += "    graph [ranksep=1.5, nodesep=1];\n";
+    graficaAVL += "    graph [label=\"Reporte de Activos de empresa " + cabH->getNombre() + " \", fontsize=20, fontcolor=black];\n";
+
+    NodoMatriz* nodoActual = cabH->getAbajo();  // Comienza con la cabecera horizontal.
+    while (nodoActual != nullptr) { //Recorro las cabeceras horizontales
+        //Si el nombre del usuario actual
+        graficaAVL+=nodoActual->generarArchivoDot();//Genero esta sección de la parte del código para las graficas
+        //Verifico si existe o hacia adelante
+        NodoMatriz* auxAdelante = nodoActual->getAdelante(); //Creo aux de adelante
+        while (auxAdelante != nullptr) {
+            graficaAVL+=auxAdelante->generarArchivoDot(); // Retorna si encuentra el usuario
+            auxAdelante = auxAdelante->getAdelante(); //Si no pa' delante
+        }
+        NodoMatriz* nodoAtras = nodoActual->getAtras(); //Lo mismo que el de adelante xd
+        while (nodoAtras != nullptr) {
+            graficaAVL+=nodoAtras->generarArchivoDot();
+            nodoAtras=nodoAtras->getAtras();
+        }
+        nodoActual = nodoActual->getAbajo(); // Pasa a la siguiente cabecera horizontal (a la derecha)
+    }
+    graficaAVL += "}\n";
+    return graficaAVL;
+}
+
+void Matriz::generarReporteActivosDepartamento(std::string departamento){
+    //Genero el archivo
+    NodoMatriz *cabeH=cabeceraH(departamento);
+    //Aquí se supone que debería de llamar la función
+    std::string matriz=concatenarStringPorColumna(cabeH);
+    std::ofstream archivo("reporteActivosEmpresa.dot");
+    archivo<<matriz;
+    archivo.close();
+    //Creo un comando para ejecutar el graphviz y crear el pdf
+    system("dot -Tpdf reporteActivosDepartamento.dot -o reporteActivosDepartamento.pdf && start reporteActivosDepartamento.pdf");
+    std::cout<<"Reporte de Activos disponibles en el departamento "<<departamento<<" creado con exito"<<std::endl;
+}
+//*********************************************************************************************
+//Función para mostrar los activos del usuario
+void Matriz::mostrarActivosUsuario(std::string user,std::string contrasena){
+    NodoMatriz* nodoUsuario=obtenerNodo(user,contrasena);
+    if(nodoUsuario==nullptr){
+        std::cout<<"No se encuentra el usuario con la informacion proporcionada"<<std::endl;
+    }else{//Genera la función de la gráfica :)
+        nodoUsuario->getUsuario()->getActivos()->generarDotGrafica();
+        std::cout<<"Activo de usuario "+user+" creado con exito"<<std::endl;
+    }
+}
+
+//*********************************************************************************************************
+//Función para mostrar los activos rentados por un usuario
+void Matriz::mostrarActivosRentados(std::string user,std::string contrasena){
+    NodoMatriz* nodoUsuario=obtenerNodo(user,contrasena);
+    if(nodoUsuario==nullptr){
+        std::cout<<"No se encuentra el usuario"<<std::endl;
+    }else{
+        nodoUsuario->getUsuario()->getActivosRentados().imprimirNodos();
+        std::cout<<"Activo de usuario "+user+" creado con exito"<<std::endl;
+    }
+}
+
+//************************************************************************************************************
+//Función para mostrar todos los activos disponibles
+void Matriz::mostrarActivosDisponibles(){
+    NodoMatriz* auxH = cabeceraHorizontal; // Comienza desde la cabecera horizontal
+
+    while (auxH != nullptr) { //Recorro las cabeceras horizontales
+        NodoMatriz* actual = auxH->getAbajo(); //Empieza desde el primer nodo de cada cabecera horizontal
+        while (actual != nullptr) { //Recorro los nodos verticales de la fila actual
+            Usuario* usuarioActual = actual->getUsuario(); //Creo una copia de un usuario
+            usuarioActual->getActivos()->imprimirActivosDisponibles();
+            //Verifico si existe algo hacia adelante
+            NodoMatriz* auxAdelante = actual->getAdelante(); //Creo aux de adelante
+            while (auxAdelante != nullptr) {
+                Usuario* usuarioAdelante = auxAdelante->getUsuario(); //Obtengo ese usuario
+                usuarioAdelante->getActivos()->imprimirActivosDisponibles();
+                auxAdelante = auxAdelante->getAdelante(); //Si no pa' delante
+            }
+            // Verificar si existe algo hacia atras
+            NodoMatriz* nodoAtras = actual->getAtras(); //Lo mismo que el de adelante xd
+            while (nodoAtras != nullptr) {
+                Usuario* usuarioAtras = nodoAtras->getUsuario();
+                usuarioAtras->getActivos()->imprimirActivosDisponibles();
+                nodoAtras = nodoAtras->getAtras();
+            }
+            actual = actual->getAbajo(); // Baja al siguiente nodo
+        }
+        auxH = auxH->getSiguiente(); // Pasa a la siguiente cabecera horizontal (a la derecha)
+    }
+    return; //Si no encuentra nada, retorna nada
+}
+
+
+AVL* Matriz::encontrarActivo(std::string id){
+    NodoMatriz* auxH = cabeceraHorizontal; // Comienza desde la cabecera horizontal
+
+    while (auxH != nullptr) { //Recorro las cabeceras horizontales
+        NodoMatriz* actual = auxH->getAbajo(); //Empieza desde el primer nodo de cada cabecera horizontal
+        while (actual != nullptr) { //Recorro los nodos verticales de la fila actual
+            Usuario* usuarioActual = actual->getUsuario(); //Creo una copia de un usuario
+            //Si el nombre del usuario actual
+            AVL *activo = usuarioActual->getActivos()->buscar(id);
+            if (activo != nullptr) {
+                return activo; // Retorna el nodo si coincide el usuario
+            }
+            //Verifico si existe algo hacia adelante
+            NodoMatriz* auxAdelante = actual->getAdelante(); //Creo aux de adelante
+            while (auxAdelante != nullptr) {
+                AVL* activoAdelante = auxAdelante->getUsuario()->getActivos()->buscar(id); //Obtengo ese usuario
+                if (activoAdelante != nullptr) {
+                    return activoAdelante; // Retorna si encuentra el usuario
+                }
+                auxAdelante = auxAdelante->getAdelante(); //Si no pa' delante
+            }
+            // Verificar si existe algo hacia atras
+            NodoMatriz* nodoAtras = actual->getAtras(); //Lo mismo que el de adelante xd
+            while (nodoAtras != nullptr) {
+                AVL* activoAtras = nodoAtras->getUsuario()->getActivos()->buscar(id); //Obtengo ese usuario
+                if (activoAtras!=nullptr) {
+                    return activoAtras; // Retorna si encuentra el usuario atrás
+                }
+                nodoAtras = nodoAtras->getAtras();
+            }
+            actual = actual->getAbajo(); // Baja al siguiente nodo
+        }
+        auxH = auxH->getSiguiente(); // Pasa a la siguiente cabecera horizontal (a la derecha)
+    }
+    return nullptr; //Si no encuentra nada, retorna nada
+}
+
+//Función para rentar un activo
+void Matriz::rentarActivo(std::string id,int dias,std::string usuarioRentador,std::string contrasenaRentador){
+    Activo *activoParaRentar=encontrarActivo(id)->getActivo();
+    activoParaRentar->setTiempoRenta(dias);
+    activoParaRentar->setUsuarioRentador(usuarioRentador);
+
+    //Aquí ahora voy a pasar el activo a la lista de activos rentados por el usuario
+    NodoMatriz* usuarioRentadorEncontrado=encontrarUsuario(contrasenaRentador,usuarioRentador);
+    usuarioRentadorEncontrado->getUsuario()->getActivosRentados().agregarNodoActivo(activoParaRentar->getId(),activoParaRentar->getDescripcion(),activoParaRentar->getNombre());
+}
+//*********************************************************************************************************************************
+//Función para imprimir los activos en renta de un usuario
+void Matriz::activosEnRentaDEUsuario(std::string user,std::string contrasena){
+    //En este no utilizo la verificación de que exista el usuario porque se supone que si
+    NodoMatriz* usuarioEncontrado=encontrarUsuario(contrasena,user);
+    usuarioEncontrado->getUsuario()->getActivos()->mostrarActivosRentados();
+}
+//*********************************************************************************************************************************
+//Función para retornar si hay activos en renta
+bool Matriz::hayActivosEnRenta(){
+    NodoMatriz* auxH = cabeceraHorizontal; // Comienza desde la cabecera horizontal
+    while (auxH != nullptr) { //Recorro las cabeceras horizontales
+        NodoMatriz* actual = auxH->getAbajo(); //Empieza desde el primer nodo de cada cabecera horizontal
+        while (actual != nullptr) { //Recorro los nodos verticales de la fila actual
+            Usuario* usuarioActual = actual->getUsuario(); //Creo una copia de un usuario
+            if (usuarioActual->getActivos()->getRaiz() != nullptr) {
+                return true;
+            }
+            //Verifico si existe algo hacia adelante
+            NodoMatriz* auxAdelante = actual->getAdelante(); //Creo aux de adelante
+            while (auxAdelante != nullptr) {
+                Usuario* usuarioAdelante = auxAdelante->getUsuario(); //Obtengo ese usuario
+                if (usuarioAdelante->getActivos()->getRaiz() != nullptr) {
+                    return true;
+                }
+                auxAdelante = auxAdelante->getAdelante(); //Si no pa' delante
+            }
+            // Verificar si existe algo hacia atras
+            NodoMatriz* nodoAtras = actual->getAtras(); //Lo mismo que el de adelante xd
+            while (nodoAtras != nullptr) {
+                Usuario* usuarioAtras = nodoAtras->getUsuario();
+                if (usuarioAtras->getActivos()->getRaiz() != nullptr) {
+                    return true;
+                }
+                nodoAtras = nodoAtras->getAtras();
+            }
+            actual = actual->getAbajo(); // Baja al siguiente nodo
+        }
+        auxH = auxH->getSiguiente(); // Pasa a la siguiente cabecera horizontal (a la derecha)
+    }
+    return false; //Si no encuentra nada, retorna nada
+}
+
+
+
+
+
+
+
+//Getter que no tenía hecho antes
+NodoMatriz* Matriz::getCabeceraHorizontal(){
+    return cabeceraHorizontal;
 }

@@ -6,6 +6,8 @@
 #define MATRIZDISPERSA_H
 
 #include "NodoMatriz.h"
+#include "Activo.h"
+#include "avl.h"
 #include <iostream>
 
 class Matriz {
@@ -31,7 +33,7 @@ public:
     NodoMatriz *insertarCabeceraVertical(std::string elian);
 
     //Función para insertar un Valor
-    void insertarValor(std::string elian, std::string cabeH, std::string cabeV);
+    void insertarValor(std::string elian, std::string cabeH, std::string cabeV,std::string contrasena,std::string nombreCompleto);
     //Función para insertar un nodo al final
     void insertarAlFinal(NodoMatriz *valor, NodoMatriz *cabeH, NodoMatriz *cabeV);
     void insertarAlFinalHorizontal(NodoMatriz *valor, NodoMatriz *cabeH);
@@ -67,7 +69,35 @@ public:
     void setCabeceraHorizontal(NodoMatriz *nodo);
     void setCabeceraVertical(NodoMatriz *nodo);
 
+    //Funciones para Generar el reporte de los activos de las empresas
+    void generarReporteActivosEmpresa(std::string empresa);
+    std::string generarDotGraficaActivosEmpresa(std::string empresa);
+    std::string concatenarStringPorFila(NodoMatriz *cab);
 
+    //Funciones para Generar el reporte de los activos del departamento
+    void generarReporteActivosDepartamento(std::string departamento);
+    std::string concatenarStringPorColumna(NodoMatriz *cab);
+
+    //Funciones para mostrar los activos del usuario
+    void mostrarActivosUsuario(std::string user, std::string contrasena);
+
+    //Funciones para mostrar los activos rentados por el usuario
+    void mostrarActivosRentados(std::string user, std::string contrasena);
+
+    //Función para mostrar los activos disponibles
+    void mostrarActivosDisponibles();
+
+    //Funciones para buscarActivo por ID (retorna el nodo)
+    AVL* encontrarActivo(std::string id);
+
+    //Función para retar un activo
+    void rentarActivo(std::string id,int dias,std::string user, std::string contrasena);
+
+    //Función para retornar los activos que están en renta de un usuario
+    void activosEnRentaDEUsuario(std::string user, std::string contrasena);
+
+    //Función para retornar si hay activos en renta
+    bool hayActivosEnRenta();
 };
 
 #endif //MATRIZDISPERSA_H

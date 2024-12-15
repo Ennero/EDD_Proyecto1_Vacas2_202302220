@@ -2,7 +2,7 @@
 // Created by Enner on 8/12/2024.
 //
 
-#include "../../includes/ListaCircularDoble/NodoTransaccion.h"
+#include "../../includes/MatrizDispersa/NodoTransaccion.h"
 
 //Constructor
 NodoTransaccion::NodoTransaccion(Transaccion* transaccion){
@@ -17,12 +17,12 @@ NodoTransaccion::~NodoTransaccion(){
     anterior = nullptr;
 }
 
-void NodoTransaccion::mostrarTransaccion(){
-    std::cout << "ID Transaccion: " << this->transaccion->getIdTransaccion() << std::endl;
-    std::cout << "ID Usuario:" << this->transaccion->getUsarioRentador() << std::endl;
-
+//Constructor para los activos
+NodoTransaccion::NodoTransaccion(std::string descripcion, std::string id,std::string nombre){
+    this->descripcion=descripcion;
+    this->id=id;
+    this->nombre=nombre;
 }
-
 
 
 //Getteres y Setters
@@ -43,6 +43,30 @@ void NodoTransaccion::setAnterior(NodoTransaccion* anterior){
 }
 NodoTransaccion* NodoTransaccion::getAnterior(){
     return this->anterior;
+}
+
+//Aquí irán las funciones destinadas a almacenar los activos*********************************************************************************************
+
+std::string NodoTransaccion::getDescripcion(){
+    return this->getDescripcion();
+}
+
+std::string NodoTransaccion::getId(){
+    return this->getId();
+}
+
+std::string NodoTransaccion::getNombre(){
+    return this->getNombre();
+}
+
+void NodoTransaccion::setDescripcion(std::string descripcion){
+    this->descripcion = descripcion;
+}
+void NodoTransaccion::setId(std::string id){
+    this->id = id;
+}
+void NodoTransaccion::setNombre(std::string nombre){
+    this->nombre = nombre;
 }
 
 

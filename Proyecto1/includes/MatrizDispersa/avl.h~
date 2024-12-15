@@ -5,34 +5,29 @@
 #ifndef AVL_H
 #define AVL_H
 
-#include "../MatrizDispersa/Activo.h"
 #include <iostream>
+#include "Activo.h"
 class AVL{
 private:
-    Activo activo;
-    std::string id;
+    Activo* activo;
     int factorEquilibrio;
     AVL *derecha;
     AVL *izquierda;
 public:
-    AVL(std::string id);
+    AVL(std::string id, std::string nombre, std::string descripcion);
 
     //getters
-    std::string getId();
-    Activo getActivo();
+    Activo *getActivo();
     int getFactorEquilibrio();
-    AVL*& getDerecha();
-    AVL*& getIzquierda();
+    AVL* getDerecha();
+    AVL* getIzquierda();
     //setters
-    void setId(std::string id)
-    void setActivo(Activo activo);
+    void setActivo(Activo* activo);
     void setFactorEquilibrio(int factorEquilibrio);
     void setIzquierda(AVL *izquierda);
     void setDerecha(AVL *derecha);
+
+
 };
-
-
-
-
 
 #endif //AVL_H

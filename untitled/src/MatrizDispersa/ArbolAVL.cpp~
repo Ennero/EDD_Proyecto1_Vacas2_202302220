@@ -11,9 +11,10 @@ ArbolAVL::ArbolAVL(){
     this->raiz=nullptr;
 }
 //Funcion para insertar nodos
-void ArbolAVL::insertar(std::string valor){
-    AVL *nodo=new AVL(valor);
-    insertar(&*nodo,this->raiz);
+void ArbolAVL::insertar(std::string id,std::string nombre,std::string descripcion){
+    AVL *nodo=new AVL(id,nombre,descripcion);
+
+    insertar(nodo,this->raiz);
 }
 void ArbolAVL::insertar(AVL *valor,AVL *&raiz){
     //Cuando inserto cuando no hay nada
@@ -22,7 +23,7 @@ void ArbolAVL::insertar(AVL *valor,AVL *&raiz){
         raiz->setFactorEquilibrio(0);//Le asigno el factor de equilibrio
         return;
     }
-    if (valor->getId() < raiz->getId()){//Inserto el valor en la izquierda
+    if (valor->getActivo()->getId() < raiz->getActivo()->getId()){//Inserto el valor en la izquierda
         insertar(valor,raiz->getIzquierda());
     }else{
         insertar(valor,raiz->getDerecha()); //Inserto el valor en la derecha
@@ -127,10 +128,10 @@ void ArbolAVL::setRaiz(AVL* avl){
 }
 
 //*************************************************************************************************************************************
-//Funciones para generar la gráfica
-    void ArbolAVL::generarDotGrafica() {
+//Funciones para generar la gráfica de un solo usuario
+void ArbolAVL::generarDotGrafica() {
         std::string graficaAVL="digraph AVLTree {\n";
-        graficaAVL+= "    node [shape=circle];\n"; // Los nodos serán circulitos
+        graficaAVL+= "    node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];\nedge [style=solid, color=blue];\n graph [ranksep=1.5, nodesep=1];graph [label=\"Reporte de Activos\", fontsize=20, fontcolor=black];\n"; // Los nodos serán circulitos
         graficaAVL += generarContenidoDot(this->raiz);//mando la raiz
         graficaAVL += "}\n";
 
@@ -140,8 +141,7 @@ void ArbolAVL::setRaiz(AVL* avl){
         archivo.close();
         //Creo un comando para ejecutar el graphviz y crear el pdf
         system("dot -Tpdf reporteArbolAVL.dot -o reporteArbolAVL.pdf && start reporteArbolAVL.pdf");
-    }
-    //Función para generar el string .dot
+    }//Función para generar el string .dot
 // Nueva función para generar el contenido del dot
 std::string ArbolAVL::generarContenidoDot(AVL* nodo) {
     if (nodo == nullptr) return "";
@@ -149,22 +149,20 @@ std::string ArbolAVL::generarContenidoDot(AVL* nodo) {
     std::string contenido;//Contenido del dot
 
     // Agrego el nodo actual
-    contenido += "    \"" + nodo->getActivo().getId() + "\" [label=\"" + nodo->getActivo().getId() + "\"];\n";
+    contenido += "    \"" + nodo->getActivo()->getId() + "\" [label=\"" + nodo->getActivo()->getId() + "\"];\n";
 
     // Verifico el hijo izquierdo
     if (nodo->getIzquierda() != nullptr) {
         // Creo la conexión del anterior con el actual
-        contenido += "    \"" + nodo->getActivo().getId() + "\" -> \"" + nodo->getIzquierda()->getActivo().getId() + "\";\n";
+        contenido += "    \"" + nodo->getActivo()->getId() + "\" -> \"" + nodo->getIzquierda()->getActivo()->getId() + "\";\n";
         contenido += generarContenidoDot(nodo->getIzquierda());// Proceso el subárbol izquierdo con recursividad
     }
 
     // Verifico el hijo izquierdo
     if (nodo->getDerecha() != nullptr) {
         // Creo la conexión del anterior con el actual
-        contenido += "    \"" + nodo->getActivo().getId() + "\" -> \"" + nodo->getDerecha()->getActivo().getId() + "\";\n";
+        contenido += "    \"" + nodo->getActivo()->getId() + "\" -> \"" + nodo->getDerecha()->getActivo()->getId() + "\";\n";
         contenido += generarContenidoDot(nodo->getDerecha());//Proceso el subárbol izquierdo con recursividad
     }
     return contenido;//retorno el contenido
 }
-
-

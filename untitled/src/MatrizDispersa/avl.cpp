@@ -3,34 +3,34 @@
 //
 #include "../../includes/MatrizDispersa/avl.h"
 #include <iostream>
-#include "../../includes/MatrizDispersa/Activo.h"
 
 //Constructor que no sé por qué tiene que ir así :(
-AVL::AVL(std::string id) : activo(id), factorEquilibrio(0), derecha(nullptr), izquierda(nullptr) {}
-
+AVL::AVL(std::string id, std::string nombre, std::string descripcion){
+    this->activo = new Activo(id, nombre, descripcion);
+    this->izquierda = nullptr;
+    this->derecha = nullptr;
+    this->factorEquilibrio = 0;
+}
 
 
 //getters
-std::string AVL::getId(){
-    return this->id;
-}
-Activo AVL::getActivo() {
+Activo* AVL::getActivo() {
     return this->activo;
 }
 int AVL::getFactorEquilibrio() {
     return this->factorEquilibrio;
 }
-AVL* &AVL::getDerecha() {
+
+AVL*& AVL::getDerecha() {
     return this->derecha;
 }
-AVL* &AVL::getIzquierda() {
+
+AVL*& AVL::getIzquierda() {
     return this->izquierda;
 }
+
 //setters
-void AVL::setId(std::string id) {
-    this->id = id;
-}
-void AVL::setActivo(Activo activo) {
+void AVL::setActivo(Activo* activo) {
     this->activo = activo;
 }
 void AVL::setFactorEquilibrio(int factorEquilibrio) {
