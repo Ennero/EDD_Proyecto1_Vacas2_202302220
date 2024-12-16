@@ -532,13 +532,13 @@ void Matriz::mostrarActivosUsuario(std::string user,std::string contrasena){
 //*********************************************************************************************************
 //Función para mostrar los activos rentados por un usuario
 void Matriz::mostrarActivosRentados(std::string user,std::string contrasena){
-    NodoMatriz* nodoUsuario=encontrarUsuario(user,contrasena);
+    NodoMatriz* nodoUsuario=encontrarUsuario(contrasena,user;
     if(nodoUsuario==nullptr){
         std::cout<<"No se encuentra el usuario"<<std::endl;
     }else{
+        std::cout<<"Activos de usuario "+user+":"<<std::endl;
+        nodoUsuario->getUsuario()->getActivosRentados()->imprimirNodos();
 
-        nodoUsuario->getUsuario()->getActivosRentados().imprimirNodos();
-        std::cout<<"Activo de usuario "+user+" creado con exito"<<std::endl;
     }
 }
 
@@ -619,7 +619,7 @@ void Matriz::rentarActivo(std::string id,int dias,std::string usuarioRentador,st
 
     //Aquí ahora voy a pasar el activo a la lista de activos rentados por el usuario
     NodoMatriz* usuarioRentadorEncontrado=encontrarUsuario(contrasenaRentador,usuarioRentador);
-    usuarioRentadorEncontrado->getUsuario()->getActivosRentados().agregarNodoActivo(activoParaRentar->getId(),activoParaRentar->getDescripcion(),activoParaRentar->getNombre());
+    usuarioRentadorEncontrado->getUsuario()->getActivosRentados()->agregarNodoActivo(activoParaRentar->getId(),activoParaRentar->getDescripcion(),activoParaRentar->getNombre());
 }
 //*********************************************************************************************************************************
 //Función para imprimir los activos en renta de un usuario
@@ -663,11 +663,16 @@ bool Matriz::hayActivosEnRenta(){
     }
     return false; //Si no encuentra nada, retorna nada
 }
-
-
-
-
-
+//***************************************************************************************************************
+//Función para devolver un activo
+void Matriz::devolverActivo(std::string id,std::string user,std::string contrasena){
+    Activo *activoParaDevolver=encontrarActivo(id)->getActivo();
+    activoParaDevolver->setTiempoRenta(0);
+    activoParaDevolver->setUsuarioRentador("");
+    //Aquí lo elimino de la lista de activos rentados dentro de este usuario
+    NodoMatriz* usuarioEncontrado=encontrarUsuario(contrasena,user);
+    usuarioEncontrado->getUsuario()->getActivosRentados()->eliminarNodoPorId(id);
+}
 
 
 //Getter que no tenía hecho antes

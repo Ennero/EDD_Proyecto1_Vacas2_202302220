@@ -86,7 +86,9 @@
         bool hayActivosRentadosRecursivo(AVL *nodo);
         //Función para saber si hay activos rentados
 
-        //Funciones para poder imprimir las
+        //Funciones para poder imprimir las que no están ocupadas
+        void imprimirActivosNoDisponibles();
+        void imprimirActivosNoDisponiblesRecursivo(AVL *nodo);
 
     };
 

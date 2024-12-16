@@ -42,6 +42,9 @@ public:
 
     //Función para imprimir los activos de alguien
     void imprimirNodos();
+
+    //Función para eliminar un nodo por su ID
+    void eliminarNodoPorId(std::string id);
 };
 
 

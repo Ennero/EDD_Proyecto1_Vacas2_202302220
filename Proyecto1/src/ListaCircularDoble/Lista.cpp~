@@ -209,18 +209,26 @@ void Lista::eliminarNodoPorId(std::string id) {
         inicio = nullptr;//Todo lo elimino
         fin = nullptr;
     }else if (actual == inicio) {//Caso 2 Si el nodo a eliminar es le primero (pero hay mas)
-        inicio = inicio->getSiguiente(); //Avanzamos el inicio
-        inicio->setAnterior(fin); //Actualizamos el puntero anterior del nuevo inicio
-        fin->setSiguiente(inicio); //Actualizamos el puntero siguiente del fin
-    }else if (actual == fin) {    //Caso 3 El nodo es el ultimo
-        fin = anterior; //El nuevo fin es el anterior al fin
-        fin->setSiguiente(inicio); //El nuevo siguiente del fin será el siguiente el inicio
-        inicio->setAnterior(fin); //El nuevo anterior del inicio será el nuevo fin
-    }else {//Caso 4 El nodo está en medio
-        anterior->setSiguiente(actual->getSiguiente()); //Reconecto los nodos
-        actual->getSiguiente()->setAnterior(anterior);
+        inicio = inicio->getSiguiente(); // Avanzamos el inicio
+        inicio->setAnterior(fin); // Actualizamos el puntero anterior del nuevo inicio
+        fin->setSiguiente(inicio); // Actualizamos el puntero siguiente del fin
+    }else if (actual == fin) {    // Caso 3: El nodo a eliminar es el fin
+        fin = anterior; // Retrocedemos el fin
+        fin->setSiguiente(inicio); // Actualizamos el puntero siguiente del nuevo fin
+        inicio->setAnterior(fin); // Actualizamos el puntero anterior del inicio
     }
+    // Caso 4: El nodo a eliminar está en medio
+    else {
+        anterior->setSiguiente(actual->getSiguiente()); // Saltamos el nodo actual
+        actual->getSiguiente()->setAnterior(anterior); // Conectamos el siguiente con el anterior
+    }
+
+    delete actual; // Liberamos la memoria del nodo eliminado
     tamano--; // Reducimos el tamaño de la lista
-    std::cout << "Activo con ID " << id << " eliminado exitosamente" << std::endl;
+
+    std::cout << "Nodo con ID " << id << " eliminado correctamente." << std::endl;
 }
-//************************************************************************************************************************
+
+
+
+

@@ -38,7 +38,6 @@ string asignarIdAlfanumerico(){
     return idAlfanumerico;
 }
 
-
 //-------------------------------------------------------------------------------------------------------------------------------------------
 //Ciclo para mostrar el menu del usuario :)
 void usuarioMenu(Usuario *usuario){
@@ -86,7 +85,6 @@ void usuarioMenu(Usuario *usuario){
                 cin>>idActivo;
                 cin.ignore();
                 usuario->getActivos()->eliminar(idActivo);
-                cout<<"Activo eliminado con exito"<<endl;
             }
             break;
         }
@@ -120,42 +118,80 @@ void usuarioMenu(Usuario *usuario){
                 cout<<"---------------RENTAR ACTIVO---------------"<<endl;
                 cout<<"Activos Disponibles"<<endl;
                 matriz->mostrarActivosDisponibles();
-                cout<<"Ingrese el id del activo de desea rentar"<<endl;
-                string idActivo;
-                cin>>idActivo;
+                int optar;
+                cout<<"Digite un opcion"<<endl;
+                cout<<"1.Rentar"<<endl;
+                cout<<"Cualquier otro numero para cancelar"<<endl;
+                cin>>optar;
                 cin.ignore();
                 cin.clear();
-                cout<<"Ingrese el numero de dias por lo que quiere rentar el activo"<<endl;
-                int dias;
-                cin>>dias;
-                cin.ignore();
-                cin.clear();
-                matriz->rentarActivo(idActivo,dias,usuario->getUsuario(),usuario->getContrasena());
-                cout<<"Activo rentado con exito"<<endl;
+                switch (optar){
+                    case 1:{
+                        cout<<"Ingrese el id del activo de desea rentar"<<endl;
+                        string idActivo;
+                        cin>>idActivo;
+                        cin.ignore();
+                        cin.clear();
+                        cout<<"Ingrese el numero de dias por lo que quiere rentar el activo"<<endl;
+                        int dias;
+                        cin>>dias;
+                        cin.ignore();
+                        cin.clear();
+                        matriz->rentarActivo(idActivo,dias,usuario->getUsuario(),usuario->getContrasena());
+                        cout<<"Activo rentado con exito"<<endl;
 
-                //Aquí voy a generar la transaccion
-                //Se supone que aquí ando creando una transaccion
-                //Esta es una parte para genera la hora y la fecha
-                time_t tiempo = time(0);
-                tm* now=localtime(&tiempo);
-                ostringstream oss;
-                oss<<put_time(now, "%H:%M %d-%m-%Y");
+                        //Aquí voy a generar la transaccion
+                        //Se supone que aquí ando creando una transaccion
+                        //Esta es una parte para genera la hora y la fecha
+                        time_t tiempo = time(0);
+                        tm* now=localtime(&tiempo);
+                        ostringstream oss;
+                        oss<<put_time(now, "%H:%M %d-%m-%Y");
 
-                lista->agregarNodo(new Transaccion(asignarIdAlfanumerico(), idActivo, usuario->getUsuario(),
-                                                   usuario->getDepartamento(), usuario->getEmpresa(), oss.str(),
-                                                   to_string(dias)));
-                cout<<"Transaccion finalizada"<<endl;
+                        lista->agregarNodo(new Transaccion(asignarIdAlfanumerico(), idActivo, usuario->getUsuario(),
+                                                           usuario->getDepartamento(), usuario->getEmpresa(), oss.str(),
+                                                           to_string(dias)));
+                        cout<<"Transaccion finalizada"<<endl;
+                        break;
+                    }
+                    default:{
+                        cout<<"Cancelando accion..."<<endl;
+                        break;
+                    }
+                }
             }
             break;
         }
         case 5:{
-            if (usuario->getActivosRentados()->getTamano()==0){
+            if (usuario->getActivosRentados()->getTamano()<=0){
                 cout<<"No hay activos rentados"<<endl;
             }else{
                 //Aquí colocar la devolver
                 //************************************************************************************************************
                 cout<<"---------------ACTIVOS RENTADOS---------------"<<endl;
                 usuario->getActivosRentados()->imprimirNodos();
+                cout<<"Digite un opcion:"<<endl;
+                cout<<"1.Devolver"<<endl;
+                cout<<"Cualquier otro numero para cancelar"<<endl;
+                int optar;
+                cin>>optar;
+                cin.ignore();
+                cin.clear();
+                switch (optar){
+                    case 1:{
+                        cout<<"Ingrese el id del activo de desea devolver"<<endl;
+                        string idActivo;
+                        cin>>idActivo;
+                        cin.ignore();
+                        cin.clear();
+                        matriz->devolverActivo(idActivo,usuario->getUsuario(),usuario->getContrasena());
+                        break;
+                    }
+                    default:{
+                        cout<<"Cancelando accion..."<<endl;
+                        break;
+                    }
+                }
             }
             break;
         }
@@ -164,10 +200,9 @@ void usuarioMenu(Usuario *usuario){
                 cout<<"No hay activos agregados en renta"<<endl;
             }else{
                 cout<<"---------------MIS ACTIVOS RENTADOS---------------"<<endl;
-                usuario->getActivos()->mostrarActivosRentados();
-                break;
+                usuario->getActivos()->imprimirActivosNoDisponibles();
             }
-
+            break;
         }
         case 7:{
             if (usuario->getActivos()->getRaiz()==nullptr){

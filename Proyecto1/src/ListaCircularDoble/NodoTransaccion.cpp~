@@ -13,12 +13,6 @@ NodoTransaccion::NodoTransaccion(Transaccion* transaccion){
     this->id="";
     this->nombre="";
 }
-//Destructor
-NodoTransaccion::~NodoTransaccion(){
-    transaccion = nullptr;
-    siguiente = nullptr;
-    anterior = nullptr;
-}
 
 //Constructor para los activos
 NodoTransaccion::NodoTransaccion(std::string descripcion, std::string id,std::string nombre){

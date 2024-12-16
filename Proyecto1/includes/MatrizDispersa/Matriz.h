@@ -98,6 +98,9 @@ public:
 
     //Función para retornar si hay activos en renta
     bool hayActivosEnRenta();
+
+    //Función para devolver un activo rentado
+    void devolverActivo(std::string id, std::string user, std::string contrasena);
 };
 
 #endif //MATRIZDISPERSA_H

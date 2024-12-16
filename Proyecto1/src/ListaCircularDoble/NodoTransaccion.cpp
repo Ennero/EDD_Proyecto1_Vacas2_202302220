@@ -48,15 +48,15 @@ NodoTransaccion* NodoTransaccion::getAnterior(){
 //Aquí irán las funciones destinadas a almacenar los activos*********************************************************************************************
 
 std::string NodoTransaccion::getDescripcion(){
-    return this->getDescripcion();
+    return this->descripcion;
 }
 
 std::string NodoTransaccion::getId(){
-    return this->getId();
+    return this->id;
 }
 
 std::string NodoTransaccion::getNombre(){
-    return this->getNombre();
+    return this->nombre;
 }
 
 void NodoTransaccion::setDescripcion(std::string descripcion){
