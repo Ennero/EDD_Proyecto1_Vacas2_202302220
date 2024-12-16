@@ -45,6 +45,11 @@ public:
 
     //Función para eliminar un nodo por su ID
     void eliminarNodoPorId(std::string id);
+
+    //Función para crear un reporte de los activos rentados por un usuario
+    void generarReporteActivosRentados(std::string user);
+
+
 };
 
 

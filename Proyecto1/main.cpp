@@ -46,6 +46,7 @@ void usuarioMenu(Usuario *usuario){
     bool menu = true;
     while(menu){
         int opcion;
+        cout<<"---------------MENU---------------"<<endl;
         cout<<"Selecciona una opcion:"<<endl;
         cout<<"1. Agregar Activo"<<endl;
         cout<<"2. Eliminar Activo"<<endl;
@@ -119,7 +120,7 @@ void usuarioMenu(Usuario *usuario){
                 cout<<"Activos Disponibles"<<endl;
                 matriz->mostrarActivosDisponibles();
                 int optar;
-                cout<<"Digite un opcion"<<endl;
+                cout<<"Digite un opcion:"<<endl;
                 cout<<"1.Rentar"<<endl;
                 cout<<"Cualquier otro numero para cancelar"<<endl;
                 cin>>optar;
@@ -232,6 +233,7 @@ void adminMenu(){
     bool menu=true;//mientras se desee que se continue mostrando el menu
     int opta; //la opción
     while(menu){//Ciclo while para las opciones
+        cout<<"---------------MENU---------------"<<endl;
         cout<<"Selecciona una opcion:"<<endl;
         cout<<"1. Registrar Usuario"<<endl;
         cout<<"2. Reporte Matriz Dispersa"<<endl;
@@ -353,14 +355,14 @@ void adminMenu(){
             if (matriz->getCabeceraHorizontal()==nullptr){
                 cout<<"No hay usuarios registrados"<<endl;
             }else{
-                cout<<"---------------ACTIVOS RENTADOS POR UN USUARIO---------------"<<endl;
+                cout<<"---------REPORTE DE ACTIVOS RENTADOS POR UN USUARIO---------"<<endl;
                 cout<<"Ingrese el usuario que desea consultar"<<endl;
                 string user;
                 cin>>user;
                 cout<<"Ingrese la contrasena del usuario que desea consultar"<<endl;
                 string contra;
                 cin>>contra;
-                matriz->mostrarActivosRentados(user,contra);
+                matriz->generarReporteActivosRentados(user,contra);
             }
 
             break;
@@ -411,7 +413,6 @@ void ingreso(){ //void para el ingreso de los datos
     string usuario,contra,depa,empre; //variables para solicitar datos
     string adminU="admin";
     cout<<"---------------INICIO DE SESION---------------"<<endl;
-
     //Ingreso de todos los datos
     cout<<"Ingrese Usuario:"<<endl;
     cin>>usuario;
@@ -420,17 +421,6 @@ void ingreso(){ //void para el ingreso de los datos
     }else{ //Si no es el administrador, será un usuario (supongo)
         cout<<"Ingrese Contrasena:"<<endl;
         cin>>contra;
-
-
-        /*
-        cout<<"Ingrese Departamento"<<endl;
-        cin>>depa;
-        cout<<"Ingrese Empresa:"<<endl;
-        cin>>empre;*/
-
-
-
-
         NodoMatriz *usuarioito = matriz->encontrarUsuario(contra,usuario);//Encontrar el usuario
         if (usuarioito==nullptr){
             cout<<"Usuario no encontrado"<<endl;
@@ -505,12 +495,10 @@ int main(){ //El ciclo principal en donde voy a colocar todo
 
     */
     //Aquí voy a meter más valores para ir probando
-    cout<<"**********************************************"<<endl;
     bool inicio=true;
-
-    cout<<"---------------RENTA DE ACTIVOS---------------"<<endl;
     int opcionInicio=0;
     while (inicio){ //Ciclo principal en donde se inicia
+        cout<<"---------------RENTA DE ACTIVOS---------------"<<endl;
         cout<<"Ingrese un numero "<<endl; //Mensajitos
         cout<<"1. Iniciar Sesion"<<endl;
         cout<<"2. Salir"<<endl;

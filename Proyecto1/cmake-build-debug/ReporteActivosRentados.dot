@@ -1,0 +1,8 @@
+digraph listitata {
+rankdir=LR;node [shape=square, style=filled, fillcolor=lightblue, margin=0.2];
+edge [style=solid, color=blue];
+graph [ranksep=1.5, nodesep=1];
+graph [label="Activos Rentados por el usuario enner", fontsize=20, fontcolor=black];
+"xtk63t0810yrycq" [label="{ID Activo: xtk63t0810yrycq\lNombre: pelota\lDescripcion: negr\l}"];
+"xtk63t0810yrycq" -> "xtk63t0810yrycq"[dir=both];
+}

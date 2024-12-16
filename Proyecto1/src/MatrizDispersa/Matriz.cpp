@@ -540,6 +540,16 @@ void Matriz::mostrarActivosRentados(std::string user,std::string contrasena){
     }
 }
 
+//Función para crear informe de los activos rentados por un usuario :)
+void Matriz::generarReporteActivosRentados(std::string user,std::string contrasena){
+    NodoMatriz* nodoUsuario=encontrarUsuario(contrasena,user);
+    if(nodoUsuario==nullptr){
+        std::cout<<"No se encuentra el usuario"<<std::endl;
+    }else{
+        nodoUsuario->getUsuario()->getActivosRentados()->generarReporteActivosRentados(user);
+    }
+}
+
 //************************************************************************************************************
 //Función para mostrar todos los activos disponibles
 void Matriz::mostrarActivosDisponibles(){

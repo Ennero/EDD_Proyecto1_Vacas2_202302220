@@ -101,6 +101,9 @@ public:
 
     //Función para devolver un activo rentado
     void devolverActivo(std::string id, std::string user, std::string contrasena);
+
+    //Función para generar el reporte de los activo rentados por un usuario
+    void generarReporteActivosRentados(std::string user, std::string contrasena);
 };
 
 #endif //MATRIZDISPERSA_H

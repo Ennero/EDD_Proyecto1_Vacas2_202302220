@@ -59,11 +59,11 @@ void Lista::imprimirNodos() {
     int contador = 1;
     NodoTransaccion* actual = inicio; // Nodo que recorrerá la lista
     do {
-        // Imprime la información relevante
+        // Imprime la información
         std::cout<<std::to_string(contador)<<". " << actual->getId()<< " - "<<actual->getNombre()<<" - "<<actual->getDescripcion()<<std::endl;
         actual = actual->getSiguiente(); // Avanzar al siguiente nodo
+        contador++;
     } while (actual != inicio); // Continuar hasta regresar al inicio
-
     std::cout << "-----------------------------------------------------------" << std::endl;
 }
 
@@ -142,7 +142,7 @@ void Lista::generarReporte(){
         reporte += "Departamento: " + aux->getTransaccion()->getDepartamento() + "\\l";
         reporte += "Empresa: " + aux->getTransaccion()->getEmpresa() + "\\l";
         reporte += "Fecha: " + aux->getTransaccion()->getFecha() + "\\l";
-        reporte += "Tiempo: " + aux->getTransaccion()->getTiempo() + "\\l";
+        reporte += "Tiempo de renta: " + aux->getTransaccion()->getTiempo() +" dias" + "\\l";
         reporte += "}\"];\n";
         //Conecto los nodos
         if (aux->getSiguiente() != this->inicio->getSiguiente()) {
@@ -224,3 +224,41 @@ void Lista::eliminarNodoPorId(std::string id) {
     std::cout << "Activo con ID " << id << " eliminado exitosamente" << std::endl;
 }
 //************************************************************************************************************************
+//Función para generar un reporte para los activos rentados
+void Lista::generarReporteActivosRentados(std::string user){
+    if (inicio == nullptr || fin == nullptr) return; // Si no hay nada en la lista no se genera el reporte
+    NodoTransaccion *aux = this->inicio; // Creo un nodo que recorrerá toda la lista
+    std::string reporte = "digraph listitata {\n";
+    reporte += "rankdir=LR;node [shape=record, style=filled, fillcolor=lightblue, margin=0.2];\n";
+    reporte += "edge [style=solid, color=blue];\n";
+    reporte += "graph [ranksep=1.5, nodesep=1];\n";
+    reporte += "graph [label=\"Activos Rentados por el usuario " + user + "\", fontsize=20, fontcolor=black];\n";
+    // Recorro la lista
+    bool banderita=true;
+    do {
+        reporte += "\"" + aux->getId() + "\" [label=\"{";
+        // Agregar los atributos que quieras mostrar
+        reporte += "ID Activo: " + aux->getId() + "\\l";
+        reporte += "Nombre: " + aux->getNombre() + "\\l";
+        reporte += "Descripcion: " + aux->getDescripcion() + "\\l";
+        reporte += "}\"];\n";
+        //Conecto los nodos
+        if (aux->getSiguiente() != this->inicio->getSiguiente()) {
+            reporte += "\"" + aux->getId() + "\" -> \"" +
+                       aux->getSiguiente()->getId() + "\"[dir=both];\n";
+        }else if (banderita){
+            reporte += "\"" + aux->getId() + "\" -> \"" +
+                       aux->getSiguiente()->getId() + "\"[dir=both];\n";
+        }
+        banderita=false;
+        aux = aux->getSiguiente();//Continuo con el ciclo
+    }while (aux != this->inicio) ;
+    reporte += "}\n";//Cierro ciclos xd
+    // Generar el archivo
+    std::ofstream archivo("ReporteActivosRentados.dot");
+    archivo << reporte;
+    archivo.close();
+    system("dot -Tpdf ReporteActivosRentados.dot -o ReporteActivosRentados.pdf && start ReporteActivosRentados.pdf");
+}
+
+
