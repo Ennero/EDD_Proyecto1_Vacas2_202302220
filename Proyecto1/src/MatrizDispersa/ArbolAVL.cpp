@@ -213,8 +213,7 @@ void ArbolAVL::eliminar(std::string valor, AVL *&nodo) {
         } else {
             // Caso 4: Tiene dos hijos nodos
             AVL* nodoMasDerecho = masALaDerecha(nodo->getIzquierda());//Busco el nodo más a la dercha
-            nodo->setActivo(nodoMasDerecho->getActivo()); //El nodo que se queire eliminar se reemplaza con el nodo mas a la derecha
-
+            //nodo->setActivo(nodoMasDerecho->getActivo()); //El nodo que se queire eliminar se reemplaza con el nodo mas a la derecha
 
             //probando mover solo los activos para no mover los nodos
             //Activo* activoTemp=nodo->getActivo();

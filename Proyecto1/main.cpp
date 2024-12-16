@@ -242,8 +242,9 @@ void adminMenu(){
         cout<<"7. Activos Rentados por un Usuario"<<endl;
         cout<<"8. Ordenar Transacciones"<<endl;
         cout<<"9. Cerrar Sesion"<<endl;
-        cin.ignore(); // Limpia el estado de cin porque me anda dando probelmas
         cin>>opta;//obtengo la opcion
+        cin.ignore(); // Limpia el estado de cin porque me anda dando probelmas
+        cin.clear();
 
 /*
         if (std::cin.fail()){
@@ -254,6 +255,7 @@ void adminMenu(){
             continue; // Pasa a la siguiente iteración del loop
         }*/
 
+        /*
         matriz->insertarValor("juanito","Guateamal","pollo","1234","");
         matriz->insertarValor("pedro","quiche","mac","1234","");
         matriz->insertarValor("luis","xela","mac","1234","");
@@ -263,7 +265,7 @@ void adminMenu(){
         matriz->insertarValor("alberto","Guateamal","mac","1234","");
         matriz->insertarValor("matasano","quiche","pollo","1234","");
         matriz->insertarValor("kevin","quiche","pollo","1234","");
-        
+        */
         switch(opta){
         case 1:{
             //Declaro unas variables
@@ -529,6 +531,6 @@ int main(){ //El ciclo principal en donde voy a colocar todo
             break;
         }
     }
-    return 0;
+
 }
 

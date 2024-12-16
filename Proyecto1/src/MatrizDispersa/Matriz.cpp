@@ -324,7 +324,6 @@ void Matriz::insertarAlMediaVertical(NodoMatriz* valor, NodoMatriz* vertical){
         vertical->getAnterior()->setSiguiente(valor);
         valor->setAnterior(vertical->getAnterior());
     }
-
     // Conexión hacia el nodo actual
     valor->setSiguiente(vertical);
     vertical->setAnterior(valor);
@@ -377,7 +376,6 @@ void Matriz::generarReporteMatriz(){
     std::cout<<"Reporte generado exitosamente"<<std::endl;
 
 }
-
 std::string Matriz::generarDotGrafica() {
     std::string grafico;
     //Inicio el grafico
@@ -673,8 +671,6 @@ void Matriz::devolverActivo(std::string id,std::string user,std::string contrase
     NodoMatriz* usuarioEncontrado=encontrarUsuario(contrasena,user);
     usuarioEncontrado->getUsuario()->getActivosRentados()->eliminarNodoPorId(id);
 }
-
-
 //Getter que no tenía hecho antes
 NodoMatriz* Matriz::getCabeceraHorizontal(){
     return cabeceraHorizontal;

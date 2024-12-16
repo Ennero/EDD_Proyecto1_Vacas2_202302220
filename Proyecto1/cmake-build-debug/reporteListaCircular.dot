@@ -3,8 +3,8 @@ rankdir=LR;node [shape=record, style=filled, fillcolor=lightblue, margin=0.2];
 edge [style=solid, color=blue];
 graph [ranksep=1.5, nodesep=1];
 graph [label="Reporte de Transacciones", fontsize=20, fontcolor=black];
-"9w9ybq35x07z043" [label="{ID Transacción: 9w9ybq35x07z043\lID Activo: p2j72b473hc3879\lUsuario: kevin\lDepartamento: quiche\lEmpresa: pollo\lFecha: 4\lTiempo: 11:42 15-12-2024\l}"];
-"9w9ybq35x07z043" -> "3l2353eo4uk3ilv"[dir=both];
-"3l2353eo4uk3ilv" [label="{ID Transacción: 3l2353eo4uk3ilv\lID Activo: n8lce35j0btgkqg\lUsuario: antonieta\lDepartamento: xela\lEmpresa: pollo\lFecha: 5\lTiempo: 11:55 15-12-2024\l}"];
-"3l2353eo4uk3ilv" -> "9w9ybq35x07z043"[dir=both];
+"3jmijs514doon33" [label="{ID Transacción: 3jmijs514doon33\lID Activo: k68i3i60c69qiwk\lUsuario: enner\lDepartamento: guatemala\lEmpresa: tigo\lFecha: 22:31 15-12-2024\lTiempo: 5\l}"];
+"3jmijs514doon33" -> "542ytt37qs8e971"[dir=both];
+"542ytt37qs8e971" [label="{ID Transacción: 542ytt37qs8e971\lID Activo: 8r73529t2k2xcj0\lUsuario: enner\lDepartamento: guatemala\lEmpresa: tigo\lFecha: 22:33 15-12-2024\lTiempo: 5\l}"];
+"542ytt37qs8e971" -> "3jmijs514doon33"[dir=both];
 }

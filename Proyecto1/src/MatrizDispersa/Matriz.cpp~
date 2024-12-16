@@ -324,7 +324,6 @@ void Matriz::insertarAlMediaVertical(NodoMatriz* valor, NodoMatriz* vertical){
         vertical->getAnterior()->setSiguiente(valor);
         valor->setAnterior(vertical->getAnterior());
     }
-
     // Conexión hacia el nodo actual
     valor->setSiguiente(vertical);
     vertical->setAnterior(valor);
@@ -532,7 +531,7 @@ void Matriz::mostrarActivosUsuario(std::string user,std::string contrasena){
 //*********************************************************************************************************
 //Función para mostrar los activos rentados por un usuario
 void Matriz::mostrarActivosRentados(std::string user,std::string contrasena){
-    NodoMatriz* nodoUsuario=encontrarUsuario(contrasena,user;
+    NodoMatriz* nodoUsuario=encontrarUsuario(contrasena,user);
     if(nodoUsuario==nullptr){
         std::cout<<"No se encuentra el usuario"<<std::endl;
     }else{

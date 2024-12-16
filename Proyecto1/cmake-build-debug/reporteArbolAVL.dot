@@ -2,9 +2,7 @@ digraph AVLTree {
     node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];
 edge [style=solid, color=blue];
  graph [ranksep=1.5, nodesep=1];graph [label="Reporte de Activos", fontsize=20, fontcolor=black];
-    "snu75yv4n43e9kx" [label="moto"];
-    "snu75yv4n43e9kx" -> "6183i553i0mig62";
-    "6183i553i0mig62" [label="limon"];
-    "snu75yv4n43e9kx" -> "x6ro67rdxflc58q";
-    "x6ro67rdxflc58q" [label="carro"];
+    "k68i3i60c69qiwk" [label="carro"];
+    "k68i3i60c69qiwk" -> "8r73529t2k2xcj0";
+    "8r73529t2k2xcj0" [label="moto"];
 }

@@ -192,7 +192,6 @@ void usuarioMenu(Usuario *usuario){
                         break;
                     }
                 }
-
             }
             break;
         }
@@ -255,6 +254,7 @@ void adminMenu(){
             continue; // Pasa a la siguiente iteración del loop
         }*/
 
+        /*
         matriz->insertarValor("juanito","Guateamal","pollo","1234","");
         matriz->insertarValor("pedro","quiche","mac","1234","");
         matriz->insertarValor("luis","xela","mac","1234","");
@@ -264,7 +264,7 @@ void adminMenu(){
         matriz->insertarValor("alberto","Guateamal","mac","1234","");
         matriz->insertarValor("matasano","quiche","pollo","1234","");
         matriz->insertarValor("kevin","quiche","pollo","1234","");
-        
+        */
         switch(opta){
         case 1:{
             //Declaro unas variables
@@ -530,6 +530,6 @@ int main(){ //El ciclo principal en donde voy a colocar todo
             break;
         }
     }
-    return 0;
+
 }
 
