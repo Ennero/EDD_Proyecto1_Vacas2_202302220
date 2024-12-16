@@ -3,14 +3,7 @@ digraph G {
     edge [style=solid, color=blue];
     graph [ranksep=1.5, nodesep=1];
     graph [label="Reporte de Activos de empresa guatemala ", fontsize=20, fontcolor=black];
-subgraph cluster_juan {
-        label="juan";
-    "k68i3i60c69qiwk" [label="carro"];
-    "k68i3i60c69qiwk" -> "8r73529t2k2xcj0";
-    "8r73529t2k2xcj0" [label="moto"];
-}
-subgraph cluster_enner {
-        label="enner";
-    "2ia8l7q6y679wn2" [label="celular"];
+subgraph cluster_juanito {
+        label="juanito";
 }
 }

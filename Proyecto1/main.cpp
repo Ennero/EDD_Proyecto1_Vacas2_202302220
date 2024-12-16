@@ -241,7 +241,7 @@ void adminMenu(){
         cout<<"4. Reporte de Activos Disponibles en una empresa"<<endl;
         cout<<"5. Reporte de Transacciones"<<endl;
         cout<<"6. Reporte de Activos de un Usuario"<<endl;
-        cout<<"7. Activos Rentados por un Usuario"<<endl;
+        cout<<"7. Reporte de Activos Rentados por un Usuario"<<endl;
         cout<<"8. Ordenar Transacciones"<<endl;
         cout<<"9. Cerrar Sesion"<<endl;
         cin>>opta;//obtengo la opcion

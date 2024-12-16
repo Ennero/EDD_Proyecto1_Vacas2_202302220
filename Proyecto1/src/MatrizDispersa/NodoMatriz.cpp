@@ -17,20 +17,6 @@ NodoMatriz::NodoMatriz(std::string user){
     this->nombre=user;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Constructor para el usuario
 NodoMatriz::NodoMatriz(Usuario* usuario, std::string nombre){
     this->siguiente=nullptr;
@@ -54,8 +40,30 @@ void NodoMatriz::insertarAdelante(NodoMatriz* nuevo) {
         nuevo->adelante = this->adelante; //El nuevo nodo será el nuevo adelante
         this->adelante->atras = nuevo;   //Conecto el nuevo frente a atras
     }
+
+    nuevo->arriba=this->arriba;
+    nuevo->abajo=this->abajo;
+    nuevo->siguiente=this->siguiente;
+    nuevo->anterior=this->anterior;
+
+    this->arriba->abajo=nuevo;
+    if (this->abajo != nullptr){
+        this->abajo->arriba=nuevo;
+    }
+    if (this->siguiente!=nullptr){
+        this->siguiente->anterior=nuevo;
+    }
+    this->anterior->siguiente=nuevo;
+
+    nuevo->atras=this;
+    this->adelante=nuevo;
+    /*
+
+
+
+
     this->adelante = nuevo; //conecto el nodo actual al nuevo nodo
-    nuevo->atras = this;    //conecto el nuevo nodo al actual
+    nuevo->atras = this;    //conecto el nuevo nodo al actual*/
 }
 // Función para insertar un nodo atrás del actual
 void NodoMatriz::insertarAtras(NodoMatriz* nuevo) {

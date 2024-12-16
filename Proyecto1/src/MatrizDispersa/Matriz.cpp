@@ -463,6 +463,12 @@ std::string Matriz::concatenarStringPorFila(NodoMatriz* cabV) {//(empresas)
 void Matriz::generarReporteActivosEmpresa(std::string empresa){
     //Genero el archivo
     NodoMatriz *cabeV=cabeceraV(empresa);
+
+    if (cabeV==nullptr){
+        std::cout<<"No se encuentra el departamento con la informacion proporcionada"<<std::endl;
+        return;
+    }
+
     //Aquí se supone que debería de llamar la función
     std::string matriz=concatenarStringPorFila(cabeV);
     std::ofstream archivo("reporteActivosEmpresa.dot");
@@ -506,6 +512,14 @@ std::string Matriz::concatenarStringPorColumna(NodoMatriz* cabH) {//(empresas)
 void Matriz::generarReporteActivosDepartamento(std::string departamento){
     //Genero el archivo
     NodoMatriz *cabeH=cabeceraH(departamento);
+
+
+    if (cabeH==nullptr){
+        std::cout<<"No se encuentra el departamento con la informacion proporcionada"<<std::endl;
+        return;
+    }
+
+
     //Aquí se supone que debería de llamar la función
     std::string matriz=concatenarStringPorColumna(cabeH);
     std::ofstream archivo("reporteActivosDepartamento.dot");

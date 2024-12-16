@@ -298,7 +298,7 @@ void ArbolAVL::imprimirRevursivo(AVL* nodo) {
     std::cout << "ID: " << nodo->getActivo()->getId()<< ", Nombre: " << nodo->getActivo()->getNombre()
               << ", Descripcion: " << nodo->getActivo()->getDescripcion();
     if (nodo->getActivo()->getTiempoRenta() >0){
-        std::cout << " (en renta)";
+        std::cout << " (en renta por " << nodo->getActivo()->getTiempoRenta() << " dias)";
     }
     std::cout<<std::endl;
     // Por último me voy al lado derecho
@@ -351,20 +351,12 @@ void ArbolAVL::imprimirActivosNoDisponiblesRecursivo(AVL* nodo){
     // Imprimo la información del nodo
     if (nodo->getActivo()->getTiempoRenta() >0){
         std::cout << "ID: " << nodo->getActivo()->getId()<< ", Nombre: " << nodo->getActivo()->getNombre()
-              << ", Descripcion: " << nodo->getActivo()->getDescripcion() << std::endl;
+              << ", Descripcion: " << nodo->getActivo()->getDescripcion() <<", Tiempo de renta: " <<nodo->getActivo()->getTiempoRenta()<<" dias"<<std::endl;
 
         // Por último me voy al lado derecho
     }
     imprimirActivosNoDisponiblesRecursivo(nodo->getDerecha());
 }
-
-
-
-
-
-
-
-
 
 //***************************************************************************************************
 
