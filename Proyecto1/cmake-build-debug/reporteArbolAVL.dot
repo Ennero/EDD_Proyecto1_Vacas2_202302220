@@ -2,15 +2,15 @@ digraph AVLTree {
     node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];
 edge [style=solid, color=blue];
  graph [ranksep=1.5, nodesep=1];graph [label="Reporte de Activos", fontsize=20, fontcolor=black];
-    "16rjkge9fg84xb4" [label="ID:16rjkge9fg84xb4
-Usuario:madera"];
-    "16rjkge9fg84xb4" -> "09l7j74bh771q0p";
-    "09l7j74bh771q0p" [label="ID:09l7j74bh771q0p
-Usuario:martillos"];
-    "16rjkge9fg84xb4" -> "48lt4cl7px4c6l5";
-    "48lt4cl7px4c6l5" [label="ID:48lt4cl7px4c6l5
-Usuario:caladora"];
-    "48lt4cl7px4c6l5" -> "6p5mn5k0y7709x0";
-    "6p5mn5k0y7709x0" [label="ID:6p5mn5k0y7709x0
-Usuario:barreno"];
+    "28urfy7vfd9d10f" [label="ID:28urfy7vfd9d10f
+Activo:madera"];
+    "28urfy7vfd9d10f" -> "1c48vtzh85y98cd";
+    "1c48vtzh85y98cd" [label="ID:1c48vtzh85y98cd
+Activo:caladora"  , style=filled, fillcolor=green];
+    "28urfy7vfd9d10f" -> "9qdxtw7029u13l3";
+    "9qdxtw7029u13l3" [label="ID:9qdxtw7029u13l3
+Activo:martillos"];
+    "9qdxtw7029u13l3" -> "k6qk9zn55qsyo2c";
+    "k6qk9zn55qsyo2c" [label="ID:k6qk9zn55qsyo2c
+Activo:barreno"];
 }

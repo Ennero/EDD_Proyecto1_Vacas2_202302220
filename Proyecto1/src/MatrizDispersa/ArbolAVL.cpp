@@ -148,7 +148,11 @@ std::string ArbolAVL::generarContenidoDot(AVL* nodo) {
     std::string contenido;//Contenido del dot
 
     // Agrego el nodo actual
-    contenido += "    \"" + nodo->getActivo()->getId() + "\" [label=\""+ "ID:" +nodo->getActivo()->getId() + "\nActivo:" + nodo->getActivo()->getNombre() + "\"];\n";
+    contenido += "    \"" + nodo->getActivo()->getId() + "\" [label=\""+ "ID:" +nodo->getActivo()->getId() + "\nActivo:" + nodo->getActivo()->getNombre()+"\"";
+    if (nodo->getActivo()->getTiempoRenta() >0){
+        contenido += "  , style=filled, fillcolor=red";
+    }
+    contenido+=  "];\n";
 
     // Verifico el hijo izquierdo
     if (nodo->getIzquierda() != nullptr) {

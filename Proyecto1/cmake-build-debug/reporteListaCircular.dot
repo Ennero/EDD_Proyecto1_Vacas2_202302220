@@ -3,8 +3,6 @@ rankdir=LR;node [shape=record, style=filled, fillcolor=lightblue, margin=0.2];
 edge [style=solid, color=blue];
 graph [ranksep=1.5, nodesep=1];
 graph [label="Reporte de Transacciones", fontsize=20, fontcolor=black];
-"3jmijs514doon33" [label="{ID Transacción: 3jmijs514doon33\lID Activo: k68i3i60c69qiwk\lUsuario: enner\lDepartamento: guatemala\lEmpresa: tigo\lFecha: 22:31 15-12-2024\lTiempo: 5\l}"];
-"3jmijs514doon33" -> "542ytt37qs8e971"[dir=both];
-"542ytt37qs8e971" [label="{ID Transacción: 542ytt37qs8e971\lID Activo: 8r73529t2k2xcj0\lUsuario: enner\lDepartamento: guatemala\lEmpresa: tigo\lFecha: 22:33 15-12-2024\lTiempo: 5\l}"];
-"542ytt37qs8e971" -> "3jmijs514doon33"[dir=both];
+"z959628a3ph5912" [label="{ID Transacción: z959628a3ph5912\lID Activo: 1c48vtzh85y98cd\lUsuario: elian_estrada\lDepartamento: guatemala\lEmpresa: igss\lFecha: 08:02 17-12-2024\lTiempo de renta: 10 dias\l}"];
+"z959628a3ph5912" -> "z959628a3ph5912"[dir=both];
 }
