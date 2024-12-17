@@ -221,7 +221,7 @@ void Lista::eliminarNodoPorId(std::string id) {
         actual->getSiguiente()->setAnterior(anterior);
     }
     tamano--; // Reducimos el tamaño de la lista
-    std::cout << "Activo con ID " << id << " eliminado exitosamente" << std::endl;
+    std::cout << "Activo con ID " << id << " retornado exitosamente" << std::endl;
 }
 //************************************************************************************************************************
 //Función para generar un reporte para los activos rentados

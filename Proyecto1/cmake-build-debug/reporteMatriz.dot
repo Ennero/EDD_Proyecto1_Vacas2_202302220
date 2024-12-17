@@ -1,14 +1,38 @@
 digraph G {
- rankdir=TB;
- node [shape=box, style=filled, fillcolor=lightblue, margin=0.2];
-edge [style=solid, color=blue];
- graph [ranksep=1.5, nodesep=1];
-graph [label="Reporte de Matriz", fontsize=20, fontcolor=black];
-    invisible_[label="invisible"style=invis];
-    invisible_-> nodo_2058936999920 [style=invis];
-    nodo_2058936999920 [label="pollo"style=filled, fillcolor=lightblue];
-    nodo_2058936999920 -> nodo_2058937000848 [dir=both,constraint=false];
-    nodo_2058936999568 [label="guatemala"style=filled, fillcolor=lightblue];
-    nodo_2058936999568 -> nodo_2058937000848 [dir=both];
-    nodo_2058937000848 [label="juan"style=filled, fillcolor=lightblue];
+  rankdir=LR; // Orientación horizontal para las cabeceras
+  node [shape=box, style=filled, fillcolor=lightblue, margin=0.2];
+  edge [style=solid, color=blue];
+  graph [ranksep=1.5, nodesep=1];
+  graph [label="Reporte de Matriz", fontsize=20, fontcolor=black];
+  subgraph cluster_verticales {
+    rankdir=TB;
+    node [shape=box, style=filled, fillcolor=lightgreen];
+    invisible_[style=invis];
+    invisible_-> v_0 [style=invis];
+    v_0 [label="igss"];
+    v_0 -> v_1;
+    v_1 [label="max"];
+    v_1 -> v_2;
+    v_2 [label="usac"];
+    v_2 -> v_3;
+    v_3 [label="cinepolis"];
+  }
+  subgraph cluster_horizontales {
+    rank=same;
+    node [shape=box, style=filled, fillcolor=lightyellow];
+    h_0 [label="guatemala"];
+    h_1 [label="jutiapa"];
+    h_2 [label="jalapa"];
+    h_3 [label="peten"];
+  }
+v_0 -> h_0[ltail=cluster_verticales, lhead=cluster_horizontales, constraint=true];
+v_1 -> h_1[ltail=cluster_verticales, lhead=cluster_horizontales, constraint=true];
+v_2 -> h_2[ltail=cluster_verticales, lhead=cluster_horizontales, constraint=true];
+v_3 -> h_3[ltail=cluster_verticales, lhead=cluster_horizontales, constraint=true];
+    nodo_0_0 [label="elian_estrada"];
+    nodo_0_0 -> nodo_0_1;
+    nodo_0_1 [label="casimiro"];
+    nodo_0_1 -> nodo_0_2;
+    nodo_0_2 [label="juanma"];
+    nodo_1_3 [label="fuego03"];
 }

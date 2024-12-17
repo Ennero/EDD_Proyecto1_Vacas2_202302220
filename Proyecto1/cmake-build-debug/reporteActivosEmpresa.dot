@@ -2,15 +2,18 @@ digraph G {
     node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];
     edge [style=solid, color=blue];
     graph [ranksep=1.5, nodesep=1];
-    graph [label="Reporte de Activos de Departamento tigo ", fontsize=20, fontcolor=black];
+    graph [label="Reporte de Activos de Departamento pollo ", fontsize=20, fontcolor=black];
+subgraph cluster_juan {
+        label="juan";
+    "8086l51yub290m5" [label="ID:8086l51yub290m5
+Usuario:corazon"];
+}
 subgraph cluster_enner {
         label="enner";
-    "2ia8l7q6y679wn2" [label="celular"];
-}
-subgraph cluster_pedro {
-        label="pedro";
-    "u49pnu5p1b5r8m3" [label="lapiz"];
-    "u49pnu5p1b5r8m3" -> "tj8x609h837xnh2";
-    "tj8x609h837xnh2" [label="crayon"];
+    "td34xu64850oi3x" [label="ID:td34xu64850oi3x
+Usuario:papaya"];
+    "td34xu64850oi3x" -> "l9d7x24c041f2n8";
+    "l9d7x24c041f2n8" [label="ID:l9d7x24c041f2n8
+Usuario:limones"];
 }
 }

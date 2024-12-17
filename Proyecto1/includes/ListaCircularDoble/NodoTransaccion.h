@@ -44,6 +44,7 @@ public:
     void setAnterior(NodoTransaccion* anterior);
     NodoTransaccion* getSiguiente();
     void setSiguiente(NodoTransaccion* siguiente);
+
 };
 
 #endif //NODO_H

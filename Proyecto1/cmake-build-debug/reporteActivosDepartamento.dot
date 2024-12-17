@@ -2,8 +2,36 @@ digraph G {
     node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];
     edge [style=solid, color=blue];
     graph [ranksep=1.5, nodesep=1];
-    graph [label="Reporte de Activos de empresa guatemala ", fontsize=20, fontcolor=black];
+    graph [label="Reporte de Activos de empresa jutiapa ", fontsize=20, fontcolor=black];
+subgraph cluster_incrediboy {
+        label="incrediboy";
+    "n2699kze5126y2h" [label="ID:n2699kze5126y2h
+Usuario:pantallas"];
+    "n2699kze5126y2h" -> "jfs4bl1z8l269k1";
+    "jfs4bl1z8l269k1" [label="ID:jfs4bl1z8l269k1
+Usuario:casets"];
+    "jfs4bl1z8l269k1" -> "95m7g3lk88e5a44";
+    "95m7g3lk88e5a44" [label="ID:95m7g3lk88e5a44
+Usuario:toldo"];
+    "n2699kze5126y2h" -> "p1pnmz8iei3068v";
+    "p1pnmz8iei3068v" [label="ID:p1pnmz8iei3068v
+Usuario:canonera"];
+}
 subgraph cluster_juanito {
         label="juanito";
+}
+subgraph cluster_azurdia {
+        label="azurdia";
+}
+subgraph cluster_fuego03 {
+        label="fuego03";
+    "d09c1uva68nf742" [label="ID:d09c1uva68nf742
+Usuario:peliculas"];
+    "d09c1uva68nf742" -> "83w605528790vdn";
+    "83w605528790vdn" [label="ID:83w605528790vdn
+Usuario:termos"];
+    "d09c1uva68nf742" -> "raiqxjzg16egb2i";
+    "raiqxjzg16egb2i" [label="ID:raiqxjzg16egb2i
+Usuario:maletas"];
 }
 }

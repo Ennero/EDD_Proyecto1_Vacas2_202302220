@@ -16,13 +16,16 @@
 //Declaraciones globales para que esté en todos lados
 Matriz *matriz=new Matriz();//inicializo la matriz
 Lista *lista=new Lista();//inicializo la lista para las transacciones
-
+bool semillita = false;
 using namespace std;
 
 //-------------------------------------------------------------------------------------------------------------------------------------------
 //Función para crear un id alfanumerico aleatorio a partir de la hora :)
 string asignarIdAlfanumerico(){
-    std::srand(time(0));
+    if (!semillita) {
+        std::srand(static_cast<unsigned>(std::time(0))); // Semilla solo una vez
+        semillita = true;
+    }
     string idAlfanumerico = "";
     for (int i=0; i<15;i++){ //Lo itero 16 veces para que sea de longitud de 16
         int opcion = std::rand() % 2 + 1;
@@ -247,31 +250,10 @@ void adminMenu(){
         cin>>opta;//obtengo la opcion
         cin.ignore(); // Limpia el estado de cin porque me anda dando probelmas
         cin.clear();
-
-/*
-        if (std::cin.fail()){
-            // Limpia el estado de cin
-            std::cin.clear(); // Descarta el resto del input inválido
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Opción inválida, por favor ingrese un número del 1 al 9." << std::endl;
-            continue; // Pasa a la siguiente iteración del loop
-        }*/
-
-        /*
-        matriz->insertarValor("juanito","Guateamal","pollo","1234","");
-        matriz->insertarValor("pedro","quiche","mac","1234","");
-        matriz->insertarValor("luis","xela","mac","1234","");
-        matriz->insertarValor("jacob","quiche","pollo","1234","");
-        matriz->insertarValor("enner","Guateamal","mac","1234","");
-        matriz->insertarValor("antonieta","xela","pollo","1234","");
-        matriz->insertarValor("alberto","Guateamal","mac","1234","");
-        matriz->insertarValor("matasano","quiche","pollo","1234","");
-        matriz->insertarValor("kevin","quiche","pollo","1234","");
-        */
         switch(opta){
         case 1:{
             //Declaro unas variables
-            string nombreUsuario,depa,empre,contra,nombrecito;
+            string nombreUsuario,depa,empre,contra;
             cout<<"---------------CREAR USUARIO---------------"<<endl;
             //Creo el usuario
             cout<<"Ingrese nombre de usuario:"<<endl;
@@ -286,11 +268,8 @@ void adminMenu(){
             std::cout<<"Ingrese la contrasena: "<<std::endl;
             std::cin>>contra;
             cin.ignore();
-            std::cout<<"Ingrese el nombre completo: "<<std::endl;
-            cin>>nombrecito;
-            cin.ignore();
             //Inserto los valores solicitados
-            matriz->insertarValor(nombreUsuario,depa,empre,contra,nombrecito);
+            matriz->insertarValor(nombreUsuario,depa,empre,contra,"elianito");
             break;
         }
         case 2:{
@@ -435,65 +414,53 @@ void ingreso(){ //void para el ingreso de los datos
 //Aquí se va a encontrar el ciclo principal desde se comenzará a correr el programa
 int main(){ //El ciclo principal en donde voy a colocar todo
 
-    //probando el arbolito
-    /*
-    ArbolAVL *arbol=new ArbolAVL();
-    arbol->insertar("111");
-    arbol->insertar("222");
-    arbol->insertar("333");
-    arbol->insertar("889");arbol->insertar("890");
-    arbol->insertar("444");
-    arbol->insertar("555");
-    arbol->insertar("666");
-    arbol->insertar("777");
-    arbol->insertar("888");
-    arbol->insertar("999");
-    arbol->insertar("1010");
-    arbol->insertar("1111");
-    arbol->generarDotGrafica();
-    arbol->eliminar("111");
-    arbol->eliminar("222");
-    arbol->generarDotGrafica();
-    */
 
-/*
-    Matriz *matriz=new Matriz();
+    //Aquí se colocan los usuario quemados-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+    matriz->insertarValor("elian_estrada","guatemala","igss","1234","");
+    matriz->encontrarUsuario("1234","elian_estrada")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"madera","madera para albanil");//serán 20 dias
+    matriz->encontrarUsuario("1234","elian_estrada")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"martillos","martillos para madera");//10 dias
+    matriz->encontrarUsuario("1234","elian_estrada")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"caladora","caladora para cortar maderas prefabricadas");//15
+    matriz->encontrarUsuario("1234","elian_estrada")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"barreno","balanza con maximo de 25kg");//5
 
-    matriz->insertarValor(5,0,0);
-    matriz->insertarValor(8,1,0);
-    matriz->insertarValor(10,2,1);
-    matriz->insertarValor(15,1,1);
-*/
-/*
-    Lista *lista=new Lista();
-    lista->agregarNodo(new Transaccion("2","limones","Limznero","rentador","empresa","fecha","tiempo"));
-    lista->agregarNodo(new Transaccion("1","limones","Pañales","rentador","empresa","fecha","tiempo"));
-    lista->agregarNodo(new Transaccion("5","limones","Limznero","rentador","empresa","fecha","tiempo"));
-    lista->agregarNodo(new Transaccion("4","limones","Limznero","rentador","empresa","fecha","tiempo"));
-    lista->agregarNodo(new Transaccion("3","limones","Limznero","rentador","empresa","fecha","tiempo"));
-    lista->generarReporte();
-    lista->ordenarDescendente();
-    lista->generarReporte();
-    lista->ordenarAscendente();
-    lista->generarReporte();
-*/
-    //Ciclo para iniciar el programa
-    /*
-    Matriz *matri=new Matriz();
-    matri->insertarValor("juanito","Guateamal","pollo");
-    matri->insertarValor("pedro","quiche","mac");
-    matri->insertarValor("luis","xela","mac");
-    matri->insertarValor("jacob","quiche","pollo");
-    matri->insertarValor("enner","Guateamal","mac");
-    matri->insertarValor("antonieta","xela","pollo");
-    matri->insertarValor("alberto","Guateamal","mac");
-    matri->insertarValor("matasano","quiche","pollo");
-    matri->insertarValor("kevin","quiche","pollo");
-    matri->generarReporteMatriz();
-    cout<<"**********************************************"<<endl;
-    cout<<matri->encontrarUsuario("10","enner")->getUsuario()->getUsuario()<<endl;
+    matriz->insertarValor("juanito","jutiapa","max","4567","");
+    matriz->insertarValor("pedrito","jalapa","usac","48956","");
 
-    */
+    matriz->insertarValor("mafer","peten","cinepolis","54312","");
+    matriz->encontrarUsuario("54312","mafer")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"audifonos","audifonos para grabaciones de estudio");//10
+    matriz->encontrarUsuario("54312","mafer")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"microfonos","microfonos de todo tipo");//8
+    matriz->encontrarUsuario("54312","mafer")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"pedestales","pedestales para microfonos grandes y pequenos");//12
+    matriz->encontrarUsuario("54312","mafer")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"atriles","atriles para colocar hojas con gancho");//14
+
+
+    matriz->insertarValor("juanma","guatemala","usac","32897","");
+
+    matriz->insertarValor("casimiro","guatemala","max","721896","");
+    matriz->encontrarUsuario("721896","casimiro")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"balanza","balanza con maximo de 25kg");//15
+    matriz->encontrarUsuario("721896","casimiro")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"canastas","canastas para frutas y verduras");//45
+    matriz->encontrarUsuario("721896","casimiro")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"linternas","linternas para alumbrar cuartos oscuros");//10
+    matriz->encontrarUsuario("721896","casimiro")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"cargadores","cargadores de telefonos tipo c");//5
+    matriz->encontrarUsuario("721896","casimiro")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"cables","cables de todo tipo");//10
+    matriz->encontrarUsuario("721896","casimiro")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"lazos","lazos para tender ropa");//20
+
+    matriz->insertarValor("fuego03","jutiapa","cinepolis","891346","");
+    matriz->encontrarUsuario("891346","fuego03")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"termos","pequenos termos para bebidas calientes");//10
+    matriz->encontrarUsuario("891346","fuego03")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"maletas","maletas desde pequenas a grandes");//15
+    matriz->encontrarUsuario("891346","fuego03")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"peliculas","todo tipo de peliculas de accion");//5
+
+    matriz->insertarValor("azurdia","jutiapa","usac","780145","");
+
+    matriz->insertarValor("incrediboy","jutiapa","max","201598","");//Este lo colocaré atras
+    matriz->encontrarUsuario("201598","incrediboy")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"casets","casets con musica de todo tipo");//5
+    matriz->encontrarUsuario("201598","incrediboy")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"pantallas","pantallas para proyeccion");//10
+    matriz->encontrarUsuario("201598","incrediboy")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"canonera","canonera para proyeccion");//10
+    matriz->encontrarUsuario("201598","incrediboy")->getUsuario()->getActivos()->insertar(asignarIdAlfanumerico(),"toldo","toldo para eventos al exterior");//5
+
+    matriz->insertarValor("alcachofa","jalapa","usac","20435",""); //Este lo colocaré atras
+    //Aquí se colocan los usuario quemados-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
     //Aquí voy a meter más valores para ir probando
     bool inicio=true;
     int opcionInicio=0;
