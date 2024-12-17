@@ -113,7 +113,6 @@ int ArbolAVL::alturaMaxima(AVL* nodo){//Función para obtener la altura maxima
     return hIzquierda>hDerecha ? hIzquierda +1 : hDerecha + 1;
 }
 int ArbolAVL::factorEquilibrio(AVL *nodo){//Función para obtener el factor de equilibrio (lo derecho menos lo izquierdo)
-
     if (nodo==nullptr) return 0;
     int alturaDerecha = alturaMaxima(nodo->getDerecha());
     int alturaIzquierda = alturaMaxima(nodo->getIzquierda());
@@ -149,7 +148,7 @@ std::string ArbolAVL::generarContenidoDot(AVL* nodo) {
     std::string contenido;//Contenido del dot
 
     // Agrego el nodo actual
-    contenido += "    \"" + nodo->getActivo()->getId() + "\" [label=\"" + nodo->getActivo()->getNombre() + "\"];\n";
+    contenido += "    \"" + nodo->getActivo()->getId() + "\" [label=\""+ "ID:" +nodo->getActivo()->getId() + "\nUsuario:" + nodo->getActivo()->getNombre() + "\"];\n";
 
     // Verifico el hijo izquierdo
     if (nodo->getIzquierda() != nullptr) {

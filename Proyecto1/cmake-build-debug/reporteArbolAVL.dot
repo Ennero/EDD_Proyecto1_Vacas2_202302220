@@ -2,21 +2,12 @@ digraph AVLTree {
     node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];
 edge [style=solid, color=blue];
  graph [ranksep=1.5, nodesep=1];graph [label="Reporte de Activos", fontsize=20, fontcolor=black];
-    "93bm1sy0kx46er9" [label="1"];
-    "93bm1sy0kx46er9" -> "67d6ru5turz010y";
-    "67d6ru5turz010y" [label="2"];
-    "67d6ru5turz010y" -> "36vo4b7l237dt5f";
-    "36vo4b7l237dt5f" [label="8"];
-    "67d6ru5turz010y" -> "7313b7r03ndt8qm";
-    "7313b7r03ndt8qm" [label="6"];
-    "93bm1sy0kx46er9" -> "cl0373wnsv91x42";
-    "cl0373wnsv91x42" [label="9"];
-    "cl0373wnsv91x42" -> "9fa3oh72q94v111";
-    "9fa3oh72q94v111" [label="4"];
-    "cl0373wnsv91x42" -> "gm22x1r462tp13g";
-    "gm22x1r462tp13g" [label="5"];
-    "gm22x1r462tp13g" -> "d4v207xtro21078";
-    "d4v207xtro21078" [label="7"];
-    "gm22x1r462tp13g" -> "io2i69dv840niu4";
-    "io2i69dv840niu4" [label="3"];
+    "iv87162368d82s2" [label="Activo:pedro
+; ID:iv87162368d82s2"];
+    "iv87162368d82s2" -> "2tcphaf2666lk1g";
+    "2tcphaf2666lk1g" [label="Activo:dskfj
+; ID:2tcphaf2666lk1g"];
+    "iv87162368d82s2" -> "te199kre80qbc4s";
+    "te199kre80qbc4s" [label="Activo:kjdsflk
+; ID:te199kre80qbc4s"];
 }

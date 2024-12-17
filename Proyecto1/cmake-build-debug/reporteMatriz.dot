@@ -5,10 +5,10 @@ edge [style=solid, color=blue];
  graph [ranksep=1.5, nodesep=1];
 graph [label="Reporte de Matriz", fontsize=20, fontcolor=black];
     invisible_[label="invisible"style=invis];
-    invisible_-> nodo_2769102397552 [style=invis];
-    nodo_2769102397552 [label="pollo"style=filled, fillcolor=lightblue];
-    nodo_2769102397552 -> nodo_2769102398704 [dir=both,constraint=false];
-    nodo_2769102397200 [label="guate"style=filled, fillcolor=lightblue];
-    nodo_2769102397200 -> nodo_2769102398704 [dir=both];
-    nodo_2769102398704 [label="maria"style=filled, fillcolor=lightblue];
+    invisible_-> nodo_2058936999920 [style=invis];
+    nodo_2058936999920 [label="pollo"style=filled, fillcolor=lightblue];
+    nodo_2058936999920 -> nodo_2058937000848 [dir=both,constraint=false];
+    nodo_2058936999568 [label="guatemala"style=filled, fillcolor=lightblue];
+    nodo_2058936999568 -> nodo_2058937000848 [dir=both];
+    nodo_2058937000848 [label="juan"style=filled, fillcolor=lightblue];
 }
