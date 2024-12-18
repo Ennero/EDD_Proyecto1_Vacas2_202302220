@@ -3,6 +3,10 @@ rankdir=LR;node [shape=record, style=filled, fillcolor=lightblue, margin=0.2];
 edge [style=solid, color=blue];
 graph [ranksep=1.5, nodesep=1];
 graph [label="Reporte de Transacciones", fontsize=20, fontcolor=black];
-"z959628a3ph5912" [label="{ID Transacción: z959628a3ph5912\lID Activo: 1c48vtzh85y98cd\lUsuario: elian_estrada\lDepartamento: guatemala\lEmpresa: igss\lFecha: 08:02 17-12-2024\lTiempo de renta: 10 dias\l}"];
-"z959628a3ph5912" -> "z959628a3ph5912"[dir=both];
+"n3j7oq7a3qlhr99" [label="{ID Transacción: n3j7oq7a3qlhr99\lID Activo: c0806xi90760hmf\lUsuario: calificacion1\lDepartamento: jalapa\lEmpresa: cinepolis\lFecha: 21:35 17-12-2024\lTiempo de renta: 10 dias\l}"];
+"n3j7oq7a3qlhr99" -> "jrbb20zby8ky3tu"[dir=both];
+"jrbb20zby8ky3tu" [label="{ID Transacción: jrbb20zby8ky3tu\lID Activo: 7u7j1a3chbr9s3i\lUsuario: calificacion1\lDepartamento: jalapa\lEmpresa: cinepolis\lFecha: 21:35 17-12-2024\lTiempo de renta: 32 dias\l}"];
+"jrbb20zby8ky3tu" -> "4bz4sd5h099n189"[dir=both];
+"4bz4sd5h099n189" [label="{ID Transacción: 4bz4sd5h099n189\lID Activo: 7wck5q50906k46k\lUsuario: calificacion1\lDepartamento: jalapa\lEmpresa: cinepolis\lFecha: 21:35 17-12-2024\lTiempo de renta: 50 dias\l}"];
+"4bz4sd5h099n189" -> "n3j7oq7a3qlhr99"[dir=both];
 }

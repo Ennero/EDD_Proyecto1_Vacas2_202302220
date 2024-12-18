@@ -1,8 +1,10 @@
 digraph listitata {
-rankdir=LR;node [shape=square, style=filled, fillcolor=lightblue, margin=0.2];
+rankdir=LR;node [shape=record, style=filled, fillcolor=lightblue, margin=0.2];
 edge [style=solid, color=blue];
 graph [ranksep=1.5, nodesep=1];
-graph [label="Activos Rentados por el usuario enner", fontsize=20, fontcolor=black];
-"xtk63t0810yrycq" [label="{ID Activo: xtk63t0810yrycq\lNombre: pelota\lDescripcion: negr\l}"];
-"xtk63t0810yrycq" -> "xtk63t0810yrycq"[dir=both];
+graph [label="Activos Rentados por el usuario calificacion1", fontsize=20, fontcolor=black];
+"c0806xi90760hmf" [label="{ID Activo: c0806xi90760hmf\lNombre: martillos\lDescripcion: martillos para madera\l}"];
+"c0806xi90760hmf" -> "7wck5q50906k46k"[dir=both];
+"7wck5q50906k46k" [label="{ID Activo: 7wck5q50906k46k\lNombre: madera\lDescripcion: madera para albanil\l}"];
+"7wck5q50906k46k" -> "c0806xi90760hmf"[dir=both];
 }

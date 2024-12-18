@@ -3,35 +3,35 @@ digraph G {
     edge [style=solid, color=blue];
     graph [ranksep=1.5, nodesep=1];
     graph [label="Reporte de Activos de empresa jutiapa ", fontsize=20, fontcolor=black];
-subgraph cluster_incrediboy {
-        label="incrediboy";
-    "n2699kze5126y2h" [label="ID:n2699kze5126y2h
-Usuario:pantallas"];
-    "n2699kze5126y2h" -> "jfs4bl1z8l269k1";
-    "jfs4bl1z8l269k1" [label="ID:jfs4bl1z8l269k1
-Usuario:casets"];
-    "jfs4bl1z8l269k1" -> "95m7g3lk88e5a44";
-    "95m7g3lk88e5a44" [label="ID:95m7g3lk88e5a44
-Usuario:toldo"];
-    "n2699kze5126y2h" -> "p1pnmz8iei3068v";
-    "p1pnmz8iei3068v" [label="ID:p1pnmz8iei3068v
-Usuario:canonera"];
-}
 subgraph cluster_juanito {
         label="juanito";
+}
+subgraph cluster_incrediboy {
+        label="incrediboy";
+    "98h0632495f9gw6" [label="ID:98h0632495f9gw6
+Activo:canonera"];
+    "98h0632495f9gw6" -> "1wj88j319o14884";
+    "1wj88j319o14884" [label="ID:1wj88j319o14884
+Activo:pantallas"];
+    "1wj88j319o14884" -> "7u7j1a3chbr9s3i";
+    "7u7j1a3chbr9s3i" [label="ID:7u7j1a3chbr9s3i
+Activo:toldo"];
+    "98h0632495f9gw6" -> "dha136i66azl437";
+    "dha136i66azl437" [label="ID:dha136i66azl437
+Activo:casets"];
 }
 subgraph cluster_azurdia {
         label="azurdia";
 }
 subgraph cluster_fuego03 {
         label="fuego03";
-    "d09c1uva68nf742" [label="ID:d09c1uva68nf742
-Usuario:peliculas"];
-    "d09c1uva68nf742" -> "83w605528790vdn";
-    "83w605528790vdn" [label="ID:83w605528790vdn
-Usuario:termos"];
-    "d09c1uva68nf742" -> "raiqxjzg16egb2i";
-    "raiqxjzg16egb2i" [label="ID:raiqxjzg16egb2i
-Usuario:maletas"];
+    "2guu4674pbml31x" [label="ID:2guu4674pbml31x
+Activo:peliculas"];
+    "2guu4674pbml31x" -> "0u9d382bwxq63x2";
+    "0u9d382bwxq63x2" [label="ID:0u9d382bwxq63x2
+Activo:maletas"];
+    "2guu4674pbml31x" -> "mvs7cg509mtb0x1";
+    "mvs7cg509mtb0x1" [label="ID:mvs7cg509mtb0x1
+Activo:termos"];
 }
 }

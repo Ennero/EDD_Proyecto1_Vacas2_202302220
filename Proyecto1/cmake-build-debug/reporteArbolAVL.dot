@@ -2,15 +2,18 @@ digraph AVLTree {
     node [shape=circle,style=filled, fillcolor=lightblue, margin=0.2];
 edge [style=solid, color=blue];
  graph [ranksep=1.5, nodesep=1];graph [label="Reporte de Activos", fontsize=20, fontcolor=black];
-    "28urfy7vfd9d10f" [label="ID:28urfy7vfd9d10f
-Activo:madera"];
-    "28urfy7vfd9d10f" -> "1c48vtzh85y98cd";
-    "1c48vtzh85y98cd" [label="ID:1c48vtzh85y98cd
-Activo:caladora"  , style=filled, fillcolor=green];
-    "28urfy7vfd9d10f" -> "9qdxtw7029u13l3";
-    "9qdxtw7029u13l3" [label="ID:9qdxtw7029u13l3
-Activo:martillos"];
-    "9qdxtw7029u13l3" -> "k6qk9zn55qsyo2c";
-    "k6qk9zn55qsyo2c" [label="ID:k6qk9zn55qsyo2c
-Activo:barreno"];
+    "803i66z2348f2t4" [label="ID:803i66z2348f2t4
+Activo:lazos"];
+    "803i66z2348f2t4" -> "0cwxsfyon3372m3";
+    "0cwxsfyon3372m3" [label="ID:0cwxsfyon3372m3
+Activo:linternas"];
+    "803i66z2348f2t4" -> "wgg8hq1lmq66ian";
+    "wgg8hq1lmq66ian" [label="ID:wgg8hq1lmq66ian
+Activo:cargadores"];
+    "wgg8hq1lmq66ian" -> "k956u5v64t05ztn";
+    "k956u5v64t05ztn" [label="ID:k956u5v64t05ztn
+Activo:cables"];
+    "wgg8hq1lmq66ian" -> "xf354zb7z804pqi";
+    "xf354zb7z804pqi" [label="ID:xf354zb7z804pqi
+Activo:balanza"];
 }
